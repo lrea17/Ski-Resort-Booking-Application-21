@@ -1,7 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 
-public class Guest extends Passsenger{
+public class Guest {
     private static int nextAccountId = 1;  // tracks id of next account created
     private int id;             // account id
     private String name;        // guest name
@@ -9,23 +10,21 @@ public class Guest extends Passsenger{
     private boolean hasAPass = false;    // has a pass or not
     private int numDaysSkied = 0;      // # of days skied this year
     private String passType = "none";
+    ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
 
     //REQUIRES: guestName has a non-zero length,
     //EFFECTS: name of guest is set to guestName; account id is a
     //         positive integer not assigned to any other account;
     //         age is set to guestAge; hasAPass is set to hasPass (starts false);
     //         numDaysSkied set to daysSkied (starts at 0);
-    public Guest(String guestName, int guestAge, boolean hasPass, int daysSkied) {
-        //Guest guest = new Guest();
+    public Guest(String guestName, int guestAge) {
         this.id = nextAccountId++;
         this.name = guestName;
         this.age = guestAge;
-        this.hasAPass = hasPass;
-        this.numDaysSkied = daysSkied;
+        listOfGuests.add(this);
+    }
 
-        }
-
-   // getters
+    // getters
     public int getID() {
         return id;
     }
@@ -46,25 +45,39 @@ public class Guest extends Passsenger{
         return numDaysSkied;
     }
 
-    public void buyPass() {
-    if (getAge() <= 5) {
-
-
-
-
+    public String getPassType() {
+        return passType;
     }
 
+    public ArrayList<Guest> getListOfGuests() {
+        return listOfGuests;
     }
 
     public String bookSkiDay() {
-        if(checkForPass()) {
-            return "Your ski day is booked";
+        return "none";
+    }
+
+      /*if (checkForPass()) {
+        return "Your ski day is booked";
+    } else {
+        return "Please add a pass to your guest profile";
+    }
+    */
+
+    public void addPassToProfile() {
+     /*   if (this.getAge() <= 5) {
+            passType = "child";
+        } if-else (this.getAge() > 5 && this.getAge() <= 18) {
+            passType = "youth";
+        } if else (this.getAge() > 18 && this.getAge() < 65) {
+            passType = "adult";
         } else {
-
+            passType = "senior";
         }
-
-        }
-
+        this.hasAPass = true;
+        numDaysSkied++;*/
     }
 
 }
+
+

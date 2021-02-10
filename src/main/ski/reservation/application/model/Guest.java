@@ -8,7 +8,7 @@ public class Guest extends Pass {
     private String name;        // guest name
     private int age;            // guest age
     private boolean pass = false;    // has a pass or not
-    private String passType = "none"; //TODO DO I NEED THIS?
+    private String passType; //TODO DO I NEED THIS?
     private boolean reservation = false;
     ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
 

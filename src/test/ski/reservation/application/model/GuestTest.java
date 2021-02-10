@@ -1,8 +1,7 @@
-package model;
+package ski.reservation.application.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sun.misc.JavaNetAccess;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,11 +17,11 @@ class GuestTest {
     void testConstructor() {
         assertEquals("Lindsay", guestTest.getName());
         assertEquals(28, guestTest.getAge());
-        assertEquals(0, guestTest.getNumDaysSkied());
-        assertFalse(guestTest.checkForPass());
+        assertFalse(guestTest.hasAPass());
         assertTrue(guestTest.getListOfGuests().contains(guestTest));
-        assertEquals("none", guestTest.getPassType());
+        //assertEquals("none", guestTest.getPassType());
         assertEquals(1, guestTest.getID());
+        assertFalse(guestTest.hasReservation());
     }
 
 }

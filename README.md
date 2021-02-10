@@ -27,22 +27,15 @@ Proposal:
   
 ## User Stories
 
-For phase 1, I am focussing on creating a reservation system for guests to 
+For phase 1, I am focusing on creating a reservation system for guests to 
 
 - As a user, I want to be able to create a new guest and add them to a list of guests
 - As a user, I want to be able to check and see if a guest has a pass/ticket 
-- As a user, I want to be able to select a guest and add a ticket or pass to their guest profile
+- As a user, I want to be able to select a guest and add a pass to their guest profile
 - As a user, I want to be able to select a guest and add a reservation for a ski day
 - As a user, I want to be able to select a guest and cancel a reservation for ski day
-- As a user, I want to be able to select a guest and check the number of days skied
 - As a user, I want to be able to select a day and view all the reservations for that day
 
-To be implemented later 
-- As a user, I want to be able to add a new lift to the list of lifts for the mountain
-- As a user, I want to be able to select a lift and turn it on
-- As a user, I want to be able to select a lift and turn it off
-- As a user, I want to be able to remove a lift from the list of lifts for the mountain
-- As a user, I want to be able to provide the lift status for all the lifts on the mountain
-- As a user, I want to be able to select a lift and provide its status (on/off)
+
 
 

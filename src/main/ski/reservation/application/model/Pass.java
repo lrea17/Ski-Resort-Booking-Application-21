@@ -54,6 +54,12 @@ public class Pass {
     }
 
     //MODIFIES: this
+    //EFFECTS: un-expires pass (in case guest cancels day)
+    public void revalidatePass() {
+        this.expiredPass = false;
+    }
+
+    //MODIFIES: this
     //EFFECTS: sets the valid day of the pass
     public void setDayValid(String dayValid) {
         this.dayValid = dayValid;
@@ -64,4 +70,15 @@ public class Pass {
     public boolean isPassExpired() {
         return expiredPass;
     }
+
+    //TODO for pass type, not sure if needed
+    /*if (this.getAge() <= 5) {
+            passType = "child";
+        } if-else (this.getAge() > 5 && this.getAge() <= 18) {
+            passType = "youth";
+        } if else (this.getAge() > 18 && this.getAge() < 65) {
+            passType = "adult";
+        } else {
+            passType = "senior";
+        }*/
 }

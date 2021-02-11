@@ -3,14 +3,12 @@ package ski.reservation.application.model;
 import java.util.ArrayList;
 
 public class Guest {
-    private static int nextAccountId = 1;  // tracks id of next account created
-    private int id;             // account id
-    private String name;        // guest name
-    private int age;            // guest age
-    private boolean pass = false;    // has a pass or not
-    private boolean reservation = false;
-    ArrayList<Pass> listOfPasses;
-    //TODO put in code for Guest after we do tests
+    private static int nextAccountId = 1;  // tracks id of next guest account created
+    private int id;                        // account id
+    private String name;                   // guest name
+    private int age;                       // guest age
+    private Pass currentPass;              // current pass on guest profile
+    ArrayList<Pass> listOfExpiredPasses;   // list of expired/used passed
 
     // add current pass
     // string of old invalid passes
@@ -41,68 +39,56 @@ public class Guest {
     }
 
     public String getPassType() {
-        return "none";
-    }
-
-    public Boolean hasAPass() {
-        return pass;
-    }
-
-    public boolean hasReservation() {
-        return reservation;
-    }
-
-    //MODIFIES: this
-    //EFFECTS: adds the correct passType to the guest profile depending on age of guest
-    public void addPassToProfile(Pass passType) {
-        //list of passes, add a pass to the list of passes here
-        // also need to set pass to tru
-        listOfPasses.add(passType);
-
-
-        // TODO make this run
-     /*   if (this.getAge() <= 5) {
-            passType = "child";
-        } if-else (this.getAge() > 5 && this.getAge() <= 18) {
-            passType = "youth";
-        } if else (this.getAge() > 18 && this.getAge() < 65) {
-            passType = "adult";
+        if (this.getCurrentPass() != null) {
+            return currentPass.getPassType();
         } else {
-            passType = "senior";
+            return "No current pass";
         }
-        this.pass = true;
-        numOfPasses += numPassesWanted;
+    } //TODO tweaked not sure if correct
 
-        ;*/
+    public Pass getCurrentPass() {
+        return currentPass;
     }
 
-    //MODIFIES: this
-    //EFFECTS: confirms a guest has a day reserved by returning true, false if otherwise
-    public void makeReservation(String currentSkiDay) {
-        this.reservation = true;
-    }
-    //TODO add in this code after tests
-      /*if (hasAPass() && hasReservation()) {
-        return "Your ski day is booked";
-    } else {
-        return "Please add a pass to your guest profile";
+    public void newCurrentPass() {
+        Pass p = new Pass(this.getAge());
+        currentPass = p;
+
     }
 
-    started coding this
-    if (guestTest.hasAPass()) {
-            if (p.getDayValid() == currentValidDay) {
-                guestTest.makeReservation();
-                p.setExpiredPass();
-            }
+    public void setCurrentPass(Pass p) {
+        currentPass = p;
+    }
+
+    //MODIFIES: this & Pass if there is a pass on guest profile
+    //EFFECTS: checks if guest has pass and if the currentSkiDay matches the passes dayValid,
+    //         if both are true makes reservation, returns "reservation made" sets pass to be
+    //         expired & adds pass to expired passes list.  If no pass, returns "no pass", if
+    //         validDay does not match, returns validDay does not match
+    public String makeReservation() {
+        if (this.currentPass != null) {
+            // this.reservation = true;
+            listOfExpiredPasses.add(currentPass);
+            currentPass.setExpiredPass();
+            currentPass = null;
+            return "You already have a reservation.";
+        } else {
+            newCurrentPass();
+            listOfExpiredPasses.add(currentPass);
+            currentPass.setExpiredPass();
+            currentPass = null;
         }
-    */
+        return "Your reservation has been made.";
+    }
+
 
     //MODIFIES: this
     //EFFECTS: cancels a guests reservation by setting hasReservation to false
-    public void cancelReservation() {
-        this.reservation = false;
+    public void cancelReservation(Pass p) {
+        p.revalidatePass();
+        listOfExpiredPasses.remove(p);
+        currentPass = p;
     }
-
 
 
 }

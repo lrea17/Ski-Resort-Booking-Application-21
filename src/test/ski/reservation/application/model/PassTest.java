@@ -69,6 +69,12 @@ public class PassTest {
         assertEquals("Wednesday", passTest.getDayValid());
     }
 
+    @Test
+    void testRevalidatePass(){
+        passTest.revalidatePass();
+        assertTrue(passTest.isPassExpired());
+    }
+
 
 
 

@@ -14,7 +14,7 @@ public class Main {
         System.out.println(guest1.hasAPass());
 
         // want a list of all the guests
-        ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
+        //ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
 
 
     }

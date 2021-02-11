@@ -34,7 +34,7 @@ For phase 1, I am focusing on creating a reservation system for guests to
 - As a user, I want to be able to select a guest and add a pass to their guest profile
 - As a user, I want to be able to select a guest and add a reservation for a ski day
 - As a user, I want to be able to select a guest and cancel a reservation for ski day
-- As a user, I want to be able to select a day and view all the reservations for that day
+- As a user, I want to be able to view all the reservations for that day
 
 
 

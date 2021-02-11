@@ -4,6 +4,8 @@ import ski.reservation.application.model.Guest;
 
 import java.util.Scanner;
 
+//TODO build out my UI
+
 // Ski Reservation application
 public class SkiReservationApp {
     private Guest name;

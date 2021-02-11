@@ -2,6 +2,8 @@ package ui;
 
 import ski.reservation.application.model.Guest;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -10,6 +12,9 @@ public class Main {
 
         Guest guest1 = new Guest("Lindsay", 28);
         System.out.println(guest1.hasAPass());
+
+        // want a list of all the guests
+        ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
 
 
     }

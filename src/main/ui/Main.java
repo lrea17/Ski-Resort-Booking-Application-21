@@ -14,6 +14,12 @@ public class Main {
         //ArrayList<Guest> listOfGuests = new ArrayList<Guest>();
 
         Guest guest1 = new Guest("Lindsay", 28);
+        System.out.println(guest1.getID());
+        Guest guest2 = new Guest("bob", 2);
+        System.out.println(guest2.getID());
+
+
+
 
 
 

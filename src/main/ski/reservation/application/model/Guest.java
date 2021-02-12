@@ -1,16 +1,21 @@
 package ski.reservation.application.model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Guest {
-    //private static int nextAccountId = 1;
-    public static ArrayList<Integer> listOfGuestIds; // tracks id of next guest account created
+    private static int nextAccountId = 1;
+    private static ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks id of next guest account created
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
     private Pass currentPass;              // current pass on guest profile
     ArrayList<Pass> listOfExpiredPasses;
-    //private static int random // list of expired/used passed
+
+
+    //TODO delete this or keep it later..
+
+
 
     // add current pass
     // string of old invalid passes
@@ -23,12 +28,30 @@ public class Guest {
     //         reservation is set to hasReservation (starts false); passType is set to "none"
     public Guest(String guestName, int guestAge) {
         //this.id = nextAccountId++;
+        this.id = randomIdGenerator();
         this.name = guestName;
         this.age = guestAge;
         listOfExpiredPasses = new ArrayList<>();
-        listOfGuestIds.add(id);
 
-        //
+        //TODO this stuff below is the new stuff she tried to recommend
+    }
+
+    private static int random;
+    // list of expired/used passed
+    Random randomNumber = new Random();
+    //int upperBound = 999;
+
+    public int randomIdGenerator() {
+        int accountId = randomNumber.nextInt();
+        while (listOfGuestIds.contains(accountId) || accountId < 0) {
+            accountId = randomNumber.nextInt();
+        }
+        listOfGuestIds.add(accountId);
+        return accountId;
+    }
+
+    public static ArrayList<Integer> getListOfGuestIds() {
+        return listOfGuestIds;
     }
 
     // getters

@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
-    private Guest guestTest = new Guest("Lindsay",28);;
+    private Guest guestTest;
 
 
-
-
-    //void setup() {
-        //private guestTest =
+    @BeforeEach
+    void setup() {
+        guestTest = new Guest("Lindsay", 28);
+    }
 
 
     @Test
@@ -20,9 +20,23 @@ class GuestTest {
         assertEquals("Lindsay", guestTest.getName());
         assertEquals(28, guestTest.getAge());
         assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
-        assertEquals(1, guestTest.getID());
+        // assertEquals(4, guestTest.getID());
+        // assertTrue(guestTest.getListOfGuestIds().contains(guestTest.getID()));
         assertNull(guestTest.getCurrentPass());
     }
+
+    @Test
+    void testRandomIdGenerator(){
+        int i = guestTest.randomIdGenerator();
+        int j = guestTest.randomIdGenerator();
+        assertNotEquals(i, j);
+        assertTrue(i >= 0);
+        assertTrue(j >= 0);
+        assertTrue(guestTest.getListOfGuestIds().contains(guestTest.getID()));
+        assertTrue(Guest.getListOfGuestIds().contains(i));
+        assertTrue(Guest.getListOfGuestIds().contains(j));
+    }
+
 
     @Test
     void makeReservationWithCurrentPass() {

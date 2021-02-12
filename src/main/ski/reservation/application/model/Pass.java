@@ -43,9 +43,9 @@ public class Pass {
         return passNum;
     }
 
-    public String getDayValid() {
-        return dayValid;
-    }
+    //public String getDayValid() {
+    //    return dayValid;
+    //}
 
     //MODIFIES: this
     //EFFECTS: sets pass to expired
@@ -59,11 +59,11 @@ public class Pass {
         this.expiredPass = false;
     }
 
-    //MODIFIES: this
+   /* //MODIFIES: this
     //EFFECTS: sets the valid day of the pass
     public void setDayValid(String dayValid) {
         this.dayValid = dayValid;
-    }
+    }*/
 
     //EFFECTS: If the dayValid matches the day of the week, returns false sets expired pass to false.
     //         If dayValid does not match the day of the week, returns true and sets expired pass to true

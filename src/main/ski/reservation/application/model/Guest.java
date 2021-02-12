@@ -3,12 +3,14 @@ package ski.reservation.application.model;
 import java.util.ArrayList;
 
 public class Guest {
-    private static int nextAccountId = 1;  // tracks id of next guest account created
+    //private static int nextAccountId = 1;
+    public static ArrayList<Integer> listOfGuestIds; // tracks id of next guest account created
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
     private Pass currentPass;              // current pass on guest profile
-    ArrayList<Pass> listOfExpiredPasses;   // list of expired/used passed
+    ArrayList<Pass> listOfExpiredPasses;
+    //private static int random // list of expired/used passed
 
     // add current pass
     // string of old invalid passes
@@ -20,9 +22,13 @@ public class Guest {
     //         age is set to guestAge; pass is set to hasAPass (starts false);
     //         reservation is set to hasReservation (starts false); passType is set to "none"
     public Guest(String guestName, int guestAge) {
-        this.id = nextAccountId++;
+        //this.id = nextAccountId++;
         this.name = guestName;
         this.age = guestAge;
+        listOfExpiredPasses = new ArrayList<>();
+        listOfGuestIds.add(id);
+
+        //
     }
 
     // getters
@@ -53,7 +59,6 @@ public class Guest {
     public void newCurrentPass() {
         Pass p = new Pass(this.getAge());
         currentPass = p;
-
     }
 
     public void setCurrentPass(Pass p) {
@@ -77,8 +82,8 @@ public class Guest {
             listOfExpiredPasses.add(currentPass);
             currentPass.setExpiredPass();
             currentPass = null;
+            return "Your reservation has been made.";
         }
-        return "Your reservation has been made.";
     }
 
 

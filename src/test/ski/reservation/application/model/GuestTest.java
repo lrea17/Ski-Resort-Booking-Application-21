@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
-    private Guest guestTest;
-    private Pass p = new Pass(guestTest.getAge());  //TODO not sure if this is right
+    private Guest guestTest = new Guest("Lindsay",28);;
 
 
-    @BeforeEach
-    void setup() {
-        guestTest = new Guest("Lindsay",28);
-    }
+
+
+    //void setup() {
+        //private guestTest =
+
 
     @Test
     void testConstructor() {
@@ -21,18 +21,29 @@ class GuestTest {
         assertEquals(28, guestTest.getAge());
         assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
         assertEquals(1, guestTest.getID());
-        assertEquals(null, guestTest.getCurrentPass());
+        assertNull(guestTest.getCurrentPass());
     }
 
     @Test
     void makeReservationWithCurrentPass() {
         Pass passTester = new Pass(guestTest.getAge());
         guestTest.setCurrentPass(passTester);
-        guestTest.makeReservation();
-        assertEquals(null, guestTest.getCurrentPass());
-        assertTrue(passTester.isPassExpired());
-        assertTrue(guestTest.listOfExpiredPasses.contains(passTester);
         assertEquals("You already have a reservation.", guestTest.makeReservation());
+        assertNull(guestTest.getCurrentPass());
+        assertTrue(passTester.isPassExpired());
+        assertTrue(guestTest.listOfExpiredPasses.contains(passTester));
+    }
+
+    // this may have issues because of the p variable - trying to use the p
+    // in the guest class of this method
+    @Test
+    void makeReservationNoCurrentPass(){
+        //Pass p = new Pass(guestTest.getAge());
+        assertEquals("Your reservation has been made.", guestTest.makeReservation());
+        assertNull(guestTest.getCurrentPass());
+        //assertTrue(p.isPassExpired());
+        //assertTrue(guestTest.listOfExpiredPasses.contains(p));
+        assertEquals(1, guestTest.listOfExpiredPasses.size());
 
     }
 

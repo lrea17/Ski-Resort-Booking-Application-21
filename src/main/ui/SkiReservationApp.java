@@ -56,11 +56,13 @@ public class SkiReservationApp {
     }
 
     private void doNewGuest() {
-        Guest newGuest = createNewGuest();
         System.out.println("Please enter the guests name:");
         String guestName = input.next();
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
+        Guest newGuest = new Guest(guestName, guestAge);
+        newGuest.makeReservation();
+        returnToMainMenu();
 
     }
 
@@ -76,9 +78,14 @@ public class SkiReservationApp {
 
     }
 
+    private void returnToMainMenu(){
+
+    }
+
     // MODIFIES: this
     // EFFECTS: conducts the create new guest command
     private Guest createNewGuest() {
+
         return null;
     }
 

@@ -27,14 +27,11 @@ public class Pass {
         String senior = "senior";
         if (age >= 0 && age <= 5) {
             assignedPassType = child;
-        }
-        if (age > 5 && age <= 18) {
+        } else if (age > 5 && age <= 18) {
             assignedPassType = youth;
-        }
-        if (age > 18 && age < 65) {
+        } else if (age > 18 && age < 65) {
             assignedPassType = adult;
-        }
-        if (age >= 65) {
+        } else if (age >= 65) {
             assignedPassType = senior;
         }
         this.passType = assignedPassType;

@@ -115,17 +115,22 @@ public class SkiReservationApp {
     }
 
     private void doDeleteGuestAccount() {
+        String yesNo = null;
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        String y = input.next();
-        String n = input.next();
         if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
-        } if else {
-            removeGuest(lookupGuest(guestId));
+        } else {
+            System.out.println("Are you sure you would like to proceed? (y / n)");
+            System.out.println("These changes are permanent and cannot be undone");
+            yesNo = input.next();
+            if (yesNo.equals("y")) {
+                removeGuest(lookupGuest(guestId));
+                System.out.println("\nThe account requested has been deleted permanently");
+            } else {
+                System.out.println("Action cancelled, returning to main menu.");
+            }
         }
-        System.out.println("\nThe account requested has been deleted permanently");
-
     }
 
 

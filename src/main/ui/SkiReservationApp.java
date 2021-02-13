@@ -99,6 +99,8 @@ public class SkiReservationApp {
         } else {
             lookupGuest(guestId).makeReservation();
         }
+        System.out.println("\nA reservation has been made for "
+                + lookupGuest(guestId).getName() + ". They may hit the slopes!");
     }
 
     private void doCancelReservation() {
@@ -107,18 +109,22 @@ public class SkiReservationApp {
         if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
         } else {
-            lookupGuest(guestId).cancelReservation(lookupGuest(guestId).getCurrentPass());
+            lookupGuest(guestId).cancelReservation();
+            System.out.println("Cancellation successful for " + lookupGuest(guestId).getName());
         }
     }
 
     private void doDeleteGuestAccount() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
+        String y = input.next();
+        String n = input.next();
         if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
-        } else {
+        } if else {
             removeGuest(lookupGuest(guestId));
         }
+        System.out.println("\nThe account requested has been deleted permanently");
 
     }
 

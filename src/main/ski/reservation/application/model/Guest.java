@@ -75,7 +75,7 @@ public class Guest {
 
     public int randomIdGenerator() {
         int accountId = randomNumber.nextInt();
-        while (listOfGuestIds.contains(accountId) || accountId < 0) {
+        while (listOfGuestIds.contains(accountId) || accountId < 0 || accountId > 99999) {
             accountId = randomNumber.nextInt();
         }
         listOfGuestIds.add(accountId);
@@ -106,7 +106,9 @@ public class Guest {
 
     //MODIFIES: this
     //EFFECTS: cancels a guests reservation by setting hasReservation to false
-    public void cancelReservation(Pass p) {
+    public void cancelReservation() {
+        Pass p;
+        p = listOfExpiredPasses.get(listOfExpiredPasses.size() - 1);
         p.revalidatePass();
         listOfExpiredPasses.remove(p);
         currentPass = p;

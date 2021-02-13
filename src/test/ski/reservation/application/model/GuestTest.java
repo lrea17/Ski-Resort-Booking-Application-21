@@ -21,9 +21,17 @@ class GuestTest {
         assertEquals(28, guestTest.getAge());
         assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
         assertNull(guestTest.getCurrentPass());
-        //TODO may not need these tests here
-        assertTrue(Accounts.getListOfGuests().contains(guestTest));
-        assertTrue(Accounts.getListOfGuests().contains(guestTest.getID()));
+    }
+
+    @Test
+    public void testingOrderOfExpiredPass(){
+        Pass p1 = new Pass(guestTest.getAge());
+        Pass p2 = new Pass(guestTest.getAge());
+        Pass p3 = new Pass(guestTest.getAge());
+        guestTest.listOfExpiredPasses.add(p1);
+        guestTest.listOfExpiredPasses.add(p2);
+        guestTest.listOfExpiredPasses.add(p3);
+        assertEquals(p3, guestTest.listOfExpiredPasses.get(guestTest.listOfExpiredPasses.size() - 1));
     }
 
     // maybe try to have a test that makes sure these passes were added to the list of expired passes
@@ -46,6 +54,8 @@ class GuestTest {
         assertNotEquals(i, j);
         assertTrue(i >= 0);
         assertTrue(j >= 0);
+        assertTrue(i < 99999);
+        assertTrue(j < 99999);
         assertTrue(Guest.getListOfGuestIds().contains(guestTest.getID()));
         assertTrue(Guest.getListOfGuestIds().contains(i));
         assertTrue(Guest.getListOfGuestIds().contains(j));
@@ -76,8 +86,10 @@ class GuestTest {
     void testCancelReservation(){
         Pass passTester2 = new Pass(guestTest.getAge());
         guestTest.setCurrentPass(passTester2);
+        assertEquals(passTester2, guestTest.getCurrentPass());
         guestTest.makeReservation();
-        guestTest.cancelReservation(passTester2);
+        assertEquals(1, guestTest.listOfExpiredPasses.size());
+        guestTest.cancelReservation();
         assertEquals(passTester2, guestTest.getCurrentPass());
         assertFalse(passTester2.isPassExpired());
         assertFalse(guestTest.listOfExpiredPasses.contains(passTester2));

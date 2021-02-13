@@ -4,10 +4,14 @@ import ski.reservation.application.model.Guest;
 
 import java.util.Scanner;
 
+import static ski.reservation.application.model.Accounts.addGuest;
+import static ski.reservation.application.model.Accounts.lookupGuest;
+
 //TODO build out my UI
 
 // Ski Reservation application
 public class SkiReservationApp {
+    //private static ArrayList<Guest> listOfGuests = new ArrayList<>();
     private Guest name;
     private Guest age;
     private Scanner input;
@@ -15,6 +19,7 @@ public class SkiReservationApp {
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() {
         runSkiReservationApp();
+        //listOfGuests = Guest.getListOfGuests();
     }
 
     //MODIFIES: this
@@ -75,23 +80,35 @@ public class SkiReservationApp {
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
         Guest newGuest = new Guest(guestName, guestAge);
+        addGuest(newGuest);
         newGuest.makeReservation();
     }
 
     private void doNewReservationExistingGuest() {
-
-
+        System.out.println("Please enter the guests account ID:");
+        int guestId = input.nextInt();
+        if (lookupGuest(guestId) == null) {
+            System.out.println("This guest does not exist in our system...");
+        } else {
+            lookupGuest(guestId).makeReservation();
+        }
     }
 
     private void doCancelReservation() {
-
+        System.out.println("Please enter the guests account ID:");
+        int guestId = input.nextInt();
+        if (lookupGuest(guestId) == null) {
+            System.out.println("This guest does not exist in our system...");
+        } else {
+            lookupGuest(guestId).cancelReservation(lookupGuest(guestId).getCurrentPass());
+        }
     }
 
     private void doDeleteGuestAccount() {
 
     }
 
-    private void returnToMainMenu(){
+    private void returnToMainMenu() {
 
     }
 
@@ -101,6 +118,8 @@ public class SkiReservationApp {
 
         return null;
     }
+
+
 
 
 }

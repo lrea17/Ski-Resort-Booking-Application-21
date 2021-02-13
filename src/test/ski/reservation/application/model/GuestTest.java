@@ -21,6 +21,9 @@ class GuestTest {
         assertEquals(28, guestTest.getAge());
         assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
         assertNull(guestTest.getCurrentPass());
+        //TODO may not need these tests here
+        assertTrue(Accounts.getListOfGuests().contains(guestTest));
+        assertTrue(Accounts.getListOfGuests().contains(guestTest.getID()));
     }
 
     // maybe try to have a test that makes sure these passes were added to the list of expired passes

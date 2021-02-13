@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Guest {
     private static ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks id of next guest account created
+    //private static ArrayList<Guest> listOfGuests = new ArrayList<Guest>(); // adds new guests to list of guests
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
@@ -13,16 +14,20 @@ public class Guest {
     ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
 
 
+
     //REQUIRES: guestName has a non-zero length, age is a non-zero length
-    //EFFECTS: name of guest is set to guestName; account id is a
-    //         positive integer not assigned to any other account;
-    //         age is set to guestAge; pass is set to hasAPass (starts false);
-    //         reservation is set to hasReservation (starts false); passType is set to "none"
+    //EFFECTS: name of guest is set to guestName; guest id is a unique random
+    //         positive integer not assigned to any other account; age is set
+    //         to guestAge;
     public Guest(String guestName, int guestAge) {
         this.id = randomIdGenerator();
         this.name = guestName;
         this.age = guestAge;
         listOfExpiredPasses = new ArrayList<>();
+        //listOfGuests.add(this);
+
+
+
     }
 
 
@@ -66,6 +71,7 @@ public class Guest {
     public static ArrayList<Integer> getListOfGuestIds() {
         return listOfGuestIds;
     }
+
 
     public int randomIdGenerator() {
         int accountId = randomNumber.nextInt();

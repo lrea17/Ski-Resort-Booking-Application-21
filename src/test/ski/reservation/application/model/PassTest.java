@@ -23,7 +23,7 @@ public class PassTest {
 
     @Test
     void testConstructor() {
-        assertEquals(1, passTest.getPassNum());
+        //assertEquals(1, passTest.getPassNum());
         assertEquals("adult", passTest.getPassType()); // should return lindsays age?
         assertFalse(passTest.isPassExpired());
     }
@@ -31,27 +31,21 @@ public class PassTest {
     //double check checkstyle method lengths
     @Test
     void testDiffPassTypes() {
-        Pass passTest1 = new Pass(guestTestChildUnderFive.getAge());
-        assertEquals("child", guestTestChildUnderFive.getPassType());
-        Pass passTest2 = new Pass(guestTestChildFive.getAge());
+        guestTestChildUnderFive.newCurrentPass();
+        assertEquals("child", guestTestChildUnderFive.getCurrentPass().getPassType());
+        guestTestChildFive.newCurrentPass();
         assertEquals("child", guestTestChildFive.getPassType());
-        Pass passTest3 = new Pass(guestTestYouth.getAge());
+        guestTestYouth.newCurrentPass();
         assertEquals("youth", guestTestYouth.getPassType());
-        Pass passTest4 = new Pass(guestTestAlmostAdult.getAge());
+        guestTestAlmostAdult.newCurrentPass();
         assertEquals("youth", guestTestAlmostAdult.getPassType());
-        Pass passTest5 = new Pass(guestTestAdult.getAge());
+        guestTestAdult.newCurrentPass();
         assertEquals("adult", guestTestAdult.getPassType());
-        Pass passTest6 = new Pass(guestTestAlmostSenior.getAge());
+        guestTestAlmostSenior.newCurrentPass();
         assertEquals("adult", guestTestAlmostSenior.getPassType());
-        Pass passTest7 = new Pass(guestTestSenior.getAge());
+        guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
-        assertEquals(2, passTest1.getPassNum());
-        assertEquals(3, passTest2.getPassNum());
-        assertEquals(4, passTest3.getPassNum());
-        assertEquals(5, passTest4.getPassNum());
-        assertEquals(6, passTest5.getPassNum());
-        assertEquals(7, passTest6.getPassNum());
-        assertEquals(8, passTest7.getPassNum());
+
     }
 
     //TODO need to test the setters/getters in Pass
@@ -63,22 +57,23 @@ public class PassTest {
         assertTrue(passTest.isPassExpired());
     }
 
-/*    @Test
-    void testSetDayValid(){
-        passTest.setDayValid("Wednesday");
-        assertEquals("Wednesday", passTest.getDayValid());
-    }*/
-
     @Test
     void testRevalidatePass(){
         passTest.revalidatePass();
-        assertTrue(passTest.isPassExpired());
+        assertFalse(passTest.isPassExpired());
     }
 
-
-
-
-
+    @Test
+    void testRandomPassNumGenerator(){
+        int i = passTest.randomPassNumGenerator();
+        int j = passTest.randomPassNumGenerator();
+        assertNotEquals(i, j);
+        assertTrue(i >= 0);
+        assertTrue(j >= 0);
+        assertTrue(Pass.getListOfPassNumsUsed().contains(passTest.getPassNum()));
+        assertTrue(Pass.getListOfPassNumsUsed().contains(i));
+        assertTrue(Pass.getListOfPassNumsUsed().contains(j));
+    }
 
 
 }

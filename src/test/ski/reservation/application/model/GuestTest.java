@@ -20,9 +20,20 @@ class GuestTest {
         assertEquals("Lindsay", guestTest.getName());
         assertEquals(28, guestTest.getAge());
         assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
-        // assertEquals(4, guestTest.getID());
-        // assertTrue(guestTest.getListOfGuestIds().contains(guestTest.getID()));
         assertNull(guestTest.getCurrentPass());
+    }
+
+    // maybe try to have a test that makes sure these passes were added to the list of expired passes
+    // the exact pass..
+    // this test could be redundant
+    @Test
+    void testListOfExpiredPasses(){
+        guestTest.makeReservation();
+        guestTest.makeReservation();
+        guestTest.makeReservation();
+        assertEquals(3, guestTest.getListOfExpiredPasses().size());
+        //assertTrue(guestTest.listOfExpiredPasses.contains(pass));
+
     }
 
     @Test

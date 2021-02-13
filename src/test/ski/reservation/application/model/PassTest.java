@@ -24,7 +24,7 @@ public class PassTest {
     @Test
     void testConstructor() {
         //assertEquals(1, passTest.getPassNum());
-        assertEquals("adult", passTest.getPassType()); // should return lindsays age?
+        assertEquals("adult", passTest.getPassType());
         assertFalse(passTest.isPassExpired());
     }
 
@@ -70,9 +70,9 @@ public class PassTest {
         assertNotEquals(i, j);
         assertTrue(i >= 0);
         assertTrue(j >= 0);
-        assertTrue(Pass.getListOfPassNumsUsed().contains(passTest.getPassNum()));
-        assertTrue(Pass.getListOfPassNumsUsed().contains(i));
-        assertTrue(Pass.getListOfPassNumsUsed().contains(j));
+        assertTrue(Pass.getListOfPassNumUsed().contains(passTest.getPassNum()));
+        assertTrue(Pass.getListOfPassNumUsed().contains(i));
+        assertTrue(Pass.getListOfPassNumUsed().contains(j));
     }
 
 

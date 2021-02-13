@@ -52,8 +52,7 @@ public class Guest {
     }
 
     public void newCurrentPass() {
-        Pass p = new Pass(this.getAge());
-        currentPass = p;
+        currentPass = new Pass(this.getAge());
     }
 
     public void setCurrentPass(Pass p) {

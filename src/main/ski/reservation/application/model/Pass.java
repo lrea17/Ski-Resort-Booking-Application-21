@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Pass {
     //private static int nextPassNum = 0;
-    private static ArrayList<Integer> listOfPassNumsUsed = new ArrayList<>(); // keeps track of all pass nums created
+    private static ArrayList<Integer> listOfPassNumUsed = new ArrayList<>(); // keeps track of all pass num created
     private int passNum;                 // the unique pass number
     private String passType;             // type of the pass: child, youth, adult, senior
     private boolean expiredPass;         // T if pass expired
@@ -54,8 +54,8 @@ public class Pass {
         return expiredPass;
     }
 
-    public static ArrayList<Integer> getListOfPassNumsUsed() {
-        return listOfPassNumsUsed;
+    public static ArrayList<Integer> getListOfPassNumUsed() {
+        return listOfPassNumUsed;
     }
 
     //MODIFIES: this
@@ -70,20 +70,16 @@ public class Pass {
         this.expiredPass = false;
     }
 
-    public String passTypeAssigner() {
-        return "boop";
-    }
-
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: creates a unique pass number for each pass created, checks listOfPassNumCreated to ensure
     //         a no number is used twice
     public int randomPassNumGenerator() {
         int passId = randomNumber.nextInt();
-        while (listOfPassNumsUsed.contains(passId) || passId < 0) {
+        while (listOfPassNumUsed.contains(passId) || passId < 0) {
             passId = randomNumber.nextInt();
         }
-        listOfPassNumsUsed.add(passId);
+        listOfPassNumUsed.add(passId);
         return passId;
     }
 }

@@ -43,7 +43,7 @@ class GuestTest {
         assertNotEquals(i, j);
         assertTrue(i >= 0);
         assertTrue(j >= 0);
-        assertTrue(guestTest.getListOfGuestIds().contains(guestTest.getID()));
+        assertTrue(Guest.getListOfGuestIds().contains(guestTest.getID()));
         assertTrue(Guest.getListOfGuestIds().contains(i));
         assertTrue(Guest.getListOfGuestIds().contains(j));
     }
@@ -63,11 +63,8 @@ class GuestTest {
     // in the guest class of this method
     @Test
     void makeReservationNoCurrentPass(){
-        //Pass p = new Pass(guestTest.getAge());
         assertEquals("Your reservation has been made.", guestTest.makeReservation());
         assertNull(guestTest.getCurrentPass());
-        //assertTrue(p.isPassExpired());
-        //assertTrue(guestTest.listOfExpiredPasses.contains(p));
         assertEquals(1, guestTest.listOfExpiredPasses.size());
 
     }

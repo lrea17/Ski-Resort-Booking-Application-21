@@ -1,25 +1,22 @@
 package ui;
 
+import ski.reservation.application.model.Accounts;
 import ski.reservation.application.model.Guest;
 
 import java.util.Scanner;
 
-import static ski.reservation.application.model.Accounts.addGuest;
-import static ski.reservation.application.model.Accounts.lookupGuest;
+import static ski.reservation.application.model.Accounts.*;
 
 //TODO build out my UI
 
 // Ski Reservation application
 public class SkiReservationApp {
-    //private static ArrayList<Guest> listOfGuests = new ArrayList<>();
-    private Guest name;
-    private Guest age;
+    private Accounts accounts;
     private Scanner input;
 
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() {
         runSkiReservationApp();
-        //listOfGuests = Guest.getListOfGuests();
     }
 
     //MODIFIES: this
@@ -28,7 +25,7 @@ public class SkiReservationApp {
         boolean keepGoing = true;
         String command = null;
 
-        //init();
+        init();
 
         while (keepGoing) {
             displayMenu();
@@ -53,6 +50,11 @@ public class SkiReservationApp {
         System.out.println("\tc -> cancel an existing reservation");
         System.out.println("\td -> delete a guest account");
         System.out.println("\tq - > quit");
+    }
+
+    private void init() {
+        input = new Scanner(System.in);
+        accounts = new Accounts();
     }
 
     // MODIFIES: this
@@ -81,7 +83,12 @@ public class SkiReservationApp {
         int guestAge = input.nextInt();
         Guest newGuest = new Guest(guestName, guestAge);
         addGuest(newGuest);
+        System.out.println("New account created for: " + guestName);
+        System.out.println("account ID: " + newGuest.getID());
+        System.out.println("age: " + guestAge);
+        System.out.println("pass type: " + newGuest.getPassType());
         newGuest.makeReservation();
+        System.out.println("\nA reservation has been made for " + guestName + ". They may hit the slopes!");
     }
 
     private void doNewReservationExistingGuest() {
@@ -105,21 +112,15 @@ public class SkiReservationApp {
     }
 
     private void doDeleteGuestAccount() {
+        System.out.println("Please enter the guests account ID:");
+        int guestId = input.nextInt();
+        if (lookupGuest(guestId) == null) {
+            System.out.println("This guest does not exist in our system...");
+        } else {
+            removeGuest(lookupGuest(guestId));
+        }
 
     }
-
-    private void returnToMainMenu() {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: conducts the create new guest command
-    private Guest createNewGuest() {
-
-        return null;
-    }
-
-
 
 
 }

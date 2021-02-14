@@ -51,17 +51,14 @@ Proposal:
 For phase 1:
 
 - As a user, I want to be able to create a new guest and make a reservation for them
+- As a user, I want to be able to see the number of days an existing guest has skied
 - As a user, I want to be able to lookup an existing guest by their account id and add a reservation for a ski day
 - As a user, I want to be able to lookup an existing guest by their account id and cancel a reservation for a ski day
 - As a user, I want to be able to create a new guest and add them to a list of guests
 - As a user, I want all new guests to be added to a list of guests
 - As a user, I want to be able to permanently delete a guest from the list of guests 
-- As a user, I want to be able to see the number of days a guest has skied 
-  
-- As a user, I want to be able to check and see if a guest has a pass/ticket
-- As a user, I want to be able to select a guest and add a pass to their guest profile
 
-- As a user, I want to be able to view all the reservations for that day
+
 
 
 

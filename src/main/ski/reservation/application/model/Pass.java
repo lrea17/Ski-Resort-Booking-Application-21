@@ -73,10 +73,23 @@ public class Pass {
     //          listOfPassNumCreated to ensure no reduplication
     public int randomPassNumGenerator() {
         int passId = randomNumber.nextInt();
-        while (listOfPassNumUsed.contains(passId) || passId < 0) {
+        while (!(validPassNumber(passId))) {
             passId = randomNumber.nextInt();
         }
         listOfPassNumUsed.add(passId);
         return passId;
+    }
+
+    // EFFECTS: returns true if number is valid, false if otherwise
+    public boolean validPassNumber(int randomNumber) {
+        boolean validAccountId = true;
+        if (listOfPassNumUsed.contains(randomNumber)) {
+            validAccountId = false;
+        } else if (randomNumber < 0) {
+            validAccountId = false;
+        } else if (randomNumber > 99999) {
+            validAccountId = false;
+        }
+        return validAccountId;
     }
 }

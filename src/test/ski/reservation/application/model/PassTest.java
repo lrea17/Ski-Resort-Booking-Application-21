@@ -81,6 +81,22 @@ public class PassTest {
         assertTrue(Pass.getListOfPassNumUsed().contains(j));
     }
 
+    @Test
+    void testValidPassNumberInList(){
+        assertFalse(passTest.validPassNumber(passTest.getPassNum()));
+    }
+
+    @Test
+    void testValidAccountNumberLessThanZero(){
+        assertFalse(passTest.validPassNumber(-2));
+    }
+
+    @Test
+    void testValidAccountNumberTooBig(){
+        assertFalse(passTest.validPassNumber(100000));
+        assertTrue(passTest.validPassNumber(99999));
+    }
+
 
     @Test
     void testIndividualPassTypeInList(){

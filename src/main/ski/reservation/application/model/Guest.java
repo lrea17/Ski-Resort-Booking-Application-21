@@ -22,7 +22,7 @@ public class Guest {
         this.id = randomIdGenerator();
         this.name = guestName;
         this.age = guestAge;
-        this.setPassType();
+        this.passType = setPassType();
     }
 
     // getters
@@ -39,7 +39,7 @@ public class Guest {
     }
 
     public String getPassType() {
-        return passType;
+        return setPassType();
     }
 
     public Pass getCurrentPass() {
@@ -68,7 +68,7 @@ public class Guest {
 
     // MODIFIES: this passType
     // EFFECTS: sets the passType that guest requires depending on guest age
-    public void setPassType() {
+    public String setPassType() {
         String assignedPassType = null;
         if (age >= 0 && age <= 5) {
             assignedPassType = Pass.child;
@@ -79,7 +79,7 @@ public class Guest {
         } else if (age >= 65) {
             assignedPassType = Pass.senior;
         }
-        passType = assignedPassType;
+        return assignedPassType;
     }
 
     // MODIFIES: this

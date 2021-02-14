@@ -37,16 +37,23 @@ class GuestTest {
     void testSetAge(){
         Guest newGuest = new Guest("Bob", 22);
         newGuest.setAge(4);
+        assertEquals(4, newGuest.getAge());
         newGuest.setPassType();
-        assertEquals("child", newGuest.getPassType());
+        assertEquals("child", newGuest.setPassType());
+        newGuest.setAge(5);
+        assertEquals("child", newGuest.setPassType());
         newGuest.setAge(18);
-        newGuest.setPassType();
+        assertEquals("youth", newGuest.setPassType());
         assertEquals("youth", newGuest.getPassType());
-        newGuest.setAge(22);
-        newGuest.setPassType();
+        newGuest.setAge(19);
+        assertEquals("adult" ,newGuest.setPassType());
+        assertEquals("adult", newGuest.getPassType());
+        newGuest.setAge(64);
+        assertEquals("adult", newGuest.setPassType());
         assertEquals("adult", newGuest.getPassType());
         newGuest.setAge(65);
-        newGuest.setPassType();
+        assertEquals(65, newGuest.getAge());
+        assertEquals("senior", newGuest.setPassType());
         assertEquals("senior", newGuest.getPassType());
     }
 

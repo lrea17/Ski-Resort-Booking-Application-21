@@ -10,7 +10,6 @@ import static ski.reservation.application.model.Accounts.*;
 
 // Ski Reservation application
 public class SkiReservationApp {
-    private Accounts accounts;
     private Scanner input;
 
     //EFFECTS: runs the ski reservation application
@@ -22,7 +21,7 @@ public class SkiReservationApp {
     //EFFECTS: processes user input
     private void runSkiReservationApp() {
         boolean keepGoing = true;
-        String command = null;
+        String command;
 
         init();
 
@@ -55,7 +54,7 @@ public class SkiReservationApp {
     // EFFECTS: initializes accounts (list of guests)
     private void init() {
         input = new Scanner(System.in);
-        accounts = new Accounts();
+        Accounts accounts = new Accounts();
     }
 
     // MODIFIES: this
@@ -97,12 +96,13 @@ public class SkiReservationApp {
         }
     }
 
+    // !(getListOfGuests().contains(guestId))
     // MODIFIES: this
     // EFFECTS: books a reservation for an existing guest
     private void doNewReservationExistingGuest() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null || !(getListOfGuests().contains(guestId))) {
+        if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
         } else {
             lookupGuest(guestId).makeReservation();
@@ -111,12 +111,13 @@ public class SkiReservationApp {
         }
     }
 
+    // || !(getListOfGuests().contains(guestId))
     // MODIFIES: this
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null || !(getListOfGuests().contains(guestId))) {
+        if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
         } else if (lookupGuest(guestId).getListOfExpiredPasses().size() == 0) {
             System.out.println("This guest does not have any previous reservations.");
@@ -129,7 +130,7 @@ public class SkiReservationApp {
     // MODIFIES: this
     // EFFECTS: deletes the account of an existing guests
     private void doDeleteGuestAccount() {
-        String yesNo = null;
+        String yesNo;
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
         if (lookupGuest(guestId) == null) {

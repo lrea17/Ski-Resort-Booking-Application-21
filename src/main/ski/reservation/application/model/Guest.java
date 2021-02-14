@@ -8,16 +8,17 @@ public class Guest {
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
-    private String passType;
+    private String passType;               // type of pass a guest requires
     private Pass currentPass;              // current pass on guest profile
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
 
 
-    //REQUIRES: guestName has a non-zero length and is letters, age is a non-zero length between (0 - infinity)
-    //EFFECTS: name of guest is set to guestName; guest id is a unique random
-    //         positive integer not assigned to any other account; age is set
-    //         to guestAge;
+    // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
+    // EFFECTS: name of guest is set to guestName; guest id is a unique random
+    //          positive integer not assigned to any other account; age is set
+    //          to guestAge; passType is dependent on age of guest; instantiates a new list
+    //          of expired passes to track guest ski history
     public Guest(String guestName, int guestAge) {
         this.id = randomIdGenerator();
         this.name = guestName;
@@ -41,9 +42,26 @@ public class Guest {
 
     public String getPassType() {
         return passType;
-
     }
 
+    public Pass getCurrentPass() {
+        return currentPass;
+    }
+
+    public ArrayList<Pass> getListOfExpiredPasses() {
+        return listOfExpiredPasses;
+    }
+
+    public static ArrayList<Integer> getListOfGuestIds() {
+        return listOfGuestIds;
+    }
+
+    public void setCurrentPass(Pass p) {
+        currentPass = p;
+    }
+
+    // MODIFIES: this passType
+    // EFFECTS: sets the passType that guest requires depending on guest age
     public void setPassType() {
         String assignedPassType = null;
         String child = "child";
@@ -62,27 +80,13 @@ public class Guest {
         passType = assignedPassType;
     }
 
-    public Pass getCurrentPass() {
-        return currentPass;
-    }
-
+    // MODIFIES: this
+    // EFFECTS: creates a new pass that is assigned to this guest
     public void newCurrentPass() {
         currentPass = new Pass(this.getAge());
     }
 
-    public void setCurrentPass(Pass p) {
-        currentPass = p;
-    }
-
-    public ArrayList<Pass> getListOfExpiredPasses() {
-        return listOfExpiredPasses;
-    }
-
-    public static ArrayList<Integer> getListOfGuestIds() {
-        return listOfGuestIds;
-    }
-
-
+    // EFFECTS: creates a random number for the accountId variable
     public int randomIdGenerator() {
         int accountId = randomNumber.nextInt();
         while (listOfGuestIds.contains(accountId) || accountId < 0 || accountId > 99999) {
@@ -92,7 +96,7 @@ public class Guest {
         return accountId;
     }
 
-    //MODIFIES: this & Pass if there is a pass on guest profile
+    //MODIFIES: this
     //EFFECTS: checks if guest has pass and if the currentSkiDay matches the passes dayValid,
     //         if both are true makes reservation, returns "reservation made" sets pass to be
     //         expired & adds pass to expired passes list.  If no pass, returns "no pass", if

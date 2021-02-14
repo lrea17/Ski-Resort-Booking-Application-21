@@ -48,19 +48,13 @@ public class PassTest {
     @Test
     void testSetPassType(){
         Pass a = new Pass(4);
-        Pass b = new Pass(5);
-        Pass c = new Pass(6);
-        Pass d = new Pass(18);
-        Pass e = new Pass(19);
-        Pass f = new Pass(64);
-        Pass g = new Pass(65);
-        assertEquals("child", a.getPassType());
-        assertEquals("child", b.getPassType());
-        assertEquals("youth", c.getPassType());
-        assertEquals("youth", d.getPassType());
-        assertEquals("adult", e.getPassType());
-        assertEquals("adult", f.getPassType());
-        assertEquals("senior", g.getPassType());
+        assertEquals("child", a.setPassType(4));
+        assertEquals("child", a.setPassType(5));
+        assertEquals("youth", a.setPassType(6));
+        assertEquals("youth", a.setPassType(18));
+        assertEquals("adult", a.setPassType(19));
+        assertEquals("adult", a.setPassType(64));
+        assertEquals("senior", a.setPassType(65));
     }
 
     @Test

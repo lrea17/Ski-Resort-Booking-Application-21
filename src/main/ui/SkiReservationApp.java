@@ -105,6 +105,8 @@ public class SkiReservationApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: looks up the guest and provides the number of days skied
     private void doDaysSkied() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
@@ -118,7 +120,6 @@ public class SkiReservationApp {
         }
     }
 
-    // !(getListOfGuests().contains(guestId))
     // MODIFIES: this
     // EFFECTS: books a reservation for an existing guest
     private void doNewReservationExistingGuest() {
@@ -134,7 +135,6 @@ public class SkiReservationApp {
         }
     }
 
-    // || !(getListOfGuests().contains(guestId))
     // MODIFIES: this
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {

@@ -26,7 +26,6 @@ public class Accounts {
         listOfGuests.remove(g);
     }
 
-
     // EFFECTS: looks up a guest by their account id number
     public static Guest lookupGuest(int id) {
         int i;
@@ -37,5 +36,4 @@ public class Accounts {
         }
         return null;
     }
-
 }

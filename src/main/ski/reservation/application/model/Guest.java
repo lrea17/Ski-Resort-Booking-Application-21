@@ -13,7 +13,6 @@ public class Guest {
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
 
-
     // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
     // EFFECTS: name of guest is set to guestName; guest id is a unique random
     //          positive integer not assigned to any other account; age is set
@@ -111,7 +110,6 @@ public class Guest {
         currentPass = null;
     }
 
-
     // MODIFIES: this and last pass in list of expired passes
     // EFFECTS: cancels a guests reservation by revalidating and removing the last pass in
     //          the guests list of expired passes, and sets that specific pass to be the
@@ -123,8 +121,6 @@ public class Guest {
         listOfExpiredPasses.remove(p);
         currentPass = p;
     }
-
-
 }
 
 

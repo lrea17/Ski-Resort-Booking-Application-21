@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import static ski.reservation.application.model.Accounts.*;
 
-//TODO build out my UI
 
 // Ski Reservation application
 public class SkiReservationApp {
@@ -20,7 +19,7 @@ public class SkiReservationApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: processes user input and acts on it
+    //EFFECTS: processes user input
     private void runSkiReservationApp() {
         boolean keepGoing = true;
         String command = null;
@@ -52,6 +51,8 @@ public class SkiReservationApp {
         System.out.println("\tq - > quit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes accounts (list of guests)
     private void init() {
         input = new Scanner(System.in);
         accounts = new Accounts();
@@ -71,13 +72,12 @@ public class SkiReservationApp {
         } else {
             System.out.println("Selection not valid...");
         }
-
     }
 
-    // REQUIRES: guestName has a non-zero length and is letters
-    //           and age is a non-zero length between (0 - infinity)
+    // REQUIRES: guestName has a non-zero length and age is a
+    //           non-zero length between 0 - 15
     // MODIFIES: this
-    // EFFECTS: creates a new guests & books a reservation for them
+    // EFFECTS: conducts a creation of a new guests & books them a reservation
     private void doNewGuest() {
         System.out.println("Please enter the guests name:");
         String guestName = input.next();
@@ -97,6 +97,8 @@ public class SkiReservationApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: books a reservation for an existing guest
     private void doNewReservationExistingGuest() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
@@ -107,9 +109,10 @@ public class SkiReservationApp {
             System.out.println("\nA reservation has been made for "
                     + lookupGuest(guestId).getName() + ". They may hit the slopes!");
         }
-
     }
 
+    // MODIFIES: this
+    // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
@@ -123,6 +126,8 @@ public class SkiReservationApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: deletes the account of an existing guests
     private void doDeleteGuestAccount() {
         String yesNo = null;
         System.out.println("Please enter the guests account ID:");
@@ -141,6 +146,4 @@ public class SkiReservationApp {
             }
         }
     }
-
-
 }

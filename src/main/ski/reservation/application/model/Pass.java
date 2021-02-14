@@ -32,7 +32,6 @@ public class Pass {
             assignedPassType = senior;
         }
         this.passType = assignedPassType;
-
     }
 
     // getters
@@ -61,7 +60,6 @@ public class Pass {
     public void revalidatePass() {
         this.expiredPass = false;
     }
-
 
     // MODIFIES: this
     // EFFECTS: creates unique pass number for pass, checks

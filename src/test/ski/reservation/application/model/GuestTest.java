@@ -34,20 +34,30 @@ class GuestTest {
     }
 
     @Test
+    void testSetAge(){
+        Guest newGuest = new Guest("Bob", 22);
+        newGuest.setAge(4);
+        newGuest.setPassType();
+        assertEquals("child", newGuest.getPassType());
+        newGuest.setAge(18);
+        newGuest.setPassType();
+        assertEquals("youth", newGuest.getPassType());
+        newGuest.setAge(22);
+        newGuest.setPassType();
+        assertEquals("adult", newGuest.getPassType());
+        newGuest.setAge(65);
+        newGuest.setPassType();
+        assertEquals("senior", newGuest.getPassType());
+    }
+
+    @Test
     void testDiffPassTypes() {
-        guestTestChildUnderFive.newCurrentPass();
-        assertEquals("child", guestTestChildUnderFive.getCurrentPass().getPassType());
-        guestTestChildFive.newCurrentPass();
+        assertEquals("child", guestTestChildUnderFive.getPassType());
         assertEquals("child", guestTestChildFive.getPassType());
-        guestTestYouth.newCurrentPass();
         assertEquals("youth", guestTestYouth.getPassType());
-        guestTestAlmostAdult.newCurrentPass();
         assertEquals("youth", guestTestAlmostAdult.getPassType());
-        guestTestAdult.newCurrentPass();
         assertEquals("adult", guestTestAdult.getPassType());
-        guestTestAlmostSenior.newCurrentPass();
         assertEquals("adult", guestTestAlmostSenior.getPassType());
-        guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
     }
 

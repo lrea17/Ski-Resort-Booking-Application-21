@@ -46,7 +46,7 @@ public class PassTest {
     }*/
 
     @Test
-    void testPassType(){
+    void testSetPassType(){
         Pass a = new Pass(4);
         Pass b = new Pass(5);
         Pass c = new Pass(6);
@@ -74,6 +74,8 @@ public class PassTest {
         passTest.revalidatePass();
         assertFalse(passTest.isPassExpired());
     }
+
+
 
     @Test
     void testRandomPassNumGenerator(){

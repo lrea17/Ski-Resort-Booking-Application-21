@@ -7,7 +7,7 @@ public class Guest {
     private static final ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
     private final int id;                  // account id
     private final String name;             // guest name
-    private final int age;                 // guest age
+    private int age;                 // guest age
     private String passType;               // type of pass a guest requires
     private Pass currentPass;              // pass available on a guest account to "reserve" a ski day with
     Random randomNumber = new Random();    // randomID generator variable
@@ -60,6 +60,10 @@ public class Guest {
 
     public void setCurrentPass(Pass p) {
         currentPass = p;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     // MODIFIES: this passType

@@ -7,7 +7,7 @@ public class Pass {
     // keeps track of all pass num created
     private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
     private final int passNum;                 // the unique pass number
-    private final String passType;             // type of the pass: child, youth, adult, senior
+    private String passType;             // type of the pass: child, youth, adult, senior
     private boolean expiredPass;               // T if pass expired
     Random randomNumber = new Random();        // random pass number creator
     private String assignedPassType;
@@ -23,16 +23,7 @@ public class Pass {
     public Pass(int age) {
         this.passNum = randomPassNumGenerator();
         expiredPass = false;
-        if (age >= 0 && age <= 5) {
-            assignedPassType = child;
-        } else if (age > 5 && age <= 18) {
-            assignedPassType = youth;
-        } else if (age > 18 && age < 65) {
-            assignedPassType = adult;
-        } else if (age >= 65) {
-            assignedPassType = senior;
-        }
-        this.passType = assignedPassType;
+        this.passType = setPassType(age);
     }
 
     // getters
@@ -54,6 +45,21 @@ public class Pass {
 
     public void setExpiredPass() {
         this.expiredPass = true;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the passType depending on the input age of the pass
+    public String setPassType(int age) {
+        if (age >= 0 && age <= 5) {
+            assignedPassType = child;
+        } else if (age > 5 && age <= 18) {
+            assignedPassType = youth;
+        } else if (age > 18 && age < 65) {
+            assignedPassType = adult;
+        } else if (age >= 65) {
+            assignedPassType = senior;
+        }
+        return assignedPassType;
     }
 
     // MODIFIES: this

@@ -3,8 +3,6 @@ package ski.reservation.application.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
@@ -86,7 +84,6 @@ class GuestTest {
         guestTest.makeReservation();
         guestTest.makeReservation();
         assertEquals(3, guestTest.getListOfExpiredPasses().size());
-
     }
 
     @Test

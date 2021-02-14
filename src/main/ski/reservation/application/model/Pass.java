@@ -10,7 +10,6 @@ public class Pass {
     private String passType;             // type of the pass: child, youth, adult, senior
     private boolean expiredPass;               // T if pass expired
     Random randomNumber = new Random();        // random pass number creator
-    private String assignedPassType;
     public static final String child = "child";
     public static final String youth = "youth";
     public static final String adult = "adult";
@@ -51,6 +50,7 @@ public class Pass {
     // MODIFIES: this
     // EFFECTS: sets the passType depending on the input age of the pass
     public String setPassType(int age) {
+        String assignedPassType;
         if (age >= 0 && age <= 5) {
             assignedPassType = child;
         } else if (age > 5 && age <= 18) {

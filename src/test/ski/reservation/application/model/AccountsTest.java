@@ -50,5 +50,4 @@ public class AccountsTest {
         addGuest(g);
         assertNull(lookupGuest(1234));
     }
-
 }

@@ -44,9 +44,6 @@ public class PassTest {
         assertEquals("adult", guestTestAlmostSenior.getPassType());
         guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
-        //guestTestInvalid.newCurrentPass();
-        //assertEquals("invalid pass type", guestTestInvalid.getPassType());
-
     }
 
     @Test
@@ -102,7 +99,6 @@ public class PassTest {
         assertTrue(passTest.validPassNumber(99999));
     }
 
-
     @Test
     void testIndividualPassTypeInList(){
         guestTestYouth.makeReservation();
@@ -110,6 +106,4 @@ public class PassTest {
         assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(0).getPassType());
         assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(1).getPassType());
     }
-
-
 }

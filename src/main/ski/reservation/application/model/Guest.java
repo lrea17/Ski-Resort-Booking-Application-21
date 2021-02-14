@@ -112,7 +112,6 @@ public class Guest {
         return validAccountId;
     }
 
-
     //MODIFIES: this
     //EFFECTS: checks to see if the guest has a current pass, if not creates a new pass
     //         effectively "booking a reservation", adds that pass to the guests list

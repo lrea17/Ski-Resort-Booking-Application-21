@@ -43,7 +43,24 @@ public class PassTest {
         assertEquals("adult", guestTestAlmostSenior.getPassType());
         guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
+    }
 
+    @Test
+    void testPassType(){
+        Pass a = new Pass(4);
+        Pass b = new Pass(5);
+        Pass c = new Pass(6);
+        Pass d = new Pass(18);
+        Pass e = new Pass(19);
+        Pass f = new Pass(64);
+        Pass g = new Pass(65);
+        assertEquals("child", a.getPassType());
+        assertEquals("child", b.getPassType());
+        assertEquals("youth", c.getPassType());
+        assertEquals("youth", d.getPassType());
+        assertEquals("adult", e.getPassType());
+        assertEquals("adult", f.getPassType());
+        assertEquals("senior", g.getPassType());
     }
 
     @Test
@@ -65,12 +82,11 @@ public class PassTest {
         assertNotEquals(i, j);
         assertTrue(i >= 0);
         assertTrue(j >= 0);
-        assertTrue(i < 99999);
-        assertTrue(j < 99999);
         assertTrue(Pass.getListOfPassNumUsed().contains(passTest.getPassNum()));
         assertTrue(Pass.getListOfPassNumUsed().contains(i));
         assertTrue(Pass.getListOfPassNumUsed().contains(j));
     }
+
 
     @Test
     void testIndividualPassTypeInList(){

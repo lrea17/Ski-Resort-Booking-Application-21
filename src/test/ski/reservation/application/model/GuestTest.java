@@ -96,6 +96,21 @@ class GuestTest {
         assertTrue(Guest.getListOfGuestIds().contains(j));
     }
 
+    @Test
+    void testValidAccountNumberInList(){
+        assertFalse(guestTest.validNumber(guestTest.getID()));
+    }
+
+    @Test
+    void testValidAccountNumberLessThanZero(){
+        assertFalse(guestTest.validNumber(-2));
+    }
+
+    @Test
+    void testValidAccountNumberTooBig(){
+        assertFalse(guestTest.validNumber(100000));
+        assertTrue(guestTest.validNumber(99999));
+    }
 
     @Test
     void makeReservationWithCurrentPass() {

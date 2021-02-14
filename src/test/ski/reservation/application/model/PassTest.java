@@ -69,8 +69,6 @@ public class PassTest {
         assertFalse(passTest.isPassExpired());
     }
 
-
-
     @Test
     void testRandomPassNumGenerator(){
         int i = passTest.randomPassNumGenerator();

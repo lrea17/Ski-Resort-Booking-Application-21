@@ -92,12 +92,26 @@ public class Guest {
     //          listOfGuestIds to ensure no reduplication
     public int randomIdGenerator() {
         int accountId = randomNumber.nextInt();
-        while (listOfGuestIds.contains(accountId) || accountId < 0 || accountId > 99999) {
+        while (!(validNumber(accountId))) {
             accountId = randomNumber.nextInt();
         }
         listOfGuestIds.add(accountId);
         return accountId;
     }
+
+    // EFFECTS: returns true if number is valid, false if otherwise
+    public boolean validNumber(int randomNumber) {
+        boolean validAccountId = true;
+        if (listOfGuestIds.contains(randomNumber)) {
+            validAccountId = false;
+        } else if (randomNumber < 0) {
+            validAccountId = false;
+        } else if (randomNumber > 99999) {
+            validAccountId = false;
+        }
+        return validAccountId;
+    }
+
 
     //MODIFIES: this
     //EFFECTS: checks to see if the guest has a current pass, if not creates a new pass

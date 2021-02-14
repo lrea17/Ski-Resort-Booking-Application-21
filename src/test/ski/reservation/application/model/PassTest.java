@@ -15,6 +15,7 @@ public class PassTest {
     private final Guest guestTestAdult = new Guest("Rupert", 19);
     private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
     private final Guest guestTestSenior = new Guest("Ken", 65);
+    private final Guest guestTestInvalid = new Guest("Invalid", -10);
 
     @BeforeEach
     void setup() {
@@ -27,7 +28,7 @@ public class PassTest {
         assertFalse(passTest.isPassExpired());
     }
 
-   /* @Test
+    @Test
     void testDiffPassTypes() {
         guestTestChildUnderFive.newCurrentPass();
         assertEquals("child", guestTestChildUnderFive.getCurrentPass().getPassType());
@@ -43,7 +44,10 @@ public class PassTest {
         assertEquals("adult", guestTestAlmostSenior.getPassType());
         guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
-    }*/
+        //guestTestInvalid.newCurrentPass();
+        //assertEquals("invalid pass type", guestTestInvalid.getPassType());
+
+    }
 
     @Test
     void testSetPassType(){
@@ -55,6 +59,7 @@ public class PassTest {
         assertEquals("adult", a.setPassType(19));
         assertEquals("adult", a.setPassType(64));
         assertEquals("senior", a.setPassType(65));
+        assertEquals("invalid pass type", a.setPassType(-10));
     }
 
     @Test

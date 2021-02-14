@@ -15,6 +15,7 @@ public class Pass {
     public static final String youth = "youth";
     public static final String adult = "adult";
     public static final String senior = "senior";
+    public static final String invalid = "invalid pass type";
 
     // REQUIRES: age > 0
     // EFFECTS: passNum is an unique random positive integer not assigned
@@ -58,6 +59,8 @@ public class Pass {
             assignedPassType = adult;
         } else if (age >= 65) {
             assignedPassType = senior;
+        } else {
+            assignedPassType = invalid;
         }
         return assignedPassType;
     }

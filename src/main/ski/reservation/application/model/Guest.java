@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Guest {
-    private static ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
-    private int id;                        // account id
-    private String name;                   // guest name
-    private int age;                       // guest age
+    private static final ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
+    private final int id;                  // account id
+    private final String name;             // guest name
+    private final int age;                 // guest age
     private String passType;               // type of pass a guest requires
     private Pass currentPass;              // pass available on a guest account to "reserve" a ski day with
     Random randomNumber = new Random();    // randomID generator variable
-    ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
+    final ArrayList<Pass> listOfExpiredPasses = new ArrayList<>(); // list of passes guest has used
 
     // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
     // EFFECTS: name of guest is set to guestName; guest id is a unique random
@@ -23,7 +23,6 @@ public class Guest {
         this.name = guestName;
         this.age = guestAge;
         this.setPassType();
-        listOfExpiredPasses = new ArrayList<>();
     }
 
     // getters
@@ -63,18 +62,14 @@ public class Guest {
     // EFFECTS: sets the passType that guest requires depending on guest age
     public void setPassType() {
         String assignedPassType = null;
-        String child = "child";
-        String youth = "youth";
-        String adult = "adult";
-        String senior = "senior";
         if (age >= 0 && age <= 5) {
-            assignedPassType = child;
+            assignedPassType = Pass.child;
         } else if (age > 5 && age <= 18) {
-            assignedPassType = youth;
+            assignedPassType = Pass.youth;
         } else if (age > 18 && age < 65) {
-            assignedPassType = adult;
+            assignedPassType = Pass.adult;
         } else if (age >= 65) {
-            assignedPassType = senior;
+            assignedPassType = Pass.senior;
         }
         passType = assignedPassType;
     }
@@ -115,8 +110,7 @@ public class Guest {
     //          the guests list of expired passes, and sets that specific pass to be the
     //          guests current pass
     public void cancelReservation() {
-        Pass p;
-        p = listOfExpiredPasses.get(listOfExpiredPasses.size() - 1);
+        Pass p = listOfExpiredPasses.get(listOfExpiredPasses.size() - 1);
         p.revalidatePass();
         listOfExpiredPasses.remove(p);
         currentPass = p;

@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Pass {
-    private static ArrayList<Integer> listOfPassNumUsed = new ArrayList<>(); // keeps track of all pass num created
-    private int passNum;                 // the unique pass number
-    private String passType;             // type of the pass: child, youth, adult, senior
-    private boolean expiredPass;         // T if pass expired
-    Random randomNumber = new Random();  // random pass number creator
+    // keeps track of all pass num created
+    private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
+    private final int passNum;                 // the unique pass number
+    private final String passType;             // type of the pass: child, youth, adult, senior
+    private boolean expiredPass;               // T if pass expired
+    Random randomNumber = new Random();        // random pass number creator
     private String assignedPassType;
+    public static final String child = "child";
+    public static final String youth = "youth";
+    public static final String adult = "adult";
+    public static final String senior = "senior";
 
     // REQUIRES: age > 0
     // EFFECTS: passNum is an unique random positive integer not assigned
@@ -18,10 +23,6 @@ public class Pass {
     public Pass(int age) {
         this.passNum = randomPassNumGenerator();
         expiredPass = false;
-        String child = "child";
-        String youth = "youth";
-        String adult = "adult";
-        String senior = "senior";
         if (age >= 0 && age <= 5) {
             assignedPassType = child;
         } else if (age > 5 && age <= 18) {

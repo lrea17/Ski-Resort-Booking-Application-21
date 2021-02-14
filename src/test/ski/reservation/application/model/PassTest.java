@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PassTest {
 
     private Pass passTest;
-    private Guest guestTestChildUnderFive = new Guest("Beth", 4);
-    private Guest guestTestChildFive = new Guest("George", 5);
-    private Guest guestTestYouth = new Guest("Anna", 6);
-    private Guest guestTestAlmostAdult = new Guest("Blair", 18);
-    private Guest guestTestAdult = new Guest("Rupert", 19);
-    private Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
-    private Guest guestTestSenior = new Guest("Ken", 65);
+    private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
+    private final Guest guestTestChildFive = new Guest("George", 5);
+    private final Guest guestTestYouth = new Guest("Anna", 6);
+    private final Guest guestTestAlmostAdult = new Guest("Blair", 18);
+    private final Guest guestTestAdult = new Guest("Rupert", 19);
+    private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
+    private final Guest guestTestSenior = new Guest("Ken", 65);
 
     @BeforeEach
     void setup() {
@@ -23,12 +23,10 @@ public class PassTest {
 
     @Test
     void testConstructor() {
-        //assertEquals(1, passTest.getPassNum());
         assertEquals("adult", passTest.getPassType());
         assertFalse(passTest.isPassExpired());
     }
 
-    //double check checkstyle method lengths
     @Test
     void testDiffPassTypes() {
         guestTestChildUnderFive.newCurrentPass();

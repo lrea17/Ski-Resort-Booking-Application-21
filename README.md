@@ -9,19 +9,20 @@ Proposal:
   create a new guest and book a reservation for that same guest by adding a pass to their account. Employees will also
   be able to look up existing guests by their unique account id number to make a reservation for that existing guest.
   Similarly, they will be able to look up a guest by their account id to cancel an existing reservation, which will
-  unexpired their last used pass and make it available for the next time they would like to book. Lastly, the users will
-  be able to look up existing guests by their account id and permanently delete them from the system. All guests created
-  will have a unique account id which is used in multiple instances to make changes to the guest's account. At this
-  point, adding a pass to the guest account under their list of expired passes is “the reservation”. A guest must have a
-  current unexpired pass on their account to make a reservation. If they do not have one, a new one will be created and
-  used to make the reservation. 
-  
+  unexpired their last used pass and make it available for the next time they would like to book. The users will be able
+  to lookup an existing guest and view the number of days skied by viewing the number of expired passes they have.
+  Lastly, the users will be able to look up existing guests by their account id and permanently delete them from the
+  system. All guests created will have a unique account id which is used in multiple instances to make changes to the
+  guest's account. At this point, adding a pass to the guest account under their list of expired passes is “the
+  reservation”. An expired pass is the equivalent to a day skied. A guest must have a current unexpired pass on their
+  account to make a reservation. If they do not have one, a new one will be created and used to make the reservation.
 
-- **Assumptions** 
-  Right now, the application does what I have described above. I am assuming that the
-  employees will always be inputting the correct characters required into the input fields. I recognize in a real-life
-  scenario, this may not be true but for this phase of my project this holds. I would like to make changes in the future
-  to handle problems of human error or other mistyping that could “break” the system.
+
+- **Assumptions**
+  Right now, the application does what I have described above. I am assuming that the employees will always be inputting
+  the correct characters required into the input fields. I recognize in a real-life scenario, this may not be true but
+  for this phase of my project this holds. I would like to make changes in the future to handle problems of human error
+  or other mistyping that could “break” the system.
 
 
 - **Who will use it?**  
@@ -48,14 +49,13 @@ Proposal:
 
 ## User Stories
 
-For phase 1:
+Phase 1:
 
 - As a user, I want to be able to create a new guest and make a reservation for them
 - As a user, I want to be able to see the number of days an existing guest has skied
 - As a user, I want to be able to lookup an existing guest by their account id and add a reservation for a ski day
 - As a user, I want to be able to lookup an existing guest by their account id and cancel a reservation for a ski day
 - As a user, I want to be able to create a new guest and add them to a list of guests
-- As a user, I want all new guests to be added to a list of guests
 - As a user, I want to be able to permanently delete a guest from the list of guests 
 
 

@@ -27,7 +27,7 @@ public class PassTest {
         assertFalse(passTest.isPassExpired());
     }
 
-    @Test
+   /* @Test
     void testDiffPassTypes() {
         guestTestChildUnderFive.newCurrentPass();
         assertEquals("child", guestTestChildUnderFive.getCurrentPass().getPassType());
@@ -43,7 +43,7 @@ public class PassTest {
         assertEquals("adult", guestTestAlmostSenior.getPassType());
         guestTestSenior.newCurrentPass();
         assertEquals("senior", guestTestSenior.getPassType());
-    }
+    }*/
 
     @Test
     void testPassType(){

@@ -3,10 +3,19 @@ package ski.reservation.application.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
     private Guest guestTest;
+    private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
+    private final Guest guestTestChildFive = new Guest("George", 5);
+    private final Guest guestTestYouth = new Guest("Anna", 6);
+    private final Guest guestTestAlmostAdult = new Guest("Blair", 18);
+    private final Guest guestTestAdult = new Guest("Rupert", 19);
+    private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
+    private final Guest guestTestSenior = new Guest("Ken", 65);
 
 
     @BeforeEach
@@ -25,6 +34,24 @@ class GuestTest {
     }
 
     @Test
+    void testDiffPassTypes() {
+        guestTestChildUnderFive.newCurrentPass();
+        assertEquals("child", guestTestChildUnderFive.getCurrentPass().getPassType());
+        guestTestChildFive.newCurrentPass();
+        assertEquals("child", guestTestChildFive.getPassType());
+        guestTestYouth.newCurrentPass();
+        assertEquals("youth", guestTestYouth.getPassType());
+        guestTestAlmostAdult.newCurrentPass();
+        assertEquals("youth", guestTestAlmostAdult.getPassType());
+        guestTestAdult.newCurrentPass();
+        assertEquals("adult", guestTestAdult.getPassType());
+        guestTestAlmostSenior.newCurrentPass();
+        assertEquals("adult", guestTestAlmostSenior.getPassType());
+        guestTestSenior.newCurrentPass();
+        assertEquals("senior", guestTestSenior.getPassType());
+    }
+
+    @Test
     public void testingOrderOfExpiredPass() {
         Pass p1 = new Pass(guestTest.getAge());
         Pass p2 = new Pass(guestTest.getAge());
@@ -36,9 +63,6 @@ class GuestTest {
         assertEquals(3, guestTest.getNumberOfDaysSkied());
     }
 
-    // maybe try to have a test that makes sure these passes were added to the list of expired passes
-    // the exact pass..
-    // this test could be redundant
     @Test
     void testListOfExpiredPasses() {
         guestTest.makeReservation();
@@ -73,14 +97,11 @@ class GuestTest {
         assertTrue(guestTest.listOfExpiredPasses.contains(passTester));
     }
 
-    // this may have issues because of the p variable - trying to use the p
-    // in the guest class of this method
     @Test
     void makeReservationNoCurrentPass() {
         assertNull(guestTest.getCurrentPass());
         guestTest.makeReservation();
         assertEquals(1, guestTest.listOfExpiredPasses.size());
-
     }
 
     @Test

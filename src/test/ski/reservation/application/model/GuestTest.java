@@ -66,7 +66,6 @@ class GuestTest {
     void makeReservationWithCurrentPass() {
         Pass passTester = new Pass(guestTest.getAge());
         guestTest.setCurrentPass(passTester);
-        assertEquals("You already have a reservation.", guestTest.makeReservation());
         assertNull(guestTest.getCurrentPass());
         assertTrue(passTester.isPassExpired());
         assertTrue(guestTest.listOfExpiredPasses.contains(passTester));
@@ -76,7 +75,6 @@ class GuestTest {
     // in the guest class of this method
     @Test
     void makeReservationNoCurrentPass(){
-        assertEquals("Your reservation has been made.", guestTest.makeReservation());
         assertNull(guestTest.getCurrentPass());
         assertEquals(1, guestTest.listOfExpiredPasses.size());
 

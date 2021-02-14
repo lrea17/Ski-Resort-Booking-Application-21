@@ -79,12 +79,8 @@ public class SkiReservationApp {
     // MODIFIES: this
     // EFFECTS: creates a new guests & books a reservation for them
     private void doNewGuest() {
-
         System.out.println("Please enter the guests name:");
         String guestName = input.next();
-        if (!(guestName instanceof String)) {
-            System.out.println("Invalid input!");
-        }
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
         if (guestAge > 0 && guestAge < 150) {
@@ -104,19 +100,20 @@ public class SkiReservationApp {
     private void doNewReservationExistingGuest() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null) {
+        if (lookupGuest(guestId) == null || !(getListOfGuests().contains(guestId))) {
             System.out.println("This guest does not exist in our system...");
         } else {
             lookupGuest(guestId).makeReservation();
+            System.out.println("\nA reservation has been made for "
+                    + lookupGuest(guestId).getName() + ". They may hit the slopes!");
         }
-        System.out.println("\nA reservation has been made for "
-                + lookupGuest(guestId).getName() + ". They may hit the slopes!");
+
     }
 
     private void doCancelReservation() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null) {
+        if (lookupGuest(guestId) == null || !(getListOfGuests().contains(guestId))) {
             System.out.println("This guest does not exist in our system...");
         } else if (lookupGuest(guestId).getListOfExpiredPasses().size() == 0) {
             System.out.println("This guest does not have any previous reservations.");

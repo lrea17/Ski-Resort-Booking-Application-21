@@ -44,7 +44,7 @@ public class Guest {
         } else {
             return "No current pass";
         }
-    } //TODO tweaked not sure if correct
+    }
 
     public Pass getCurrentPass() {
         return currentPass;
@@ -81,20 +81,13 @@ public class Guest {
     //         if both are true makes reservation, returns "reservation made" sets pass to be
     //         expired & adds pass to expired passes list.  If no pass, returns "no pass", if
     //         validDay does not match, returns validDay does not match
-    public String makeReservation() {
-        if (this.currentPass != null) {
-            // this.reservation = true;
-            listOfExpiredPasses.add(currentPass);
-            currentPass.setExpiredPass();
-            currentPass = null;
-            return "You already have a reservation.";
-        } else {
+    public void makeReservation() {
+        if (this.currentPass == null) {
             newCurrentPass();
-            listOfExpiredPasses.add(currentPass);
-            currentPass.setExpiredPass();
-            currentPass = null;
-            return "Your reservation has been made.";
         }
+        listOfExpiredPasses.add(currentPass);
+        currentPass.setExpiredPass();
+        currentPass = null;
     }
 
 

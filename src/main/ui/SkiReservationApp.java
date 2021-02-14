@@ -118,6 +118,8 @@ public class SkiReservationApp {
         int guestId = input.nextInt();
         if (lookupGuest(guestId) == null) {
             System.out.println("This guest does not exist in our system...");
+        } else if (lookupGuest(guestId).getListOfExpiredPasses().size() == 0) {
+            System.out.println("This guest does not have any previous reservations.");
         } else {
             lookupGuest(guestId).cancelReservation();
             System.out.println("Cancellation successful for " + lookupGuest(guestId).getName());

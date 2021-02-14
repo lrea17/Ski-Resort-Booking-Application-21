@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Pass {
-    //private static int nextPassNum = 0;
     private static ArrayList<Integer> listOfPassNumUsed = new ArrayList<>(); // keeps track of all pass num created
     private int passNum;                 // the unique pass number
     private String passType;             // type of the pass: child, youth, adult, senior

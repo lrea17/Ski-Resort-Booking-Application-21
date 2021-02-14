@@ -74,21 +74,31 @@ public class SkiReservationApp {
 
     }
 
+    // REQUIRES: guestName has a non-zero length and is letters
+    //           and age is a non-zero length between (0 - infinity)
     // MODIFIES: this
     // EFFECTS: creates a new guests & books a reservation for them
     private void doNewGuest() {
+
         System.out.println("Please enter the guests name:");
         String guestName = input.next();
+        if (!(guestName instanceof String)) {
+            System.out.println("Invalid input!");
+        }
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
-        Guest newGuest = new Guest(guestName, guestAge);
-        addGuest(newGuest);
-        System.out.println("New account created for: " + guestName);
-        System.out.println("account ID: " + newGuest.getID());
-        System.out.println("age: " + guestAge);
-        System.out.println("pass type: " + newGuest.getPassType());
-        newGuest.makeReservation();
-        System.out.println("\nA reservation has been made for " + guestName + ". They may hit the slopes!");
+        if (guestAge > 0 && guestAge < 150) {
+            Guest newGuest = new Guest(guestName, guestAge);
+            addGuest(newGuest);
+            System.out.println("New account created for: " + guestName);
+            System.out.println("account ID: " + newGuest.getID());
+            System.out.println("age: " + guestAge);
+            System.out.println("pass type: " + newGuest.getPassType());
+            newGuest.makeReservation();
+            System.out.println("\nA reservation has been made for " + guestName + ". They may hit the slopes!");
+        } else {
+            System.out.println("Invalid input!");
+        }
     }
 
     private void doNewReservationExistingGuest() {

@@ -11,12 +11,10 @@ public class Pass {
     Random randomNumber = new Random();  // random pass number creator
     private String assignedPassType;
 
-
-    //EFFECTS: creates a single pass; passNum is a positive
-    //         integer not assigned to any other account;
-    //         passType depends on the age of the person it
-    //         will be assigned to; dayValid needs to be set
-    //         with a string;  expiredPass starts at false
+    // REQUIRES: age > 0
+    // EFFECTS: passNum is an unique random positive integer not assigned
+    //          to any other account; passType depends on age of guest
+    //          assigned to it, expiredPass set to false
     public Pass(int age) {
         this.passNum = randomPassNumGenerator();
         expiredPass = false;
@@ -54,22 +52,20 @@ public class Pass {
         return listOfPassNumUsed;
     }
 
-    //MODIFIES: this
-    //EFFECTS: sets pass to expired
     public void setExpiredPass() {
         this.expiredPass = true;
     }
 
-    //MODIFIES: this
-    //EFFECTS: un-expires pass (in case guest cancels day)
+    // MODIFIES: this
+    // EFFECTS: un-expires pass
     public void revalidatePass() {
         this.expiredPass = false;
     }
 
-    //REQUIRES:
-    //MODIFIES: this
-    //EFFECTS: creates a unique pass number for each pass created, checks listOfPassNumCreated to ensure
-    //         a no number is used twice
+
+    // MODIFIES: this
+    // EFFECTS: creates unique pass number for pass, checks
+    //          listOfPassNumCreated to ensure no reduplication
     public int randomPassNumGenerator() {
         int passId = randomNumber.nextInt();
         while (listOfPassNumUsed.contains(passId) || passId < 0) {

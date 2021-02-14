@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Accounts {
     private static ArrayList<Guest> listOfGuests;
 
-    // EFFECTS: instantiates the master list of guests list for application
+    // EFFECTS: instantiates master list of guests list for ski application
     public Accounts() {
         listOfGuests = new ArrayList<>();
     }

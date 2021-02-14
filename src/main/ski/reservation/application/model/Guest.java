@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Guest {
-    private static ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks id of next guest account created
+    private static ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
     private String passType;               // type of pass a guest requires
-    private Pass currentPass;              // current pass on guest profile
+    private Pass currentPass;              // pass available on a guest account to "reserve" a ski day with
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
 
@@ -86,7 +86,8 @@ public class Guest {
         currentPass = new Pass(this.getAge());
     }
 
-    // EFFECTS: creates a random number for the accountId variable
+    // EFFECTS: creates random number for the accountId variable, checks
+    //          listOfGuestIds to ensure no reduplication
     public int randomIdGenerator() {
         int accountId = randomNumber.nextInt();
         while (listOfGuestIds.contains(accountId) || accountId < 0 || accountId > 99999) {
@@ -97,10 +98,10 @@ public class Guest {
     }
 
     //MODIFIES: this
-    //EFFECTS: checks if guest has pass and if the currentSkiDay matches the passes dayValid,
-    //         if both are true makes reservation, returns "reservation made" sets pass to be
-    //         expired & adds pass to expired passes list.  If no pass, returns "no pass", if
-    //         validDay does not match, returns validDay does not match
+    //EFFECTS: checks to see if the guest has a current pass, if not creates a new pass
+    //         effectively "booking a reservation", adds that pass to the guests list
+    //         of expired passes, and sets that pass to expired and changes current pass
+    //         to null
     public void makeReservation() {
         if (this.currentPass == null) {
             newCurrentPass();
@@ -111,8 +112,10 @@ public class Guest {
     }
 
 
-    //MODIFIES: this
-    //EFFECTS: cancels a guests reservation by setting hasReservation to false
+    // MODIFIES: this and last pass in list of expired passes
+    // EFFECTS: cancels a guests reservation by revalidating and removing the last pass in
+    //          the guests list of expired passes, and sets that specific pass to be the
+    //          guests current pass
     public void cancelReservation() {
         Pass p;
         p = listOfExpiredPasses.get(listOfExpiredPasses.size() - 1);

@@ -1,6 +1,5 @@
 package ui;
 
-import ski.reservation.application.model.Accounts;
 import ski.reservation.application.model.Guest;
 
 import java.util.Scanner;
@@ -42,7 +41,7 @@ public class SkiReservationApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
-        System.out.println("\n Hello! Welcome to Wintery Mountain. Please select from the options below");
+        System.out.println("\n Hello! Welcome to Snowy Mountain. Please select from the options below");
         System.out.println("\tn -> create new guest");
         System.out.println("\tr -> make a new reservation for existing guest");
         System.out.println("\tc -> cancel an existing reservation");
@@ -54,22 +53,27 @@ public class SkiReservationApp {
     // EFFECTS: initializes accounts (list of guests)
     private void init() {
         input = new Scanner(System.in);
-        Accounts accounts = new Accounts();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("n")) {
-            doNewGuest();
-        } else if (command.equals("r")) {
-            doNewReservationExistingGuest();
-        } else if (command.equals("c")) {
-            doCancelReservation();
-        } else if (command.equals("d")) {
-            doDeleteGuestAccount();
-        } else {
-            System.out.println("Selection not valid...");
+        switch (command) {
+            case "n":
+                doNewGuest();
+                break;
+            case "r":
+                doNewReservationExistingGuest();
+                break;
+            case "c":
+                doCancelReservation();
+                break;
+            case "d":
+                doDeleteGuestAccount();
+                break;
+            default:
+                System.out.println("Selection not valid...");
+                break;
         }
     }
 
@@ -102,12 +106,13 @@ public class SkiReservationApp {
     private void doNewReservationExistingGuest() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null) {
+        Guest currentGuest = lookupGuest(guestId);
+        if (currentGuest == null) {
             System.out.println("This guest does not exist in our system...");
         } else {
-            lookupGuest(guestId).makeReservation();
+            currentGuest.makeReservation();
             System.out.println("\nA reservation has been made for "
-                    + lookupGuest(guestId).getName() + ". They may hit the slopes!");
+                    + currentGuest.getName() + ". They may hit the slopes!");
         }
     }
 
@@ -117,13 +122,14 @@ public class SkiReservationApp {
     private void doCancelReservation() {
         System.out.println("Please enter the guests account ID:");
         int guestId = input.nextInt();
-        if (lookupGuest(guestId) == null) {
+        Guest currentGuest = lookupGuest(guestId);
+        if (currentGuest == null) {
             System.out.println("This guest does not exist in our system...");
-        } else if (lookupGuest(guestId).getListOfExpiredPasses().size() == 0) {
+        } else if (currentGuest.getListOfExpiredPasses().size() == 0) {
             System.out.println("This guest does not have any previous reservations.");
         } else {
-            lookupGuest(guestId).cancelReservation();
-            System.out.println("Cancellation successful for " + lookupGuest(guestId).getName());
+            currentGuest.cancelReservation();
+            System.out.println("Cancellation successful for " + currentGuest.getName());
         }
     }
 

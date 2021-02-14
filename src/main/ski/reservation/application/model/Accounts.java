@@ -3,11 +3,10 @@ package ski.reservation.application.model;
 import java.util.ArrayList;
 
 public class Accounts {
-    private static ArrayList<Guest> listOfGuests;
+    private static final ArrayList<Guest> listOfGuests = new ArrayList<>();
 
     // EFFECTS: instantiates master list of guests list for ski application
-    public Accounts() {
-        listOfGuests = new ArrayList<>();
+    private Accounts() {
     }
 
     public static ArrayList<Guest> getListOfGuests() {

@@ -54,6 +54,10 @@ public class Guest {
         return listOfGuestIds;
     }
 
+    public int getNumberOfDaysSkied() {
+        return listOfExpiredPasses.size();
+    }
+
     public void setCurrentPass(Pass p) {
         currentPass = p;
     }

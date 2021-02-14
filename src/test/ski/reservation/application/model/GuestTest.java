@@ -21,6 +21,7 @@ class GuestTest {
         assertEquals(28, guestTest.getAge());
         assertEquals("adult", guestTest.getPassType());
         assertNull(guestTest.getCurrentPass());
+        assertEquals(0, guestTest.getNumberOfDaysSkied());
     }
 
     @Test
@@ -32,6 +33,7 @@ class GuestTest {
         guestTest.listOfExpiredPasses.add(p2);
         guestTest.listOfExpiredPasses.add(p3);
         assertEquals(p3, guestTest.listOfExpiredPasses.get(guestTest.listOfExpiredPasses.size() - 1));
+        assertEquals(3, guestTest.getNumberOfDaysSkied());
     }
 
     // maybe try to have a test that makes sure these passes were added to the list of expired passes

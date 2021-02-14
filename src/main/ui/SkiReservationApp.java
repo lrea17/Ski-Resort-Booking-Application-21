@@ -43,6 +43,7 @@ public class SkiReservationApp {
     private void displayMenu() {
         System.out.println("\n Hello! Welcome to Snowy Mountain. Please select from the options below");
         System.out.println("\tn -> create new guest");
+        System.out.println("\ts -> lookup days skied for existing guest");
         System.out.println("\tr -> make a new reservation for existing guest");
         System.out.println("\tc -> cancel an existing reservation");
         System.out.println("\td -> delete a guest account");
@@ -62,6 +63,9 @@ public class SkiReservationApp {
             case "n":
                 doNewGuest();
                 break;
+            case "s":
+                doDaysSkied();
+                break;
             case "r":
                 doNewReservationExistingGuest();
                 break;
@@ -76,6 +80,7 @@ public class SkiReservationApp {
                 break;
         }
     }
+
 
     // REQUIRES: guestName has a non-zero length and age is a
     //           non-zero length between 0 - 15
@@ -97,6 +102,19 @@ public class SkiReservationApp {
             System.out.println("\nA reservation has been made for " + guestName + ". They may hit the slopes!");
         } else {
             System.out.println("Invalid input!");
+        }
+    }
+
+    private void doDaysSkied() {
+        System.out.println("Please enter the guests account ID:");
+        int guestId = input.nextInt();
+        Guest currentGuest = lookupGuest(guestId);
+        if (currentGuest == null) {
+            System.out.println("This guest does not exist in our system...");
+        } else {
+            currentGuest.getNumberOfDaysSkied();
+            System.out.println(currentGuest.getName() + " has skied: " + currentGuest.getNumberOfDaysSkied()
+                    + " day(s) this season.");
         }
     }
 

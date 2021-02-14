@@ -75,5 +75,13 @@ public class PassTest {
         assertTrue(Pass.getListOfPassNumUsed().contains(j));
     }
 
+    @Test
+    void testIndividualPassTypeInList(){
+        guestTestYouth.makeReservation();
+        guestTestYouth.makeReservation();
+        assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(0).getPassType());
+        assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(1).getPassType());
+    }
+
 
 }

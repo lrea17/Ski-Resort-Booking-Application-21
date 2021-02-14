@@ -19,12 +19,12 @@ class GuestTest {
     void testConstructor() {
         assertEquals("Lindsay", guestTest.getName());
         assertEquals(28, guestTest.getAge());
-        assertEquals("No current pass", guestTest.getPassType());  // may need to tweak this one
+        assertEquals("adult", guestTest.getPassType());
         assertNull(guestTest.getCurrentPass());
     }
 
     @Test
-    public void testingOrderOfExpiredPass(){
+    public void testingOrderOfExpiredPass() {
         Pass p1 = new Pass(guestTest.getAge());
         Pass p2 = new Pass(guestTest.getAge());
         Pass p3 = new Pass(guestTest.getAge());
@@ -38,17 +38,16 @@ class GuestTest {
     // the exact pass..
     // this test could be redundant
     @Test
-    void testListOfExpiredPasses(){
+    void testListOfExpiredPasses() {
         guestTest.makeReservation();
         guestTest.makeReservation();
         guestTest.makeReservation();
         assertEquals(3, guestTest.getListOfExpiredPasses().size());
-        //assertTrue(guestTest.listOfExpiredPasses.contains(pass));
 
     }
 
     @Test
-    void testRandomIdGenerator(){
+    void testRandomIdGenerator() {
         int i = guestTest.randomIdGenerator();
         int j = guestTest.randomIdGenerator();
         assertNotEquals(i, j);
@@ -66,6 +65,7 @@ class GuestTest {
     void makeReservationWithCurrentPass() {
         Pass passTester = new Pass(guestTest.getAge());
         guestTest.setCurrentPass(passTester);
+        guestTest.makeReservation();
         assertNull(guestTest.getCurrentPass());
         assertTrue(passTester.isPassExpired());
         assertTrue(guestTest.listOfExpiredPasses.contains(passTester));
@@ -74,14 +74,15 @@ class GuestTest {
     // this may have issues because of the p variable - trying to use the p
     // in the guest class of this method
     @Test
-    void makeReservationNoCurrentPass(){
+    void makeReservationNoCurrentPass() {
         assertNull(guestTest.getCurrentPass());
+        guestTest.makeReservation();
         assertEquals(1, guestTest.listOfExpiredPasses.size());
 
     }
 
     @Test
-    void testCancelReservation(){
+    void testCancelReservation() {
         Pass passTester2 = new Pass(guestTest.getAge());
         guestTest.setCurrentPass(passTester2);
         assertEquals(passTester2, guestTest.getCurrentPass());
@@ -93,6 +94,6 @@ class GuestTest {
         assertFalse(guestTest.listOfExpiredPasses.contains(passTester2));
     }
 
-    }
+}
 
 

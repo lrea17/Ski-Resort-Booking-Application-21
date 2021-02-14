@@ -8,10 +8,10 @@ public class Guest {
     private int id;                        // account id
     private String name;                   // guest name
     private int age;                       // guest age
+    private String passType;
     private Pass currentPass;              // current pass on guest profile
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses;   // list of passes guest has used
-
 
 
     //REQUIRES: guestName has a non-zero length and is letters, age is a non-zero length between (0 - infinity)
@@ -22,6 +22,7 @@ public class Guest {
         this.id = randomIdGenerator();
         this.name = guestName;
         this.age = guestAge;
+        this.setPassType();
         listOfExpiredPasses = new ArrayList<>();
     }
 
@@ -39,11 +40,26 @@ public class Guest {
     }
 
     public String getPassType() {
-        if (this.getCurrentPass() != null) {
-            return currentPass.getPassType();
-        } else {
-            return "No current pass";
+        return passType;
+
+    }
+
+    public void setPassType() {
+        String assignedPassType = null;
+        String child = "child";
+        String youth = "youth";
+        String adult = "adult";
+        String senior = "senior";
+        if (age >= 0 && age <= 5) {
+            assignedPassType = child;
+        } else if (age > 5 && age <= 18) {
+            assignedPassType = youth;
+        } else if (age > 18 && age < 65) {
+            assignedPassType = adult;
+        } else if (age >= 65) {
+            assignedPassType = senior;
         }
+        passType = assignedPassType;
     }
 
     public Pass getCurrentPass() {

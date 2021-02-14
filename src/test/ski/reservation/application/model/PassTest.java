@@ -46,9 +46,6 @@ public class PassTest {
 
     }
 
-    //TODO need to test the setters/getters in Pass
-    // get pass num, get pass type already tested
-
     @Test
     void testSetExpiredPass(){
         passTest.setExpiredPass();
@@ -68,6 +65,8 @@ public class PassTest {
         assertNotEquals(i, j);
         assertTrue(i >= 0);
         assertTrue(j >= 0);
+        assertTrue(i < 99999);
+        assertTrue(j < 99999);
         assertTrue(Pass.getListOfPassNumUsed().contains(passTest.getPassNum()));
         assertTrue(Pass.getListOfPassNumUsed().contains(i));
         assertTrue(Pass.getListOfPassNumUsed().contains(j));

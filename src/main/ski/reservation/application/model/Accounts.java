@@ -9,6 +9,7 @@ public class Accounts {
     private Accounts() {
     }
 
+    // getter
     public static ArrayList<Guest> getListOfGuests() {
         return listOfGuests;
     }

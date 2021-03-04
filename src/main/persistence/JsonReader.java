@@ -28,10 +28,10 @@ public class JsonReader {
 
     // EFFECTS: reads Guest from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public System read() throws IOException {
+    public Guest read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseSystem(jsonObject);
+        return parseGuest(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -46,7 +46,7 @@ public class JsonReader {
     }
 
     // EFFECTS: parses Guest from JSON object and returns it
-    private Guest parseWorkRoom(JSONObject jsonObject) {
+    private Guest parseGuest(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int age = jsonObject.getInt("1"); // not sure if this is right but added
         Guest guest = new Guest(name,age);
@@ -67,10 +67,11 @@ public class JsonReader {
     // MODIFIES: guest
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addThingy(Guest guest, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
+        //String name = jsonObject.getString("name");
         int age = jsonObject.getInt("1"); // not sure if this is right but added
-        Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
+        //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
         Pass pass = new Pass(age);
-        guest.addThingy(pass);
-    }
+        guest.setCurrentPass(pass);   // this sets current pass to P
+        guest.makeReservation();      // this makes the reservation aka adds the current pass (if there is one
+    }                                 // to the list of expired passes
 }

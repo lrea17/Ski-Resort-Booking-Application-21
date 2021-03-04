@@ -1,9 +1,12 @@
 package ski.reservation.application.model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Pass {
+public class Pass implements Writable {
     // keeps track of all pass num created
     private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
     private final int passNum;                 // the unique pass number
@@ -94,5 +97,14 @@ public class Pass {
             validAccountId = false;
         }
         return validAccountId;
+    }
+
+    //TODO could add more details of the pass like json.put("pass type", passType); but get it working first
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", passNum);
+        json.put("pass type", passType);
+        return json;
     }
 }

@@ -1,5 +1,7 @@
 package ui;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ski.reservation.application.model.Guest;
 
 import java.util.Scanner;
@@ -9,10 +11,18 @@ import static ski.reservation.application.model.Accounts.*;
 
 // Ski Reservation application
 public class SkiReservationApp {
+    private static final String JSON_STORE = "./data/guest.json";
     private Scanner input;
+    private Guest guest;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() {
+        input = new Scanner(System.in);
+        guest = new Guest("Alex's workroom");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runSkiReservationApp();
     }
 

@@ -1,9 +1,14 @@
 package ski.reservation.application.model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Guest {
+//TODO could look at tweaking list to look similar to json
+public class Guest implements Writable {
     private static final ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
     private final int id;                  // account id
     private final String name;             // guest name
@@ -49,6 +54,13 @@ public class Guest {
     public ArrayList<Pass> getListOfExpiredPasses() {
         return listOfExpiredPasses;
     }
+
+    /** could do it like this... not sure if this is what it wants/needs though, this is the same as workroom*/
+    /*
+        public ArrayList<Pass> getListOfExpiredPasses() {
+        return (ArrayList<Pass>) Collections.unmodifiableList(listOfExpiredPasses);
+    }
+    * */
 
     public static ArrayList<Integer> getListOfGuestIds() {
         return listOfGuestIds;
@@ -135,6 +147,23 @@ public class Guest {
         p.revalidatePass();
         listOfExpiredPasses.remove(p);
         currentPass = p;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("passes", passesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray passesToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Pass p : listOfExpiredPasses) {
+            jsonArray.put(p.toJson());
+        }
+        return jsonArray;
     }
 }
 

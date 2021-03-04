@@ -1,12 +1,18 @@
 package ski.reservation.application.model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class Accounts {
-    private static final ArrayList<Guest> listOfGuests = new ArrayList<>();
+public class Accounts implements Writable {
+    private String name;
+    private static ArrayList<Guest> listOfGuests = new ArrayList<>();
 
-    // EFFECTS: instantiates master list of guests list for ski application
-    private Accounts() {
+    // EFFECTS: creates a list of guests list for ski application
+    private Accounts(String name) {
+        this.name = name;
     }
 
     // getter
@@ -35,5 +41,22 @@ public class Accounts {
             }
         }
         return null;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("thingies", thingiesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray thingiesToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Guest g : listOfGuests) {
+            jsonArray.put(g.toJson());
+        }
+        return jsonArray;
     }
 }

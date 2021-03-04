@@ -20,7 +20,7 @@ public class SkiReservationApp {
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() {
         input = new Scanner(System.in);
-        guest = new Guest("Alex's workroom");
+        guest = new Guest("Lindsay", 28);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runSkiReservationApp();

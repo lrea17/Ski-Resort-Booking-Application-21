@@ -29,6 +29,7 @@ public class JsonWriter {
         writer = new PrintWriter(new File(destination));
     }
 
+    // takes accounts  ->
     // MODIFIES: this
     // EFFECTS: writes JSON representation of system to file
     public void write(Guest g) {

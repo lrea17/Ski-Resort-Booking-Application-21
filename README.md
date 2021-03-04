@@ -55,11 +55,12 @@ Phase 1:
 - As a user, I want to be able to see the number of days an existing guest has skied
 - As a user, I want to be able to lookup an existing guest by their account id and add a reservation for a ski day
 - As a user, I want to be able to lookup an existing guest by their account id and cancel a reservation for a ski day
-- As a user, I want to be able to create a new guest and add them to a list of guests
-- As a user, I want to be able to permanently delete a guest from the list of guests 
+- As a user, I want to be able to permanently delete a guest from the list of guests
 
-
-
+Phase 2: 
+- As a user, when I start the application, I want to be given the option to load my most recent changes from file.
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my changes to 
+  file and have the option to do so or not.
 
 
 

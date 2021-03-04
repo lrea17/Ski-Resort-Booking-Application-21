@@ -2,6 +2,9 @@ package persistence;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import ski.reservation.application.model.Accounts;
+import ski.reservation.application.model.Guest;
+import ski.reservation.application.model.Pass;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -9,7 +12,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// Represents a reader that reads workroom from JSON data stored in file
+/**
+ This class has been copied from JSonSerializationDemo
+ Repo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ */
+
+// Represents a reader that reads Guest from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -18,7 +26,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads Guest from file and returns it;
     // throws IOException if an error occurs reading data from file
     public System read() throws IOException {
         String jsonData = readFile(source);
@@ -30,37 +38,39 @@ public class JsonReader {
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
-        try (Stream<String> stream = Files.lines( Paths.get(source), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
 
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
-    private WorkRoom parseWorkRoom(JSONObject jsonObject) {
+    // EFFECTS: parses Guest from JSON object and returns it
+    private Guest parseWorkRoom(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        WorkRoom wr = new WorkRoom(name);
-        addThingies(wr, jsonObject);
-        return wr;
+        int age = jsonObject.getInt("1"); // not sure if this is right but added
+        Guest guest = new Guest(name,age);
+        addThingies(guest, jsonObject);
+        return guest;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
-    private void addThingies(WorkRoom wr, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("thingies");
+    // MODIFIES: guest
+    // EFFECTS: parses Passes from JSON object and adds them to Guest
+    private void addThingies(Guest guest, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("Passes");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addThingy(wr, nextThingy);
+            JSONObject nextPass = (JSONObject) json;
+            addThingy(guest, nextPass); // should this be next pass or next action?
         }
     }
 
-    // MODIFIES: wr
+    // MODIFIES: guest
     // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addThingy(WorkRoom wr, JSONObject jsonObject) {
+    private void addThingy(Guest guest, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        Category category = Category.valueOf(jsonObject.getString("category"));
-        Thingy thingy = new Thingy(name, category);
-        wr.addThingy(thingy);
+        int age = jsonObject.getInt("1"); // not sure if this is right but added
+        Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
+        Pass pass = new Pass(age);
+        guest.addThingy(pass);
     }
 }

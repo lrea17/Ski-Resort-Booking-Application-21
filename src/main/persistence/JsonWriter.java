@@ -1,6 +1,7 @@
 package persistence;
 
 import org.json.JSONObject;
+import ski.reservation.application.model.Guest;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import java.io.PrintWriter;
  Repo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
  */
 
-// Represents a writer that writes JSON representation of system to file
+// Represents a writer that writes JSON representation of Guests to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -30,8 +31,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of system to file
-    public void write(WorkRoom wr) {
-        JSONObject json = wr.toJson();
+    public void write(Guest g) {
+        JSONObject json = g.toJson();
         saveToFile(json.toString(TAB));
     }
 

@@ -1,7 +1,7 @@
 package persistence;
 
 import org.json.JSONObject;
-import ski.reservation.application.model.Guest;
+import ski.model.Guest;
 
 import java.io.File;
 import java.io.FileNotFoundException;

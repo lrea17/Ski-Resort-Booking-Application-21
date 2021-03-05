@@ -1,4 +1,4 @@
-package ski.reservation.application.model;
+package ski.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

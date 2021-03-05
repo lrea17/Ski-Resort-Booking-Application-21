@@ -1,11 +1,11 @@
-package ski.reservation.application.model;
+package ski.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static ski.reservation.application.model.Accounts.*;
-import static ski.reservation.application.model.Accounts.addGuest;
+import static ski.model.Accounts.*;
+import static ski.model.Accounts.addGuest;
 
 public class AccountsTest {
 

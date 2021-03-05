@@ -1,4 +1,4 @@
-package ski.reservation.application.model;
+package ski.model;
 
 import org.json.JSONObject;
 import persistence.Writable;

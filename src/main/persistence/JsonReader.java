@@ -2,8 +2,8 @@ package persistence;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ski.reservation.application.model.Accounts;
-import ski.reservation.application.model.Guest;
+import ski.model.Accounts;
+import ski.model.Guest;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

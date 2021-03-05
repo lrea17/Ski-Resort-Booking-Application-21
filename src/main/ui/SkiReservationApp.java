@@ -1,29 +1,26 @@
 package ui;
 
-import persistence.JsonReader;
-import persistence.JsonWriter;
-import ski.reservation.application.model.Accounts;
-import ski.reservation.application.model.Guest;
+import ski.model.Guest;
 
 import java.util.Scanner;
 
-import static ski.reservation.application.model.Accounts.*;
+import static ski.model.Accounts.*;
 
 
 // Ski Reservation application
 public class SkiReservationApp {
-    private static final String JSON_STORE = "./data/guest.json";
+    //private static final String JSON_STORE = "./data/guest.json";
     private Scanner input;
-    private Accounts account;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    //private Accounts account;
+    //private JsonWriter jsonWriter;
+    //private JsonReader jsonReader;
 
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() {
-        input = new Scanner(System.in);
-        account = new Accounts("Snowy Mountain");
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        //input = new Scanner(System.in);
+        //account = new Accounts("Snowy Mountain");
+        //jsonWriter = new JsonWriter(JSON_STORE);
+        //jsonReader = new JsonReader(JSON_STORE);
         runSkiReservationApp();
     }
 

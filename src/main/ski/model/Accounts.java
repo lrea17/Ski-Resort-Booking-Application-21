@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Accounts implements Writable {
     private String name;
@@ -16,8 +18,9 @@ public class Accounts implements Writable {
     }
 
     // getter
-    public static ArrayList<Guest> getListOfGuests() {
-        return listOfGuests;
+    public static List<Guest> getListOfGuests() {
+        return
+                Collections.unmodifiableList(listOfGuests);
     }
 
     public String getName() {

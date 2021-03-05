@@ -2,7 +2,6 @@ package persistence;
 
 import org.json.JSONObject;
 import ski.model.Accounts;
-import ski.model.Guest;
 
 import java.io.File;
 import java.io.FileNotFoundException;

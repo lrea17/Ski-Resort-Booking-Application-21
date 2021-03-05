@@ -24,6 +24,10 @@ public class Accounts implements Writable {
         return name;
     }
 
+    public int numGuests() {
+        return listOfGuests.size();
+    }
+
     // MODIFIES: this
     // EFFECTS: adds a guest to the list of guests
     public static void addGuest(Guest g) {

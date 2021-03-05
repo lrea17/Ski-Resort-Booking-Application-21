@@ -1,6 +1,7 @@
 package persistence;
 
 import org.json.JSONObject;
+import ski.model.Accounts;
 import ski.model.Guest;
 
 import java.io.File;
@@ -32,8 +33,8 @@ public class JsonWriter {
     // takes accounts  ->
     // MODIFIES: this
     // EFFECTS: writes JSON representation of system to file
-    public void write(Guest g) {
-        JSONObject json = g.toJson();
+    public void write(Accounts acc) {
+        JSONObject json = acc.toJson();
         saveToFile(json.toString(TAB));
     }
 

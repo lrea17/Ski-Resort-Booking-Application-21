@@ -1,6 +1,5 @@
 package ski.reservation.application.model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 

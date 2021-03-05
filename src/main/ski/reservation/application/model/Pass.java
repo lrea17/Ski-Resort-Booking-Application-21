@@ -6,7 +6,7 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Pass {
+public class Guest {
     // keeps track of all pass num created
     private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
     private final int passNum;                 // the unique pass number

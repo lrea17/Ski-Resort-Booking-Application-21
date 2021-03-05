@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import ski.reservation.application.model.Accounts;
 import ski.reservation.application.model.Guest;
-import ski.reservation.application.model.Pass;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -28,10 +27,10 @@ public class JsonReader {
 
     // EFFECTS: reads Guest from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public Guest read() throws IOException {
+    public Accounts read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseGuest(jsonObject);
+        return parseAccounts(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -46,32 +45,32 @@ public class JsonReader {
     }
 
     // EFFECTS: parses Guest from JSON object and returns it
-    private Guest parseGuest(JSONObject jsonObject) {
+    private Accounts parseAccounts(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        int age = jsonObject.getInt("1"); // not sure if this is right but added
-        Guest guest = new Guest(name,age);
-        addThingies(guest, jsonObject);
-        return guest;
+        Accounts acc = new Accounts(name);
+        addGuests(acc, jsonObject);
+        return acc;
     }
 
-    // MODIFIES: guest
-    // EFFECTS: parses Passes from JSON object and adds them to Guest
-    private void addThingies(Guest guest, JSONObject jsonObject) {
+    // MODIFIES: acc
+    // EFFECTS: parses Passes from JSON object and adds them to Accounts
+    private void addGuests(Accounts acc, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Passes");
         for (Object json : jsonArray) {
-            JSONObject nextPass = (JSONObject) json;
-            addThingy(guest, nextPass); // should this be next pass or next action?
+            JSONObject nextGuest = (JSONObject) json;
+            addGuest(acc, nextGuest);
         }
     }
 
-    // MODIFIES: guest
+    // took out //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
+
+    // MODIFIES: acc
     // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addThingy(Guest guest, JSONObject jsonObject) {
-        //String name = jsonObject.getString("name");
-        int age = jsonObject.getInt("1"); // not sure if this is right but added
-        //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
-        Pass pass = new Pass(age);
-        guest.setCurrentPass(pass);   // this sets current pass to P
-        guest.makeReservation();      // this makes the reservation aka adds the current pass (if there is one
-    }                                 // to the list of expired passes
+    private void addGuest(Accounts acc, JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        int age = jsonObject.getInt("age");  // not sure if this is right to get age
+        Guest g = new Guest(name, age);
+        acc.addGuest(g);
+    }
+
 }

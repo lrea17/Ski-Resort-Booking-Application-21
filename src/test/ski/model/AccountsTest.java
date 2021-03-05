@@ -36,6 +36,21 @@ public class AccountsTest {
     }
 
     @Test
+    public void testNumGuests() {
+        Accounts account1 = new Accounts("Lindsay");
+        Guest a = new Guest("A", 10);
+        Guest b = new Guest("B", 19);
+        Guest c = new Guest("C", 65);
+        assertEquals(0, account1.numGuests());
+        addGuest(a);
+        assertEquals(1, account1.numGuests());
+        addGuest(b);
+        assertEquals(2, account1.numGuests());
+        addGuest(c);
+        assertEquals(3, account1.numGuests());
+    }
+
+    @Test
     public void testMultipleGuestsInListRemove(){
         Guest a = new Guest("Molly", 18);
         Guest b = new Guest("Bob", 4);

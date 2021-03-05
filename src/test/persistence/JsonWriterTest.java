@@ -34,7 +34,7 @@ public class JsonWriterTest {
             JsonReader reader = new JsonReader("./data/testWriterEmptyAccounts.json");
             acc = reader.read();
             assertEquals("Snowy Mountain", acc.getName());
-            assertEquals(0, acc.);
+            assertEquals(0,acc.numGuests());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

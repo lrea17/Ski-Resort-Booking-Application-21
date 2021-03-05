@@ -51,7 +51,7 @@ public class Accounts implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("thingies", thingiesToJson());
+        json.put("guests", thingiesToJson());
         return json;
     }
 

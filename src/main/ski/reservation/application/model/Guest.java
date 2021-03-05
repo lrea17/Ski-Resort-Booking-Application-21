@@ -149,21 +149,14 @@ public class Guest implements Writable {
         currentPass = p;
     }
 
+    //TODO could add the details of the guest here but for now lets just get this working
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("passes", passesToJson());
+        json.put("age", age);
+        json.put("id", id);
         return json;
-    }
-
-    // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray passesToJson() {
-        JSONArray jsonArray = new JSONArray();
-        for (Pass p : listOfExpiredPasses) {
-            jsonArray.put(p.toJson());
-        }
-        return jsonArray;
     }
 }
 

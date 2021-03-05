@@ -11,13 +11,17 @@ public class Accounts implements Writable {
     private static ArrayList<Guest> listOfGuests = new ArrayList<>();
 
     // EFFECTS: creates a list of guests list for ski application
-    private Accounts(String name) {
+    public Accounts(String name) {
         this.name = name;
     }
 
     // getter
     public static ArrayList<Guest> getListOfGuests() {
         return listOfGuests;
+    }
+
+    public String getName() {
+        return name;
     }
 
     // MODIFIES: this

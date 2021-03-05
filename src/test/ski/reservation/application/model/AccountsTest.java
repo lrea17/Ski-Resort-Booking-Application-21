@@ -1,5 +1,6 @@
 package ski.reservation.application.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,11 +9,22 @@ import static ski.reservation.application.model.Accounts.addGuest;
 
 public class AccountsTest {
 
+    @BeforeEach
+    public void setUp(){
+        Accounts accountTest = new Accounts("Lindsay");
+    }
+
     @Test
     public void testAddGuest(){
         Guest g = new Guest("Lindsay", 28);
         addGuest(g);
         assertTrue(getListOfGuests().contains(g));
+    }
+
+    @Test
+    public void testGetName(){
+        Accounts accountTest = new Accounts("Lindsay");
+        assertEquals("Lindsay", accountTest.getName());
     }
 
     @Test

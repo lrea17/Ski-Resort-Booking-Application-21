@@ -1,7 +1,5 @@
 package persistence;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import ski.model.Accounts;
 import ski.model.Guest;
 
@@ -10,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
+import org.json.*;
 
 /**
  This class has been copied from JSonSerializationDemo

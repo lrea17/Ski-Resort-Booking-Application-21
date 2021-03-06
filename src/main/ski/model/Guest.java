@@ -11,7 +11,7 @@ public class Guest implements Writable {
     private static final ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
     private final int id;                  // account id
     private final String name;             // guest name
-    private int age;                 // guest age
+    private int age;                       // guest age
     private String passType;               // type of pass a guest requires
     private Pass currentPass;              // pass available on a guest account to "reserve" a ski day with
     Random randomNumber = new Random();    // randomID generator variable
@@ -156,6 +156,7 @@ public class Guest implements Writable {
         json.put("name", name);
         json.put("age", age);
         json.put("id", id);
+        json.put("passType", passType); // added this in not sure if we want all these fields
         return json;
     }
 }

@@ -6,23 +6,25 @@ import ski.model.Accounts;
 import ski.model.Guest;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
-import static ski.model.Accounts.*;
+import static ski.model.Accounts.lookupGuest;
+import static ski.model.Accounts.removeGuest;
 
 
 // Ski Reservation application
 public class SkiReservationApp {
     private static final String JSON_STORE = "./data/Accounts.json";
     private Scanner input;
-    private Accounts account;
+    private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
     //EFFECTS: runs the ski reservation application
     public SkiReservationApp() throws FileNotFoundException {
         input = new Scanner(System.in);
-        account = new Accounts("Snowy Mountain");
+        accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runSkiReservationApp();
@@ -48,7 +50,7 @@ public class SkiReservationApp {
             }
         }
 
-        System.out.println("Reminder: tell the guest to have a good ski day - Goodbye!");
+        System.out.println("\nReminder: tell the guest to have a good ski day - Goodbye!");
     }
 
     // EFFECTS: displays menu of options to user
@@ -59,6 +61,8 @@ public class SkiReservationApp {
         System.out.println("\tr -> make a new reservation for existing guest");
         System.out.println("\tc -> cancel an existing reservation");
         System.out.println("\td -> delete a guest account");
+        System.out.println("\tf -> save changes to accounts to file");
+        System.out.println("\tl -> load accounts from file");
         System.out.println("\tq - > quit");
     }
 
@@ -88,7 +92,24 @@ public class SkiReservationApp {
                 doDeleteGuestAccount();
                 break;
             default:
+                if (command.equals("l") || command.equals("f")) {
+                    processSaveLoadCommand(command);
+                }
                 System.out.println("Selection not valid...");
+                break;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: processes user command
+    private void processSaveLoadCommand(String command) {
+        switch (command) {
+            case "f":
+                saveChangesToFile();
+                break;
+            default:
+            case "l":
+                loadAccountsFromFile();
                 break;
         }
     }
@@ -105,7 +126,7 @@ public class SkiReservationApp {
         int guestAge = input.nextInt();
         if (guestAge > 0 && guestAge < 150) {
             Guest newGuest = new Guest(guestName, guestAge);
-            addGuest(newGuest);
+            accounts.addGuest(newGuest);  //TODO added accounts to front of this so same as json
             System.out.println("New account created for: " + guestName);
             System.out.println("account ID: " + newGuest.getID());
             System.out.println("age: " + guestAge);
@@ -181,6 +202,32 @@ public class SkiReservationApp {
             } else {
                 System.out.println("Action cancelled, returning to main menu.");
             }
+
+
         }
     }
+
+    // EFFECTS: saves the workroom to file
+    private void saveChangesToFile() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(accounts);
+            jsonWriter.close();
+            System.out.println("Saved " + accounts.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadAccountsFromFile() {
+        try {
+            accounts = jsonReader.read();
+            System.out.println("Loaded " + accounts.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
 }

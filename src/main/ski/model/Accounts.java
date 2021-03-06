@@ -5,14 +5,13 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Accounts implements Writable {
     private String name;
     private static List<Guest> listOfGuests;
 
-    // EFFECTS: creates a list of guests list for ski application
+    // EFFECTS: constructs an account with a name and empty list of guests
     public Accounts(String name) {
         this.name = name;
         listOfGuests = new ArrayList<>();
@@ -29,7 +28,7 @@ public class Accounts implements Writable {
     }
 
     public int numGuests() {
-        return getListOfGuests().size();
+        return listOfGuests.size();
     }
 
     // MODIFIES: this
@@ -60,12 +59,12 @@ public class Accounts implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("listOfGuests", thingiesToJson());
+        json.put("listOfGuests", guestsToJson());
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray thingiesToJson() {
+    // EFFECTS: returns guests in this Account as a JSON array
+    private JSONArray guestsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Guest g : listOfGuests) {
             jsonArray.put(g.toJson());

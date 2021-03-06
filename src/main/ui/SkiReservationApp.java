@@ -78,45 +78,23 @@ public class SkiReservationApp {
         switch (command) {
             case "n":
                 doNewGuest();
-                break;
             case "s":
                 doDaysSkied();
-                break;
             case "r":
                 doNewReservationExistingGuest();
-                break;
             case "c":
                 doCancelReservation();
-                break;
             case "d":
                 doDeleteGuestAccount();
-                break;
             case "l":
                 loadAccountsFromFile();
-                break;
             case "f":
                 saveChangesToFile();
-                break;
             default:
                 System.out.println("Selection not valid...");
                 break;
         }
     }
-
-    // MODIFIES: this
-    // EFFECTS: processes user command
-    private void processSaveLoadCommand(String command) {
-        switch (command) {
-            case "f":
-                saveChangesToFile();
-                break;
-            default:
-            case "l":
-                loadAccountsFromFile();
-                break;
-        }
-    }
-
 
     // REQUIRES: guestName has a non-zero length and age is a
     //           non-zero length between 0 - 15
@@ -205,8 +183,6 @@ public class SkiReservationApp {
             } else {
                 System.out.println("Action cancelled, returning to main menu.");
             }
-
-
         }
     }
 

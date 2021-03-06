@@ -75,24 +75,22 @@ public class SkiReservationApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        switch (command) {
-            case "n":
-                doNewGuest();
-            case "s":
-                doDaysSkied();
-            case "r":
-                doNewReservationExistingGuest();
-            case "c":
-                doCancelReservation();
-            case "d":
-                doDeleteGuestAccount();
-            case "l":
-                loadAccountsFromFile();
-            case "f":
-                saveChangesToFile();
-            default:
-                System.out.println("Selection not valid...");
-                break;
+        if (command.equals("n")) {
+            doNewGuest();
+        } else if (command.equals("s")) {
+            doDaysSkied();
+        } else if (command.equals("r")) {
+            doNewReservationExistingGuest();
+        } else if (command.equals("c")) {
+            doCancelReservation();
+        } else if (command.equals("d")) {
+            doDeleteGuestAccount();
+        } else if (command.equals("l")) {
+            loadAccountsFromFile();
+        } else if (command.equals("f")) {
+            saveChangesToFile();
+        } else {
+            System.out.println("Selection not valid...");
         }
     }
 

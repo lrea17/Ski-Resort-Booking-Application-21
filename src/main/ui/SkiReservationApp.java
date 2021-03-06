@@ -1,7 +1,11 @@
 package ui;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+import ski.model.Accounts;
 import ski.model.Guest;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static ski.model.Accounts.*;
@@ -9,18 +13,18 @@ import static ski.model.Accounts.*;
 
 // Ski Reservation application
 public class SkiReservationApp {
-    //private static final String JSON_STORE = "./data/guest.json";
+    private static final String JSON_STORE = "./data/Accounts.json";
     private Scanner input;
-    //private Accounts account;
-    //private JsonWriter jsonWriter;
-    //private JsonReader jsonReader;
+    private Accounts account;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the ski reservation application
-    public SkiReservationApp() {
-        //input = new Scanner(System.in);
-        //account = new Accounts("Snowy Mountain");
-        //jsonWriter = new JsonWriter(JSON_STORE);
-        //jsonReader = new JsonReader(JSON_STORE);
+    public SkiReservationApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        account = new Accounts("Snowy Mountain");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runSkiReservationApp();
     }
 

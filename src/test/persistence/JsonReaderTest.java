@@ -40,7 +40,7 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralAccounts.json");
         try {
             Accounts acc = reader.read();
-            assertEquals("My work room", acc.getName());
+            assertEquals("Snowy Mountain", acc.getName());
             List<Guest> listOfGuests = acc.getListOfGuests();
             assertEquals(2, listOfGuests.size());
             checkGuest("A", 28, listOfGuests.get(0));

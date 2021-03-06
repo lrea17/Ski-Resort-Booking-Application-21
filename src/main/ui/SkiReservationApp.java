@@ -9,8 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static ski.model.Accounts.lookupGuest;
-import static ski.model.Accounts.removeGuest;
+import static ski.model.Accounts.*;
 
 
 // Ski Reservation application
@@ -176,7 +175,8 @@ public class SkiReservationApp {
             System.out.println("These changes are permanent and cannot be undone");
             yesNo = input.next();
             if (yesNo.equals("y")) {
-                removeGuest(lookupGuest(guestId));
+                accounts.removeGuest(lookupGuest(guestId)); //TODO added this in
+                loadAccountsFromFile(); // not sure if this is right either
                 System.out.println("\nThe account requested has been deleted permanently");
             } else {
                 System.out.println("Action cancelled, returning to main menu.");

@@ -3,7 +3,6 @@ package persistence;
 import org.junit.jupiter.api.Test;
 import ski.model.Accounts;
 import ski.model.Guest;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;

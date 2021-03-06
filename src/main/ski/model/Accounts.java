@@ -10,17 +10,17 @@ import java.util.List;
 
 public class Accounts implements Writable {
     private String name;
-    private static ArrayList<Guest> listOfGuests = new ArrayList<>();
+    private List<Guest> listOfGuests;
 
     // EFFECTS: creates a list of guests list for ski application
     public Accounts(String name) {
         this.name = name;
+        listOfGuests = new ArrayList<>();
     }
 
     // getter
-    public static List<Guest> getListOfGuests() {
-        return
-                Collections.unmodifiableList(listOfGuests);
+    public List<Guest> getListOfGuests() {
+        return listOfGuests;
     }
 
     public String getName() {
@@ -28,7 +28,7 @@ public class Accounts implements Writable {
     }
 
     public int numGuests() {
-        return listOfGuests.size();
+        return getListOfGuests().size();
     }
 
     // MODIFIES: this
@@ -54,11 +54,12 @@ public class Accounts implements Writable {
         return null;
     }
 
+    //EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("guests", thingiesToJson());
+        json.put("listOfGuests", thingiesToJson());
         return json;
     }
 

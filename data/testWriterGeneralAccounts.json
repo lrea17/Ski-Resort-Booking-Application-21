@@ -1,0 +1,15 @@
+{
+    "listOfGuests": [
+        {
+            "name": "A",
+            "id": 98437,
+            "age": 28
+        },
+        {
+            "name": "B",
+            "id": 42865,
+            "age": 65
+        }
+    ],
+    "name": "Snowy Mountain"
+}

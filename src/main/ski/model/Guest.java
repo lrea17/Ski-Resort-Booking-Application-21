@@ -149,6 +149,7 @@ public class Guest implements Writable {
     }
 
     //TODO could add the details of the guest here but for now lets just get this working
+    //EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -53,9 +53,9 @@ public class JsonReader {
     }
 
     // MODIFIES: acc
-    // EFFECTS: parses Passes from JSON object and adds them to Accounts
+    // EFFECTS: parses Guests from JSON object and adds them to Accounts
     private void addGuests(Accounts acc, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("Passes");
+        JSONArray jsonArray = jsonObject.getJSONArray("listOfGuests");
         for (Object json : jsonArray) {
             JSONObject nextGuest = (JSONObject) json;
             addGuest(acc, nextGuest);
@@ -65,7 +65,7 @@ public class JsonReader {
     // took out //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
 
     // MODIFIES: acc
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // EFFECTS: parses guest from JSON object and adds it to Accounts
     private void addGuest(Accounts acc, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int age = jsonObject.getInt("age");  // not sure if this is right to get age

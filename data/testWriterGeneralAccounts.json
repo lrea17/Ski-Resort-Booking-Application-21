@@ -1,13 +1,15 @@
 {
     "listOfGuests": [
         {
+            "passType": "adult",
             "name": "A",
-            "id": 62811,
+            "id": 45451,
             "age": 28
         },
         {
+            "passType": "senior",
             "name": "B",
-            "id": 6954,
+            "id": 42510,
             "age": 65
         }
     ],

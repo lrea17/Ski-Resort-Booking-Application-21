@@ -1,0 +1,29 @@
+{
+    "listOfGuests": [
+        {
+            "passType": "adult",
+            "name": "lindsay",
+            "id": 54514,
+            "age": 28
+        },
+        {
+            "passType": "adult",
+            "name": "lindsay",
+            "id": 8547,
+            "age": 28
+        },
+        {
+            "passType": "senior",
+            "name": "ken",
+            "id": 60135,
+            "age": 66
+        },
+        {
+            "passType": "senior",
+            "name": "bob",
+            "id": 72314,
+            "age": 83
+        }
+    ],
+    "name": "Snowy Mountain"
+}

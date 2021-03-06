@@ -15,7 +15,7 @@ import static ski.model.Accounts.removeGuest;
 
 // Ski Reservation application
 public class SkiReservationApp {
-    private static final String JSON_STORE = "./data/Accounts.json";
+    private static final String JSON_STORE = "./data/accounts.json";
     private Scanner input;
     private Accounts accounts;
     private JsonWriter jsonWriter;
@@ -91,10 +91,13 @@ public class SkiReservationApp {
             case "d":
                 doDeleteGuestAccount();
                 break;
+            case "l":
+                loadAccountsFromFile();
+                break;
+            case "f":
+                saveChangesToFile();
+                break;
             default:
-                if (command.equals("l") || command.equals("f")) {
-                    processSaveLoadCommand(command);
-                }
                 System.out.println("Selection not valid...");
                 break;
         }

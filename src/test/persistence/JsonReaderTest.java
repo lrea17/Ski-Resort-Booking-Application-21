@@ -31,12 +31,14 @@ public class JsonReaderTest extends JsonTest {
             assertEquals("Snowy Mountain", acc.getName());
             assertEquals(0, acc.numGuests());
         } catch (IOException e) {
+            System.out.println(e);
             fail("Couldn't read from file");
         }
     }
 
     @Test
     void testReaderGeneralAccounts() {
+
         JsonReader reader = new JsonReader("./data/testReaderGeneralAccounts.json");
         try {
             Accounts acc = reader.read();
@@ -46,6 +48,7 @@ public class JsonReaderTest extends JsonTest {
             checkGuest("A", 28, listOfGuests.get(0));
             checkGuest("B", 65, listOfGuests.get(1));
         } catch (IOException e) {
+            System.out.println(e);
             fail("Couldn't read from file");
         }
     }

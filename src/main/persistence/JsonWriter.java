@@ -31,7 +31,7 @@ public class JsonWriter {
 
     // takes accounts  ->
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of system to file
+    // EFFECTS: writes JSON representation of accounts to file
     public void write(Accounts acc) {
         JSONObject json = acc.toJson();
         saveToFile(json.toString(TAB));

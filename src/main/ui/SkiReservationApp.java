@@ -9,8 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static ski.model.Accounts.lookupGuest;
-import static ski.model.Accounts.removeGuest;
+import static ski.model.Accounts.*;
 
 
 // Ski Reservation application
@@ -33,6 +32,12 @@ public class SkiReservationApp {
     //MODIFIES: this
     //EFFECTS: processes user input
     private void runSkiReservationApp() {
+        loadAccountsFromFile();
+        for (int i = 0; i < getListOfGuests().size(); i++) {
+            System.out.println(" Name: " + getListOfGuests().get(i).getName() + " ID: "
+                    + getListOfGuests().get(i).getAccountID() + " Age : " + getListOfGuests().get(i).getAge() + " PassType: " + getListOfGuests().get(i).getPassType());
+
+        }
         boolean keepGoing = true;
         String command;
 
@@ -92,6 +97,7 @@ public class SkiReservationApp {
         } else {
             System.out.println("Selection not valid...");
         }
+
     }
 
     // REQUIRES: guestName has a non-zero length and age is a
@@ -107,10 +113,11 @@ public class SkiReservationApp {
             Guest newGuest = new Guest(guestName, guestAge);
             accounts.addGuest(newGuest);  //TODO added accounts to front of this so same as json
             System.out.println("New account created for: " + guestName);
-            System.out.println("account ID: " + newGuest.getID());
+            System.out.println("account ID: " + newGuest.getAccountID());
             System.out.println("age: " + guestAge);
             System.out.println("pass type: " + newGuest.getPassType());
             newGuest.makeReservation();
+
             System.out.println("\nA reservation has been made for " + guestName + ". They may hit the slopes!");
         } else {
             System.out.println("Invalid input!");
@@ -176,7 +183,8 @@ public class SkiReservationApp {
             System.out.println("These changes are permanent and cannot be undone");
             yesNo = input.next();
             if (yesNo.equals("y")) {
-                removeGuest(lookupGuest(guestId));
+                accounts.removeGuest(lookupGuest(guestId));
+                loadAccountsFromFile();
                 System.out.println("\nThe account requested has been deleted permanently");
             } else {
                 System.out.println("Action cancelled, returning to main menu.");
@@ -202,6 +210,7 @@ public class SkiReservationApp {
         try {
             accounts = jsonReader.read();
             System.out.println("Loaded " + accounts.getName() + " from " + JSON_STORE);
+
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

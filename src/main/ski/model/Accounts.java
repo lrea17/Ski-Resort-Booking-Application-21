@@ -47,7 +47,7 @@ public class Accounts implements Writable {
     public static Guest lookupGuest(int id) {
         int i;
         for (i = 0; i < listOfGuests.size(); i++) {
-            if (id == listOfGuests.get(i).getID()) {
+            if (id == listOfGuests.get(i).getAccountID()) {
                 return listOfGuests.get(i);
             }
         }

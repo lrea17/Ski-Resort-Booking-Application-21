@@ -95,14 +95,14 @@ class GuestTest {
         assertTrue(j >= 0);
         assertTrue(i < 99999);
         assertTrue(j < 99999);
-        assertTrue(Guest.getListOfGuestIds().contains(guestTest.getID()));
+        assertTrue(Guest.getListOfGuestIds().contains(guestTest.getAccountID()));
         assertTrue(Guest.getListOfGuestIds().contains(i));
         assertTrue(Guest.getListOfGuestIds().contains(j));
     }
 
     @Test
     void testValidAccountNumberInList(){
-        assertFalse(guestTest.validNumber(guestTest.getID()));
+        assertFalse(guestTest.validNumber(guestTest.getAccountID()));
     }
 
     @Test

@@ -30,7 +30,7 @@ public class Guest implements Writable {
     }
 
     // getters
-    public int getID() {
+    public int getAccountID() {
         return id;
     }
 

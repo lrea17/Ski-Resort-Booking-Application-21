@@ -25,7 +25,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads Guest from file and returns it;
+    // EFFECTS: reads Accounts from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Accounts read() throws IOException {
         String jsonData = readFile(source);
@@ -44,7 +44,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses Guest from JSON object and returns it
+    // EFFECTS: parses Accounts from JSON object and returns it
     private Accounts parseAccounts(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Accounts acc = new Accounts(name);
@@ -62,6 +62,16 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: acc
+    // EFFECTS: parses Guests from JSON object and removes them from Accounts
+    private void removeGuests(Accounts acc, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("listOfGuests");
+        for (Object json : jsonArray) {
+            JSONObject nextGuest = (JSONObject) json;
+            removeGuest(acc, nextGuest);
+        }
+    }
+
     // took out //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
 
     // MODIFIES: acc
@@ -73,4 +83,10 @@ public class JsonReader {
         acc.addGuest(g);
     }
 
+    // MODIFIES: acc
+    // EFFECTS: parses Guests from JSON object and removes them from Accounts
+    private void removeGuest(Accounts acc, JSONObject jsonObject) {
+        int id = jsonObject.getInt("id");  // not sure if this is right to get age
+        acc.removeGuest(acc.lookupGuest(id));
+    }
 }

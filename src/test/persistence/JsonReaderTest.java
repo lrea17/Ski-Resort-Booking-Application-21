@@ -25,7 +25,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyAccounts() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyAccounts.json");
         try {
             Accounts acc = reader.read();
             assertEquals("Snowy Mountain", acc.getName());
@@ -37,7 +37,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderGeneralAccounts() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralAccounts.json");
         try {
             Accounts acc = reader.read();
             assertEquals("My work room", acc.getName());

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Accounts implements Writable {
     private String name;
-    private List<Guest> listOfGuests;
+    private static List<Guest> listOfGuests;
 
     // EFFECTS: creates a list of guests list for ski application
     public Accounts(String name) {
@@ -19,8 +19,9 @@ public class Accounts implements Writable {
     }
 
     // getter
-    public List<Guest> getListOfGuests() {
+    public static List<Guest> getListOfGuests() {
         return listOfGuests;
+                //Collections.unmodifiableList(listOfGuests);
     }
 
     public String getName() {

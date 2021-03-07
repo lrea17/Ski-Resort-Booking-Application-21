@@ -6,7 +6,6 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.Random;
 
-//TODO could look at tweaking list to look similar to json
 public class Guest implements Writable {
     private static final ArrayList<Integer> listOfGuestIds = new ArrayList<>(); // tracks account ids already created
     private final int id;                  // account id
@@ -156,7 +155,6 @@ public class Guest implements Writable {
         currentPass = p;
     }
 
-    //TODO could add the details of the guest here but for now lets just get this working
     //EFFECTS: See interface Writable
     @Override
     public JSONObject toJson() {

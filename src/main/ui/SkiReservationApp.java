@@ -54,7 +54,7 @@ public class SkiReservationApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
-        System.out.println("\n Hello! Welcome to Snowy Mountain. Please select from the options below");
+        System.out.println("\n Hello! Welcome to " + accounts.getName() + ". Please select from the options below");
         System.out.println("\tnew -> create new guest");
         System.out.println("\tski -> lookup days skied for existing guest");
         System.out.println("\tres -> make a new reservation for existing guest");
@@ -104,7 +104,7 @@ public class SkiReservationApp {
         int guestAge = input.nextInt();
         if (guestAge > 0 && guestAge < 150) {
             Guest newGuest = new Guest(guestName, guestAge);
-            accounts.addGuest(newGuest);  //TODO added accounts to front of this so same as json
+            accounts.addGuest(newGuest);
             System.out.println("New account created for: " + guestName);
             System.out.println("account ID: " + newGuest.getID());
             System.out.println("age: " + guestAge);
@@ -175,8 +175,7 @@ public class SkiReservationApp {
             System.out.println("These changes are permanent and cannot be undone");
             yesNo = input.next();
             if (yesNo.equals("y")) {
-                accounts.removeGuest(lookupGuest(guestId)); //TODO added this in
-                loadAccountsFromFile(); // not sure if this is right either
+                accounts.removeGuest(lookupGuest(guestId));
                 System.out.println("\nThe account requested has been deleted permanently");
             } else {
                 System.out.println("Action cancelled, returning to main menu.");

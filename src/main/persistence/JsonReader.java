@@ -65,18 +65,6 @@ public class JsonReader {
     }
 
     // MODIFIES: acc
-    // EFFECTS: parses Guests from JSON object and removes them from Accounts
-    private void removeGuests(Accounts acc, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("listOfGuests");
-        for (Object json : jsonArray) {
-            JSONObject nextGuest = (JSONObject) json;
-            removeGuest(acc, nextGuest);
-        }
-    }
-
-    // took out //Accounts accounts = Accounts.valueOf(jsonObject.getString("accounts"));
-
-    // MODIFIES: acc
     // EFFECTS: parses guest from JSON object and adds it to Accounts
     private void addGuest(Accounts acc, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
@@ -89,8 +77,8 @@ public class JsonReader {
     }
 
 
-    // MODIFIES: acc
-    // EFFECTS: parses Guests from JSON object and adds them to Accounts
+    // MODIFIES: g
+    // EFFECTS: parses Passes from JSON object and adds them to Guest
     private void addPasses(Guest g, JSONArray jsonArray) {
         for (Object json : jsonArray) {
             JSONObject nextPass = (JSONObject) json;
@@ -98,21 +86,33 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: acc
+    // MODIFIES: g
     // EFFECTS: parses pass from JSON object and adds it to Guest
     private void addPass(Guest g, JSONObject jsonObject) {
         String passType = jsonObject.getString("name");
-        int passNum = jsonObject.getInt("passNum");  // not sure if this is right to get age
+        int passNum = jsonObject.getInt("passNum");
         Pass p = new Pass(passNum, passType);
         g.loadExpiredPasses(p);
     }
 
-    // MODIFIES: acc
+    //TODO would like to have remove so i can delete guests permanently
+
+    /*    // MODIFIES: acc
+    // EFFECTS: parses Guests from JSON object and removes them from Accounts
+    private void removeGuests(Accounts acc, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("listOfGuests");
+        for (Object json : jsonArray) {
+            JSONObject nextGuest = (JSONObject) json;
+            removeGuest(acc, nextGuest);
+        }
+    }*/
+
+/*    // MODIFIES: acc
     // EFFECTS: parses Guests from JSON object and removes them from Accounts
     private void removeGuest(Accounts acc, JSONObject jsonObject) {
         int id = jsonObject.getInt("id");  // not sure if this is right to get age
         acc.removeGuest(acc.lookupGuest(id));
-    }
+    }*/
 
 }
 

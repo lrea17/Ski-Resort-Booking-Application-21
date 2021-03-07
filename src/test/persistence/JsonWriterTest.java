@@ -3,6 +3,7 @@ package persistence;
 import org.junit.jupiter.api.Test;
 import ski.model.Accounts;
 import ski.model.Guest;
+import ski.model.Pass;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class JsonWriterTest extends JsonTest {
+    Pass passA = new Pass(39542, "adult", true);
+    Guest guestA = new Guest("A", 28);
+    Pass passB = new Pass(86, "senior", true);
+    Guest guestB = new Guest("B", 65);
 
     @Test
     void testWriterInvalidFile() {
@@ -46,8 +51,10 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralAccounts() {
         try {
             Accounts acc = new Accounts("Snowy Mountain");
-            acc.addGuest(new Guest("A", 28));
-            acc.addGuest(new Guest("B", 65));
+            guestA.loadExpiredPasses(passA);
+            acc.addGuest(guestA);
+            guestB.loadExpiredPasses(passB);
+            acc.addGuest(guestB);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralAccounts.json");
             writer.open();
             writer.write(acc);
@@ -60,6 +67,9 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(2, listOfGuests.size());
             checkGuest("A", 28, listOfGuests.get(0));
             checkGuest("B", 65, listOfGuests.get(1));
+
+            checkPass("adult", 39542, listOfGuests.get(0).getListOfExpiredPasses().get(0));
+            checkPass("senior", 86, listOfGuests.get(1).getListOfExpiredPasses().get(0));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

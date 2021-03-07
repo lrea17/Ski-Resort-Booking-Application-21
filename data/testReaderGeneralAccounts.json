@@ -1,7 +1,7 @@
 {
   "listOfGuests": [
     {
-      "passType": "senior",
+      "passType": "adult",
       "listOfExpiredPasses": [
         {
           "passType": "adult",

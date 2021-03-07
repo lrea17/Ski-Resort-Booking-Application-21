@@ -146,6 +146,14 @@ class GuestTest {
         assertFalse(guestTest.listOfExpiredPasses.contains(passTester2));
     }
 
+    @Test
+    void testLoadExpiredPass(){
+        Pass p = new Pass(guestTest.getAge());
+        assertFalse(guestTest.getListOfExpiredPasses().contains(p));
+        guestTest.loadExpiredPasses(p);
+        assertTrue(guestTest.getListOfExpiredPasses().contains(p));
+    }
+
 }
 
 

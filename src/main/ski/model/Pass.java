@@ -109,7 +109,8 @@ public class Pass implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", passNum);
-        json.put("pass type", passType);
+        json.put("passType", passType);
+        json.put("expired", expiredPass);
         return json;
     }
 

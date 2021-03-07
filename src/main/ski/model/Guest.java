@@ -1,10 +1,8 @@
 package ski.model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 

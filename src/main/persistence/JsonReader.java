@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 /**
@@ -68,9 +69,9 @@ public class JsonReader {
     // EFFECTS: parses guest from JSON object and adds it to Accounts
     private void addGuest(Accounts acc, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        int age = jsonObject.getInt("age");  // not sure if this is right to get age
+        int age = jsonObject.getInt("age");
         int id = jsonObject.getInt("id");
-        JSONArray jsonArray = jsonObject.getJSONArray("listOfExpirePasses");
+        JSONArray jsonArray = jsonObject.getJSONArray("listOfExpiredPasses");
         Guest g = new Guest(name, age, id);
         addPasses(g, jsonArray);
         acc.addGuest(g);
@@ -86,12 +87,16 @@ public class JsonReader {
         }
     }
 
+    //TODO would we want a for each here so that is for each pass in the list we're adding
+    // them to the list of expired passe?
+
     // MODIFIES: g
     // EFFECTS: parses pass from JSON object and adds it to Guest
     private void addPass(Guest g, JSONObject jsonObject) {
-        String passType = jsonObject.getString("name");
+        String passType = jsonObject.getString("passType");
         int passNum = jsonObject.getInt("passNum");
-        Pass p = new Pass(passNum, passType);
+        boolean expired = jsonObject.getBoolean("isExpired");
+        Pass p = new Pass(passNum, passType, expired);
         g.loadExpiredPasses(p);
     }
 

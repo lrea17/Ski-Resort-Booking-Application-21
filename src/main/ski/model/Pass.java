@@ -10,7 +10,7 @@ public class Pass implements Writable {
     // keeps track of all pass num created
     private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
     private final int passNum;                 // the unique pass number
-    private String passType;             // type of the pass: child, youth, adult, senior
+    private String passType;                   // type of the pass: child, youth, adult, senior
     private boolean expiredPass;               // T if pass expired
     Random randomNumber = new Random();        // random pass number creator
     public static final String child = "child";
@@ -29,10 +29,10 @@ public class Pass implements Writable {
         this.passType = setPassType(age);
     }
 
-    public Pass(int passNum, String passType) {
+    public Pass(int passNum, String passType, boolean expired) {
         this.passNum = passNum;
         this.passType = passType;
-        expiredPass = true;
+        expiredPass = expired;
     }
 
     // getters
@@ -113,16 +113,5 @@ public class Pass implements Writable {
         json.put("expired", expiredPass);
         return json;
     }
-
-  /*  //TODO could add more details of the pass like json.put("pass type", passType); but get it working first
-    // maybe don't need this here? not sure yet
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", passNum);
-        json.put("pass type", passType);
-        return json;
-
-    }*/
 
 }

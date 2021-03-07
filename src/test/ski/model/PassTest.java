@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PassTest {
 
     private Pass passTest;
+    private Pass passTestExpired;
     private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
     private final Guest guestTestChildFive = new Guest("George", 5);
     private final Guest guestTestYouth = new Guest("Anna", 6);
@@ -20,13 +21,18 @@ public class PassTest {
     @BeforeEach
     void setup() {
         passTest = new Pass(guestTestAdult.getAge());
+        passTestExpired = new Pass(12345, "adult", true);
     }
 
     @Test
-    void testConstructor() {
+    void testConstructorAge() {
         assertEquals("adult", passTest.getPassType());
         assertFalse(passTest.isPassExpired());
+        assertEquals("adult", passTestExpired.getPassType());
+        assertTrue(passTestExpired.isPassExpired());
+        assertEquals(12345, passTestExpired.getPassNum());
     }
+
 
     @Test
     void testDiffPassTypes() {

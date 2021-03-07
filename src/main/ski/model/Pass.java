@@ -6,7 +6,7 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Pass implements Writable {
+public class Pass {
     // keeps track of all pass num created
     private static final ArrayList<Integer> listOfPassNumUsed = new ArrayList<>();
     private final int passNum;                 // the unique pass number
@@ -103,15 +103,6 @@ public class Pass implements Writable {
             validAccountId = false;
         }
         return validAccountId;
-    }
-
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", passNum);
-        json.put("passType", passType);
-        json.put("expired", expiredPass);
-        return json;
     }
 
 }

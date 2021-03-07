@@ -11,8 +11,9 @@ public class JsonTest {
         assertEquals(age, guest.getAge());
     }
 
-    protected void checkPass(String passType, int passNum, Pass pass) {
+    protected void checkPass(String passType, int passNum, boolean passExpired, Pass pass) {
         assertEquals(passType, pass.getPassType());
         assertEquals(passNum, pass.getPassNum());
+        assertEquals(passExpired, pass.isPassExpired());
     }
 }

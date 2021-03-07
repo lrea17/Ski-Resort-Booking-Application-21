@@ -1,38 +1,37 @@
 {
     "listOfGuests": [
         {
-            "passType": "senior",
-            "listOfExpirePasses": [
-                {
-                    "passType": "senior",
-                    "passExpired": true,
-                    "passNum": 17313
-                },
-                {
-                    "passType": "senior",
-                    "passExpired": true,
-                    "passNum": 95606
-                },
-                {
-                    "passType": "senior",
-                    "passExpired": true,
-                    "passNum": 39542
-                }
-            ],
-            "name": "kyle",
-            "id": 89282,
-            "age": 65
+            "passType": "adult",
+            "name": "lindsay",
+            "listOfExpiredPasses": [{
+                "passExpired": true,
+                "passType": "adult",
+                "passNum": 10806
+            }],
+            "id": 24400,
+            "age": 27
         },
         {
             "passType": "adult",
-            "listOfExpirePasses": [{
-                "passType": "adult",
-                "passExpired": true,
-                "passNum": 86
-            }],
             "name": "julie",
-            "id": 93709,
-            "age": 33
+            "listOfExpiredPasses": [{
+                "passExpired": true,
+                "passType": "adult",
+                "passNum": 22035
+            }],
+            "id": 39773,
+            "age": 32
+        },
+        {
+            "passType": "senior",
+            "name": "bob",
+            "listOfExpiredPasses": [{
+                "passExpired": true,
+                "passType": "senior",
+                "passNum": 91152
+            }],
+            "id": 67155,
+            "age": 100
         }
     ],
     "name": "Snowy Mountain"

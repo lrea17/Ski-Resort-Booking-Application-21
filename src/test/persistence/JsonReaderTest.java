@@ -47,8 +47,8 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(2, listOfGuests.size());
             checkGuest("A", 28, listOfGuests.get(0));
             checkGuest("B", 65, listOfGuests.get(1));
-            checkPass("adult", 39542, listOfGuests.get(0).getListOfExpiredPasses().get(0));
-            checkPass("senior", 86, listOfGuests.get(1).getListOfExpiredPasses().get(0));
+            checkPass("adult", 39542, true, listOfGuests.get(0).getListOfExpiredPasses().get(0));
+            checkPass("senior", 86, true, listOfGuests.get(1).getListOfExpiredPasses().get(0));
 
         } catch (IOException e) {
             System.out.println(e);

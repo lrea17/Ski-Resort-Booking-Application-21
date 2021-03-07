@@ -47,6 +47,7 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(2, listOfGuests.size());
             checkGuest("A", 28, listOfGuests.get(0));
             checkGuest("B", 65, listOfGuests.get(1));
+
         } catch (IOException e) {
             System.out.println(e);
             fail("Couldn't read from file");

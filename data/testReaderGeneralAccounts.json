@@ -1,11 +1,25 @@
 {
   "listOfGuests": [
     {
+      "passType": "senior",
+      "listOfExpiredPasses": [
+        {
+          "passType": "adult",
+          "passExpired": true,
+          "passNum": 39542
+        }
+      ],
       "name": "A",
       "id": 62811,
       "age": 28
     },
     {
+      "passType": "senior",
+      "listOfExpiredPasses": [{
+        "passType": "senior",
+        "passExpired": true,
+        "passNum": 86
+      }],
       "name": "B",
       "id": 6954,
       "age": 65
@@ -13,3 +27,4 @@
   ],
   "name": "Snowy Mountain"
 }
+

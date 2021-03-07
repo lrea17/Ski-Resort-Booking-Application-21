@@ -95,7 +95,7 @@ public class JsonReader {
     private void addPass(Guest g, JSONObject jsonObject) {
         String passType = jsonObject.getString("passType");
         int passNum = jsonObject.getInt("passNum");
-        boolean expired = jsonObject.getBoolean("isExpired");
+        boolean expired = jsonObject.getBoolean("passExpired");
         Pass p = new Pass(passNum, passType, expired);
         g.loadExpiredPasses(p);
     }

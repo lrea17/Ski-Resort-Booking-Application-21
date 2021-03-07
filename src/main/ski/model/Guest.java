@@ -164,8 +164,8 @@ public class Guest implements Writable {
         json.put("name", name);
         json.put("age", age);
         json.put("id", id);
-        json.put("passType", passType); // added this in not sure if we want all these fields
-        json.put("listOfExpirePasses", listOfExpiredPasses);
+        json.put("passType", passType);
+        json.put("listOfExpiredPasses", listOfExpiredPasses);
         return json;
     }
 

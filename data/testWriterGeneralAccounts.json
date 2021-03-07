@@ -2,16 +2,16 @@
     "listOfGuests": [
         {
             "passType": "adult",
-            "listOfExpirePasses": [],
             "name": "A",
-            "id": 28535,
+            "listOfExpiredPasses": [],
+            "id": 46854,
             "age": 28
         },
         {
             "passType": "senior",
-            "listOfExpirePasses": [],
             "name": "B",
-            "id": 50352,
+            "listOfExpiredPasses": [],
+            "id": 13369,
             "age": 65
         }
     ],

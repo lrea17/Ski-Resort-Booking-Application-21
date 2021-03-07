@@ -68,7 +68,7 @@ public class AccountsTest {
     public void testLookupGuestByID(){
         Guest g = new Guest("Lindsay", 28);
         addGuest(g);
-        assertEquals(g, lookupGuest(g.getAccountID()));
+        assertEquals(g, lookupGuest(g.getID()));
     }
 
     @Test

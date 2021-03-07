@@ -1,8 +1,10 @@
 package ski.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,7 +17,7 @@ public class Guest implements Writable {
     private String passType;               // type of pass a guest requires
     private Pass currentPass;              // pass available on a guest account to "reserve" a ski day with
     Random randomNumber = new Random();    // randomID generator variable
-    final ArrayList<Pass> listOfExpiredPasses = new ArrayList<>(); // list of passes guest has used
+    ArrayList<Pass> listOfExpiredPasses = new ArrayList<>(); // list of passes guest has used
 
     // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
     // EFFECTS: name of guest is set to guestName; guest id is a unique random
@@ -29,8 +31,16 @@ public class Guest implements Writable {
         this.passType = setPassType();
     }
 
+    public Guest(String guestName, int guestAge, int id) {
+        this.id = id;
+        this.name = guestName;
+        this.age = guestAge;
+        this.passType = setPassType();
+
+    }
+
     // getters
-    public int getAccountID() {
+    public int getID() {
         return id;
     }
 
@@ -157,7 +167,12 @@ public class Guest implements Writable {
         json.put("age", age);
         json.put("id", id);
         json.put("passType", passType); // added this in not sure if we want all these fields
+        json.put("listOfExpirePasses", listOfExpiredPasses);
         return json;
+    }
+
+    public void loadExpiredPasses(Pass p) {
+        listOfExpiredPasses.add(p);
     }
 }
 

@@ -4,11 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import ski.model.Accounts;
 import ski.model.Guest;
+import ski.model.Pass;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 /**
@@ -80,8 +82,31 @@ public class JsonReader {
     private void addGuest(Accounts acc, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int age = jsonObject.getInt("age");  // not sure if this is right to get age
-        Guest g = new Guest(name, age);
+        int id = jsonObject.getInt("id");
+        JSONArray jsonArray = jsonObject.getJSONArray("listOfExpirePasses");
+        Guest g = new Guest(name, age, id);
+        addPasses(g, jsonArray);
         acc.addGuest(g);
+    }
+
+
+    // MODIFIES: acc
+    // EFFECTS: parses Guests from JSON object and adds them to Accounts
+    private void addPasses(Guest g, JSONArray jsonArray) {
+        for (Object json : jsonArray) {
+            JSONObject nextPass = (JSONObject) json;
+            addPass(g, nextPass);
+        }
+
+
+    }
+    // MODIFIES: acc
+    // EFFECTS: parses pass from JSON object and adds it to Guest
+    private void addPass(Guest g, JSONObject jsonObject) {
+        String passType = jsonObject.getString("name");
+        int passNum = jsonObject.getInt("passNum");  // not sure if this is right to get age
+        Pass p = new Pass(passNum, passType);
+        g.loadExpiredPasses(p);
     }
 
     // MODIFIES: acc

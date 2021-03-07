@@ -171,6 +171,8 @@ public class Guest implements Writable {
         return json;
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds pass p to list of expired passes
     public void loadExpiredPasses(Pass p) {
         listOfExpiredPasses.add(p);
     }

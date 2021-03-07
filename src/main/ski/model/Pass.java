@@ -29,7 +29,7 @@ public class Pass implements Writable {
         this.passType = setPassType(age);
     }
 
-    public Pass (int passNum, String passType){
+    public Pass(int passNum, String passType) {
         this.passNum = passNum;
         this.passType = passType;
         expiredPass = true;
@@ -103,6 +103,14 @@ public class Pass implements Writable {
             validAccountId = false;
         }
         return validAccountId;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", passNum);
+        json.put("pass type", passType);
+        return json;
     }
 
   /*  //TODO could add more details of the pass like json.put("pass type", passType); but get it working first

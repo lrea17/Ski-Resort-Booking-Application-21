@@ -11,6 +11,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * Citation: code for this class has been obtained from JSonSerializationDemo
+ * URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ */
+
 public class JsonWriterTest extends JsonTest {
     Pass passA = new Pass(39542, "adult", true);
     Guest guestA = new Guest("A", 28);

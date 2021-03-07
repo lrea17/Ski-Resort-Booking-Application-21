@@ -28,6 +28,8 @@ public class Guest implements Writable {
         this.passType = setPassType();
     }
 
+    // EFFECTS: constructs a guest with the inputs guestName, guestAge, and id
+    //          this is used for save/load to JSON
     public Guest(String guestName, int guestAge, int id) {
         this.id = id;
         this.name = guestName;
@@ -60,13 +62,6 @@ public class Guest implements Writable {
     public ArrayList<Pass> getListOfExpiredPasses() {
         return listOfExpiredPasses;
     }
-
-    /** could do it like this... not sure if this is what it wants/needs though, this is the same as workroom*/
-    /*
-        public ArrayList<Pass> getListOfExpiredPasses() {
-        return (ArrayList<Pass>) Collections.unmodifiableList(listOfExpiredPasses);
-    }
-    * */
 
     public static ArrayList<Integer> getListOfGuestIds() {
         return listOfGuestIds;

@@ -10,12 +10,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.stream.Stream;
 
 /**
- * This class has been copied from JSonSerializationDemo
- * Repo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ * Citation: code for this class has been obtained from JSonSerializationDemo
+ * URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
  */
 
 // Represents a reader that reads Guest from JSON data stored in file

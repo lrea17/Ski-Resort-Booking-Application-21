@@ -29,13 +29,15 @@ public class Pass {
         this.passType = setPassType(age);
     }
 
+    //EFFECTS: constructs a pass with the inputs passNum, passType and expired (set to true)
+    //         this is used for save/load to JSON
     public Pass(int passNum, String passType, boolean expired) {
         this.passNum = passNum;
         this.passType = passType;
         expiredPass = expired;
     }
 
-    // getters
+    // getters & setters
     public String getPassType() {
         return passType;
     }

@@ -4,11 +4,10 @@ import org.json.JSONObject;
 import ski.model.Accounts;
 
 import java.io.*;
-//import java.io.FileNotFoundException;
-//import java.io.PrintWriter;
+
 /**
- This class has been copied from JSonSerializationDemo
- Repo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+ * Citation: code for this class has been obtained from JSonSerializationDemo
+ * URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
  */
 
 // Represents a writer that writes JSON representation of Guests to file

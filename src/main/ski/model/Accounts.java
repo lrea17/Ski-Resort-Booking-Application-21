@@ -17,16 +17,16 @@ public class Accounts implements Writable {
         listOfGuests = new ArrayList<>();
     }
 
-    // getter
+    // getters
     public static List<Guest> getListOfGuests() {
         return listOfGuests;
-                //Collections.unmodifiableList(listOfGuests);
     }
 
     public String getName() {
         return name;
     }
 
+    // EFFECTS: returns the number of items in list of guests
     public int numGuests() {
         return listOfGuests.size();
     }

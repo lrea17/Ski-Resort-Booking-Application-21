@@ -55,13 +55,13 @@ public class SkiReservationApp {
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\n Hello! Welcome to Snowy Mountain. Please select from the options below");
-        System.out.println("\tn -> create new guest");
-        System.out.println("\ts -> lookup days skied for existing guest");
-        System.out.println("\tr -> make a new reservation for existing guest");
-        System.out.println("\tc -> cancel an existing reservation");
-        System.out.println("\td -> delete a guest account");
-        System.out.println("\tf -> save changes to accounts to file");
-        System.out.println("\tl -> load accounts from file");
+        System.out.println("\tnew -> create new guest");
+        System.out.println("\tski -> lookup days skied for existing guest");
+        System.out.println("\tres -> make a new reservation for existing guest");
+        System.out.println("\tcan -> cancel an existing reservation");
+        System.out.println("\tdel -> delete a guest account");
+        System.out.println("\tsave -> save changes to accounts to file");
+        System.out.println("\tload -> load accounts from file");
         System.out.println("\tq - > quit");
     }
 
@@ -74,19 +74,19 @@ public class SkiReservationApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("n")) {
+        if (command.equals("new")) {
             doNewGuest();
-        } else if (command.equals("s")) {
+        } else if (command.equals("ski")) {
             doDaysSkied();
-        } else if (command.equals("r")) {
+        } else if (command.equals("res")) {
             doNewReservationExistingGuest();
-        } else if (command.equals("c")) {
+        } else if (command.equals("can")) {
             doCancelReservation();
-        } else if (command.equals("d")) {
+        } else if (command.equals("del")) {
             doDeleteGuestAccount();
-        } else if (command.equals("l")) {
+        } else if (command.equals("load")) {
             loadAccountsFromFile();
-        } else if (command.equals("f")) {
+        } else if (command.equals("save")) {
             saveChangesToFile();
         } else {
             System.out.println("Selection not valid...");

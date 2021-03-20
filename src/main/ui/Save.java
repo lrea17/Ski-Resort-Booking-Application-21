@@ -16,6 +16,8 @@ public class Save extends ApplicationButtons implements ActionListener {
 
     @Override
     protected void createButton(JComponent parent) {
-
+        button = new JButton("Save Work to File");
+        button = customizeButton(button);
+        addToParent(parent);
     }
 }

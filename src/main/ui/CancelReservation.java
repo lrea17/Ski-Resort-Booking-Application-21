@@ -17,6 +17,8 @@ public class CancelReservation extends ApplicationButtons implements ActionListe
 
     @Override
     protected void createButton(JComponent parent) {
-
+        button = new JButton("Cancel Existing Reservation");
+        button = customizeButton(button);
+        addToParent(parent);
     }
 }

@@ -21,6 +21,7 @@ public class SkiAppGUI extends JFrame implements ActionListener {
 
     public SkiAppGUI() {
         super("Ski Application");
+        initializeFields();
         initializeGraphics();
 
     }
@@ -34,7 +35,6 @@ public class SkiAppGUI extends JFrame implements ActionListener {
         createButtons();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(new JLabel("Welcome to Snowy Mountain Resort"));
         this.pack();
         setLocationRelativeTo(null);
         setVisible(true);

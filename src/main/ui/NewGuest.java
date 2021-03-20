@@ -12,7 +12,9 @@ public class NewGuest extends ApplicationButtons implements ActionListener  {
 
     @Override
     protected void createButton(JComponent parent) {
-
+        button = new JButton("Create New Guest");
+        button = customizeButton(button);
+        addToParent(parent);
     }
 
     @Override

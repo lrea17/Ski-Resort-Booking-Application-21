@@ -12,8 +12,17 @@ public abstract class ApplicationButtons {
         this.editor = editor;
         createButton(parent);
         addToParent(parent);
-        active = false;
+        //active = false;
         //addListener();
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  customizes the button used for this tool
+    protected JButton customizeButton(JButton button) {
+        button.setBorderPainted(true);
+        button.setFocusPainted(true);
+        button.setContentAreaFilled(true);
+        return button;
     }
 
     // MODIFIES: parent

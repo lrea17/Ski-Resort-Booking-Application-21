@@ -31,7 +31,7 @@ public class SkiAppGUI extends JFrame implements ActionListener {
     private void initializeGraphics() {
         setLayout(new FlowLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        //createButtons();
+        createButtons();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(new JLabel("Welcome to Snowy Mountain Resort"));
@@ -57,6 +57,18 @@ public class SkiAppGUI extends JFrame implements ActionListener {
         buttonArea.setLayout(new GridLayout(0, 1));
         buttonArea.setSize(new Dimension(0, 0));
         add(buttonArea, BorderLayout.CENTER);
+
+        ApplicationButtons newGuest = new NewGuest(this, buttonArea);
+        buttons.add(newGuest);
+
+        ApplicationButtons cancelRes = new CancelReservation(this, buttonArea);
+        buttons.add(cancelRes);
+
+        ApplicationButtons saveWork = new Save(this, buttonArea);
+        buttons.add(saveWork);
+
+        ApplicationButtons loadWork = new Load(this, buttonArea);
+        buttons.add(loadWork);
     }
 
     @Override

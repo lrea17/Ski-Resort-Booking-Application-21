@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// will extend application buttons
-public class CancelReservation extends ApplicationButtons implements ActionListener {
-    public CancelReservation(SkiAppGUI editor, JComponent parent) {
+public class Load extends ApplicationButtons implements ActionListener {
+    public Load(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
     }
 

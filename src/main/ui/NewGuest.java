@@ -6,12 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewGuest extends ApplicationButtons {
-    private int guestsNum = 0;
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 500;
+    private static final int WIDTH = 350;
+    private static final int HEIGHT = 200;
     //Strings for the labels
-    private static String name = "Name: ";
-    private static String rateString = "Age: ";
+    private static String guestName = "Name: ";
+    private static String guestAge = "Age: ";
 
 
 
@@ -38,35 +37,47 @@ public class NewGuest extends ApplicationButtons {
         JFrame creatingNewGuest = new JFrame();
         JPanel panel = new JPanel();
 
-        creatingNewGuest.setMinimumSize(new Dimension(350, 200));
+        creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         creatingNewGuest.setVisible(true);
         creatingNewGuest.add(panel);
 
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new BorderLayout());
 
         creatingNewGuest.setTitle("Create New Guest");
-        creatingNewGuest.pack();
+        //creatingNewGuest.pack();
 
-        JLabel name = new JLabel("Name");
-        name.setBounds(10,20,80,15);
-        panel.add(name);
+        //creates the labels
+        JLabel name = new JLabel(guestName);
+        JLabel age = new JLabel(guestAge);
 
+        //Create the text fields and set them up.
         JTextField userNameText = new JTextField(20);
-        userNameText.setBounds(100, 20, 165, 25);
-        panel.add(userNameText);
-
-        JLabel age = new JLabel("Age");
-        age.setBounds(10, 50,80,15);
-        panel.add(age);
-
         JTextField ageText = new JTextField(20);
-        userNameText.setBounds(100, 50, 165, 25);
-        panel.add(ageText);
 
+        //Lay out the labels in a panel.
+        JPanel labelPane = new JPanel(new GridLayout(0,1));
+        labelPane.add(name);
+        labelPane.add(age);
 
+        //TODO used formatted text field demo to do this - boxes aren't ideal size and may need to
+        // indicate what kind of inputs ie string for name and int for age
+        //Layout the text fields in a panel.
+        JPanel fieldPane = new JPanel(new GridLayout(0,1));
+        fieldPane.add(userNameText);
+        fieldPane.add(ageText);
 
+        JButton doneButton = new JButton("Done");
+        //button.setBounds(30, 80, 50, 25);
 
+        //Put the panels in this panel, labels on left,
+        //text fields on right.
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panel.add(labelPane, BorderLayout.CENTER);
+        panel.add(fieldPane, BorderLayout.LINE_END);
+        panel.add(doneButton, BorderLayout.AFTER_LAST_LINE);
+
+        //TODO maybe look at getting rid of this button and just have it so you hit enter and it does what you want
     }
 
     private class NewGuestClickHandler implements ActionListener {

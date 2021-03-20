@@ -34,11 +34,11 @@ public class NewGuest extends ApplicationButtons {
     }
 
     private void createNewGuest() {
-        JFrame creatingNewGuest = new JFrame();
+        JDialog creatingNewGuest = new JDialog();
         JPanel panel = new JPanel();
 
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        creatingNewGuest.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         creatingNewGuest.setVisible(true);
         creatingNewGuest.add(panel);
 

@@ -11,6 +11,11 @@ public class CancelReservation extends ApplicationButtons implements ActionListe
     }
 
     @Override
+    protected void addListener() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }

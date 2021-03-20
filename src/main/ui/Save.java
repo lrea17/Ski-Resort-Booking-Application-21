@@ -10,6 +10,11 @@ public class Save extends ApplicationButtons implements ActionListener {
     }
 
     @Override
+    protected void addListener() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }

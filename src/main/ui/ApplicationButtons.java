@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public abstract class ApplicationButtons {
 
@@ -13,8 +14,11 @@ public abstract class ApplicationButtons {
         createButton(parent);
         addToParent(parent);
         //active = false;
-        //addListener();
+        addListener();
     }
+
+    // EFFECTS: adds a listener for this tool
+    protected abstract void addListener();
 
     // MODIFIES: this
     // EFFECTS:  customizes the button used for this tool

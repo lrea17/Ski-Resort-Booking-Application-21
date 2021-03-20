@@ -10,13 +10,18 @@ public class Load extends ApplicationButtons implements ActionListener {
     }
 
     @Override
+    protected void addListener() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }
 
     @Override
     protected void createButton(JComponent parent) {
-        button = new JButton("Load Previous Work from File");
+        button = new JButton("Load Work from File");
         button = customizeButton(button);
         addToParent(parent);
     }

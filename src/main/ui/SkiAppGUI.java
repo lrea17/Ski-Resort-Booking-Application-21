@@ -12,7 +12,9 @@ import java.util.List;
  * game is played
  */
 
-public class SkiAppGUI extends JFrame implements ActionListener {
+public class SkiAppGUI extends JFrame {
+
+    private JLabel guests;
 
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
@@ -35,11 +37,14 @@ public class SkiAppGUI extends JFrame implements ActionListener {
         createButtons();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //guests = new JLabel("Number of guests: 0");
         this.pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
     }
+
+
 
     // MODIFIES: this
     // EFFECTS:  sets activeTool, currentDrawing to null, and instantiates drawings and tools with ArrayList
@@ -55,7 +60,7 @@ public class SkiAppGUI extends JFrame implements ActionListener {
     private void createButtons() {
         JPanel buttonArea = new JPanel();
         buttonArea.setLayout(new GridLayout(0, 1));
-        buttonArea.setSize(new Dimension(0, 0));
+        buttonArea.setSize(new Dimension(2, 10));
         add(buttonArea, BorderLayout.CENTER);
 
         ApplicationButtons newGuest = new NewGuest(this, buttonArea);
@@ -71,10 +76,6 @@ public class SkiAppGUI extends JFrame implements ActionListener {
         buttons.add(loadWork);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 
 
 }

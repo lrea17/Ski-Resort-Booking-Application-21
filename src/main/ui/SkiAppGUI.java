@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * game is played
  */
 
-public class SkiAppGUI extends JFrame {
+public class SkiAppGUI extends JFrame implements ActionListener {
 
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
@@ -27,13 +29,16 @@ public class SkiAppGUI extends JFrame {
     // EFFECTS:  draws the JFrame window where this DrawingEditor will operate, and populates the tools to be used
     //           to manipulate this drawing
     private void initializeGraphics() {
-        setLayout(new BorderLayout());
+        setLayout(new FlowLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        //createTools();
+        //createButtons();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(new JLabel("Welcome to Snowy Mountain Resort"));
+        this.pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
     }
 
     // MODIFIES: this
@@ -43,6 +48,20 @@ public class SkiAppGUI extends JFrame {
         //activeTool = null;
         //currentDrawing = null;
         buttons = new ArrayList<ApplicationButtons>();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: a helper method which declares and instantiates all buttons
+    private void createButtons() {
+        JPanel buttonArea = new JPanel();
+        buttonArea.setLayout(new GridLayout(0, 1));
+        buttonArea.setSize(new Dimension(0, 0));
+        add(buttonArea, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 
 

@@ -68,6 +68,10 @@ public class NewGuest extends ApplicationButtons {
         fieldPane.add(ageText);
 
         CreateGuestAction action = new CreateGuestAction();
+        //TODO TRYING TO READ THE TEXT PUT INTO THE FIELD - NEED TO FIGURE OUT HOW TO GET THE TEXT AND PRINT IT OUT
+        // https://stackoverflow.com/questions/5752307/how-to-retrieve-value-from-jtextfield-in-java-swing
+        // maybe just add action listener to the createGuestButton?
+        action.putValue("Guest Name", userNameText.getText());
         JButton createGuestButton = new JButton(action);
         createGuestButton.setText("Create Guest");
         JButton mainMenuButton = new JButton("Main Menu");

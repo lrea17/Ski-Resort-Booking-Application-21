@@ -67,7 +67,10 @@ public class NewGuest extends ApplicationButtons {
         fieldPane.add(userNameText);
         fieldPane.add(ageText);
 
-        JButton doneButton = new JButton("Done");
+        CreateGuestAction action = new CreateGuestAction();
+        JButton createGuestButton = new JButton(action);
+        createGuestButton.setText("Create Guest");
+        JButton mainMenuButton = new JButton("Main Menu");
         //button.setBounds(30, 80, 50, 25);
 
         //Put the panels in this panel, labels on left,
@@ -75,10 +78,14 @@ public class NewGuest extends ApplicationButtons {
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panel.add(labelPane, BorderLayout.CENTER);
         panel.add(fieldPane, BorderLayout.LINE_END);
-        panel.add(doneButton, BorderLayout.AFTER_LAST_LINE);
+        panel.add(createGuestButton, BorderLayout.AFTER_LAST_LINE);
+        //panel.add(mainMenuButton, BorderLayout.PAGE_END);
 
         //TODO maybe look at getting rid of this button and just have it so you hit enter and it does what you want
     }
+
+
+
 
     private class NewGuestClickHandler implements ActionListener {
         @Override

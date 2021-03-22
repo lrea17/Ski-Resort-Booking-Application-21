@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class NewGuest extends ApplicationButtons {
     private static final int WIDTH = 350;
@@ -124,11 +125,15 @@ public class NewGuest extends ApplicationButtons {
                 } else {
                     action.putValue("Guest Name", name);
                     action.putValue("Age", age);
+                    name = "";
+                    age = "";
                 }
             }
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates main menu button and adds button to button pane
     public void createMainMenuButton() {
         JButton mainMenuButton = new JButton("Main Menu");
         buttonPane.add(mainMenuButton);
@@ -136,6 +141,7 @@ public class NewGuest extends ApplicationButtons {
             @Override
             public void actionPerformed(ActionEvent e) {
                 creatingNewGuest.dispose();
+
             }
         });
     }

@@ -13,5 +13,4 @@ public class CreateGuestAction extends AbstractAction {
         System.out.println("OOGABOOGA");
     }
 
-    //public void actionLi
 }

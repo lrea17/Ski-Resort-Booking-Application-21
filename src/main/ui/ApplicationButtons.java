@@ -19,6 +19,9 @@ public abstract class ApplicationButtons {
     // EFFECTS: adds a listener for this tool
     protected abstract void addListener();
 
+    // EFFECTS: creates button to activate tool
+    protected abstract void createButton(JComponent parent);
+
     // MODIFIES: this
     // EFFECTS:  customizes the button used for this tool
     protected JButton customizeButton(JButton button) {
@@ -34,8 +37,7 @@ public abstract class ApplicationButtons {
         parent.add(button);
     }
 
-    // EFFECTS: creates button to activate tool
-    protected abstract void createButton(JComponent parent);
+
 
 
 

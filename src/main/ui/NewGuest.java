@@ -11,11 +11,27 @@ public class NewGuest extends ApplicationButtons {
     //Strings for the labels
     private static String guestName = "Name: ";
     private static String guestAge = "Age: ";
-
+    private JDialog creatingNewGuest = new JDialog();
+    private JPanel panel = new JPanel();
+    //creates the labels
+    private JLabel name = new JLabel(guestName);
+    private JLabel age = new JLabel(guestAge);
+    //Create the text fields and set them up.
+    private JTextField userNameText = new JTextField(20);
+    private JTextField ageText = new JTextField(20);
 
 
     public NewGuest(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
+
+    }
+
+    public JTextField getUserNameText() {
+        return userNameText;
+    }
+
+    public String getUserNameTextInput() {
+        return userNameText.toString();
     }
 
     // MODIFIES: this
@@ -34,9 +50,6 @@ public class NewGuest extends ApplicationButtons {
     }
 
     private void createNewGuest() {
-        JDialog creatingNewGuest = new JDialog();
-        JPanel panel = new JPanel();
-
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         creatingNewGuest.setVisible(true);
@@ -47,31 +60,25 @@ public class NewGuest extends ApplicationButtons {
         creatingNewGuest.setTitle("Create New Guest");
         //creatingNewGuest.pack();
 
-        //creates the labels
-        JLabel name = new JLabel(guestName);
-        JLabel age = new JLabel(guestAge);
-
-        //Create the text fields and set them up.
-        JTextField userNameText = new JTextField(20);
-        JTextField ageText = new JTextField(20);
-
         //Lay out the labels in a panel.
-        JPanel labelPane = new JPanel(new GridLayout(0,1));
+        JPanel labelPane = new JPanel(new GridLayout(0, 1));
         labelPane.add(name);
         labelPane.add(age);
 
         //TODO used formatted text field demo to do this - boxes aren't ideal size and may need to
         // indicate what kind of inputs ie string for name and int for age
         //Layout the text fields in a panel.
-        JPanel fieldPane = new JPanel(new GridLayout(0,1));
-        fieldPane.add(userNameText);
+        JPanel fieldPane = new JPanel(new GridLayout(0, 1));
+        fieldPane.add(getUserNameText());
         fieldPane.add(ageText);
 
         CreateGuestAction action = new CreateGuestAction();
         //TODO TRYING TO READ THE TEXT PUT INTO THE FIELD - NEED TO FIGURE OUT HOW TO GET THE TEXT AND PRINT IT OUT
         // https://stackoverflow.com/questions/5752307/how-to-retrieve-value-from-jtextfield-in-java-swing
         // maybe just add action listener to the createGuestButton?
-        action.putValue("Guest Name", userNameText.getText());
+        //String test = userNameText.getText();
+        System.out.println(getUserNameTextInput());
+        action.putValue("Guest Name", getUserNameTextInput());
         JButton createGuestButton = new JButton(action);
         createGuestButton.setText("Create Guest");
         JButton mainMenuButton = new JButton("Main Menu");
@@ -87,8 +94,6 @@ public class NewGuest extends ApplicationButtons {
 
         //TODO maybe look at getting rid of this button and just have it so you hit enter and it does what you want
     }
-
-
 
 
     private class NewGuestClickHandler implements ActionListener {

@@ -95,11 +95,22 @@ public class NewGuest extends ApplicationButtons {
         //TODO maybe look at getting rid of this button and just have it so you hit enter and it does what you want
     }
 
+    private void testDialogBox() {
+        String userName = JOptionPane.showInputDialog("Guest Name", "Age");
+        System.out.println(userName);
+        //String age = JOptionPane.showInputDialog("Age");
+   /*     CreateGuestAction action = new CreateGuestAction();
+        action.putValue("Guest Name", userName);
+        JButton createGuestButton = new JButton(action);
+        createGuestButton.setText("Create Guest");*/
+
+    }
 
     private class NewGuestClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            createNewGuest();
+            //createNewGuest();
+            testDialogBox();
 
         }
     }

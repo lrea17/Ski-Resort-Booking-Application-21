@@ -12,12 +12,12 @@ public class NewGuest extends ApplicationButtons {
     private static String guestName = "Name: ";
     private static String guestAge = "Age: ";
     private JDialog creatingNewGuest = new JDialog();
-    private JPanel panel1 = new JPanel();
+    private JPanel mainPanel = new JPanel();
     //creates the labels
     private JLabel name = new JLabel(guestName);
     private JLabel age = new JLabel(guestAge);
     //Create the text fields and set them up.
-    private JTextField userNameText = new JTextField(20);
+    private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
 
 
@@ -54,52 +54,50 @@ public class NewGuest extends ApplicationButtons {
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         creatingNewGuest.setVisible(true);
-        creatingNewGuest.add(panel1);
+        creatingNewGuest.add(mainPanel);
 
-        panel1.setLayout(new BorderLayout());
+        mainPanel.setLayout(new BorderLayout());
 
         creatingNewGuest.setTitle("Create New Guest");
         //creatingNewGuest.pack();
 
-        //Lay out the labels in a panel1.
+        //Lay out the labels in a mainPanel.
         JPanel labelPane = new JPanel(new GridLayout(0, 1));
         labelPane.add(name);
         labelPane.add(age);
 
         //TODO used formatted text field demo to do this - boxes aren't ideal size and may need to
         // indicate what kind of inputs ie string for name and int for age
-        //Layout the text fields in a panel1.
+
+        //Layout the text fields in a mainPanel.
         JPanel fieldPane = new JPanel(new GridLayout(0, 1));
         fieldPane.add(userNameText);
         fieldPane.add(ageText);
 
-        //create buttons
+        //Create buttons
         CreateGuestAction action = new CreateGuestAction();
-        //TODO TRYING TO READ THE TEXT PUT INTO THE FIELD - NEED TO FIGURE OUT HOW TO GET THE TEXT AND PRINT IT OUT
-        // https://stackoverflow.com/questions/5752307/how-to-retrieve-value-from-jtextfield-in-java-swing
-        // maybe just add action listener to the createGuestButton?
-        action.putValue("Guest Name", getUserNameTextInput());
         JButton createGuestButton = new JButton(action);
         createGuestButton.setText("Create Guest");
+        createGuestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String test = new String(userNameText.getText());
+                action.putValue("Guest Name", test);
+            }
+        });
         JButton mainMenuButton = new JButton("Main Menu");
 
-        //Layout the buttons on buttonPanel
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
-        buttonPanel.add(createGuestButton);
-        buttonPanel.add(mainMenuButton);
+        //Layout the buttons on buttonPane
+        JPanel buttonPane = new JPanel(new GridLayout(0,1));
+        buttonPane.add(createGuestButton);
+        buttonPane.add(mainMenuButton);
 
+        //Put the panels in this mainPanel, labels on left, text fields on right, buttons on bottom
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        mainPanel.add(labelPane, BorderLayout.CENTER);
+        mainPanel.add(fieldPane, BorderLayout.LINE_END);
+        mainPanel.add(buttonPane,BorderLayout.SOUTH);
 
-
-        //button.setBounds(30, 80, 50, 25);
-
-        //Put the panels in this panel1, labels on left,
-        //text fields on right.
-        panel1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panel1.add(labelPane, BorderLayout.CENTER);
-        panel1.add(fieldPane, BorderLayout.LINE_END);
-        panel1.add(buttonPanel,BorderLayout.SOUTH);
-
-        //TODO maybe look at getting rid of this button and just have it so you hit enter and it does what you want
     }
 
     private void testDialogBox() {

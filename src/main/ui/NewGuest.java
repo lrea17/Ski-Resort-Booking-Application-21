@@ -8,14 +8,16 @@ import java.awt.event.ActionListener;
 public class NewGuest extends ApplicationButtons {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
+    private JDialog creatingNewGuest = new JDialog();
+    private JPanel mainPanel = new JPanel();
+    private JPanel buttonPane = new JPanel(new GridLayout(0, 1));
+    //creates the labels
+    private JLabel success = new JLabel("", SwingConstants.CENTER);
+    private JLabel name = new JLabel(guestName);
+    private JLabel age = new JLabel(guestAge);
     //Strings for the labels
     private static String guestName = "Name: ";
     private static String guestAge = "Age: ";
-    private JDialog creatingNewGuest = new JDialog();
-    private JPanel mainPanel = new JPanel();
-    //creates the labels
-    private JLabel name = new JLabel(guestName);
-    private JLabel age = new JLabel(guestAge);
     //Create the text fields and set them up.
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
@@ -26,13 +28,15 @@ public class NewGuest extends ApplicationButtons {
 
     }
 
-    public JTextField getUserNameText() {
-        return userNameText;
-    }
 
     public String getUserNameTextInput() {
-        String input = userNameText.getText();
-        return String.valueOf(input);
+        String nameInput = userNameText.getText();
+        return nameInput;
+    }
+
+    public String getAgeTextInput() {
+        String ageInput = ageText.getText();
+        return ageInput;
     }
 
     // MODIFIES: this
@@ -55,13 +59,17 @@ public class NewGuest extends ApplicationButtons {
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         creatingNewGuest.setVisible(true);
         creatingNewGuest.add(mainPanel);
-
         mainPanel.setLayout(new BorderLayout());
 
         creatingNewGuest.setTitle("Create New Guest");
         //creatingNewGuest.pack();
 
-        //Lay out the labels in a mainPanel.
+        // lay out success message on  successPane
+        JPanel successPane = new JPanel(new GridLayout(0, 1));
+        success.setBounds(10, 10, 300, 25);
+        successPane.add(success);
+
+        //Lay out the field labels in a labelPane.
         JPanel labelPane = new JPanel(new GridLayout(0, 1));
         labelPane.add(name);
         labelPane.add(age);
@@ -70,44 +78,21 @@ public class NewGuest extends ApplicationButtons {
         // indicate what kind of inputs ie string for name and int for age
 
         //Layout the text fields in a mainPanel.
-        JPanel fieldPane = new JPanel(new GridLayout(0, 1));
-        fieldPane.add(userNameText);
-        fieldPane.add(ageText);
+        JPanel textPane = new JPanel(new GridLayout(0, 1));
+        textPane.add(userNameText);
+        textPane.add(ageText);
 
-        //Create buttons
-        CreateGuestAction action = new CreateGuestAction();
-        JButton createGuestButton = new JButton(action);
-        createGuestButton.setText("Create Guest");
-        createGuestButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String test = new String(userNameText.getText());
-                action.putValue("Guest Name", test);
-            }
-        });
-        JButton mainMenuButton = new JButton("Main Menu");
+        //create buttons
+        createCreateGuestButton();
+        createMainMenuButton();
 
-        //Layout the buttons on buttonPane
-        JPanel buttonPane = new JPanel(new GridLayout(0,1));
-        buttonPane.add(createGuestButton);
-        buttonPane.add(mainMenuButton);
 
         //Put the panels in this mainPanel, labels on left, text fields on right, buttons on bottom
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        mainPanel.add(successPane, BorderLayout.NORTH);
         mainPanel.add(labelPane, BorderLayout.CENTER);
-        mainPanel.add(fieldPane, BorderLayout.LINE_END);
-        mainPanel.add(buttonPane,BorderLayout.SOUTH);
-
-    }
-
-    private void testDialogBox() {
-        String userName = JOptionPane.showInputDialog("Guest Name", "Age");
-        System.out.println(userName);
-        //String age = JOptionPane.showInputDialog("Age");
-   /*     CreateGuestAction action = new CreateGuestAction();
-        action.putValue("Guest Name", userName);
-        JButton createGuestButton = new JButton(action);
-        createGuestButton.setText("Create Guest");*/
+        mainPanel.add(textPane, BorderLayout.LINE_END);
+        mainPanel.add(buttonPane, BorderLayout.SOUTH);
 
     }
 
@@ -115,8 +100,44 @@ public class NewGuest extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             createNewGuest();
-            //testDialogBox();
 
         }
     }
+
+    //MODIFIES: this
+    //EFFECTS: creates the buttons for the create new guest dialog box
+    private void createCreateGuestButton() {
+        CreateGuestAction action = new CreateGuestAction();
+        JButton createGuestButton = new JButton(action);
+        //Layout the buttons on buttonPane
+        buttonPane.add(createGuestButton);
+        createGuestButton.setText("Create Guest");
+        createGuestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = new String(getUserNameTextInput());
+                String age = new String(getAgeTextInput());
+                if (name.equals("")) {
+                    success.setText("Invalid Input for Name Field!");
+                } else if (age.equals("")) {
+                    success.setText("Invalid Input for Age Field!");
+                } else {
+                    action.putValue("Guest Name", name);
+                    action.putValue("Age", age);
+                }
+            }
+        });
+    }
+
+    public void createMainMenuButton() {
+        JButton mainMenuButton = new JButton("Main Menu");
+        buttonPane.add(mainMenuButton);
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                creatingNewGuest.dispose();
+            }
+        });
+    }
+
 }

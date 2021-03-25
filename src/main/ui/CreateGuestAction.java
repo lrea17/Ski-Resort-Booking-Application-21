@@ -10,7 +10,7 @@ public class CreateGuestAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
         System.out.println(this.getValue("Guest Name"));
         System.out.println(this.getValue("Age"));
-        System.out.println("OOGABOOGA");
+        System.out.println("this test works");
     }
 
 }

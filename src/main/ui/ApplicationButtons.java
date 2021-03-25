@@ -37,9 +37,4 @@ public abstract class ApplicationButtons {
         parent.add(button);
     }
 
-
-
-
-
-
 }

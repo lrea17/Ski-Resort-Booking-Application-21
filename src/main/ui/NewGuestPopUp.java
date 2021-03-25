@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewGuest extends ApplicationButtons {
+public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
     private JDialog creatingNewGuest = new JDialog();
@@ -25,39 +25,8 @@ public class NewGuest extends ApplicationButtons {
     private JButton createGuestButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
 
-
-    public NewGuest(SkiAppGUI editor, JComponent parent) {
-        super(editor, parent);
-
-    }
-
-/*
-    public String getUserNameTextInput() {
-        String nameInput = userNameText.getText();
-        return nameInput;
-    }
-
-    public String getAgeTextInput() {
-        String ageInput = ageText.getText();
-        return ageInput;
-    }*/
-
-    // MODIFIES: this
-    // EFFECTS:  associate button with new ClickHandler
-    @Override
-    protected void addListener() {
-        button.addActionListener(new NewGuestClickHandler());
-    }
-
-    @Override
-    protected void createButton(JComponent parent) {
-        button = new JButton("Create New Guest");
-        button = customizeButton(button);
-        // button.addActionListener(this); - maybe delete here got from youtube vid
-        addToParent(parent);
-    }
-
-    /*private void createNewGuest() {
+    public NewGuestPopUp() {
+        // initializes graphics
         initializeGraphicsCreateNewGuest();
 
         // lay out success message on  successPane
@@ -86,14 +55,22 @@ public class NewGuest extends ApplicationButtons {
         createMainMenuButton();
         buttonPane.add(mainMenuButton);
 
-
         //Put the panels in this mainPanel, labels on left, text fields on right, buttons on bottom
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         mainPanel.add(successPane, BorderLayout.NORTH);
         mainPanel.add(labelPane, BorderLayout.CENTER);
         mainPanel.add(textPane, BorderLayout.LINE_END);
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
+    }
 
+    public String getUserNameTextInput() {
+        String nameInput = userNameText.getText();
+        return nameInput;
+    }
+
+    public String getAgeTextInput() {
+        String ageInput = ageText.getText();
+        return ageInput;
     }
 
     private void initializeGraphicsCreateNewGuest() {
@@ -104,17 +81,9 @@ public class NewGuest extends ApplicationButtons {
         creatingNewGuest.add(mainPanel);
         mainPanel.setLayout(new BorderLayout());
         creatingNewGuest.setTitle("Create New Guest");
-    }*/
-
-    private class NewGuestClickHandler implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //createNewGuest();
-            new NewGuestPopUp();
-        }
     }
 
-   /* //MODIFIES: this
+    //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box
     private void createCreateGuestButton() {
         //Layout the buttons on buttonPane
@@ -147,6 +116,5 @@ public class NewGuest extends ApplicationButtons {
                 creatingNewGuest.setVisible(false);
             }
         });
-    }*/
-
+    }
 }

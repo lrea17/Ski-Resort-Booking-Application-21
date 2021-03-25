@@ -2,8 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +42,10 @@ public class SkiAppGUI extends JFrame {
 
     }
 
-
+// TODO specifications
+    public void setMainMenuVisibility(Boolean b) {
+        setVisible(b);
+    }
 
     // MODIFIES: this
     // EFFECTS:  sets activeTool, currentDrawing to null, and instantiates drawings and tools with ArrayList
@@ -75,7 +76,6 @@ public class SkiAppGUI extends JFrame {
         ApplicationButtons loadWork = new Load(this, buttonArea);
         buttons.add(loadWork);
     }
-
 
 
 }

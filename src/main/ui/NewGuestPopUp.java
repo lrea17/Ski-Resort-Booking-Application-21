@@ -26,6 +26,9 @@ public class NewGuestPopUp extends JPanel {
     private JButton createGuestButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
 
+
+    //TODO THIS IS AT ITS MAX CHECKSTYLE LINES!!
+
     // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp(SkiAppGUI editor) {
         // initializes graphics
@@ -42,9 +45,6 @@ public class NewGuestPopUp extends JPanel {
         JPanel labelPane = new JPanel(new GridLayout(0, 1));
         labelPane.add(name);
         labelPane.add(age);
-
-        //TODO used formatted text field demo to do this - boxes aren't ideal size and may need to
-        // indicate what kind of inputs ie string for name and int for age
 
         //Layout the text fields in a mainPanel.
         JPanel textPane = new JPanel(new GridLayout(0, 1));
@@ -69,9 +69,9 @@ public class NewGuestPopUp extends JPanel {
 
     // EFFECTS: returns the text input into the userNameText field
     public String getUserNameTextInput() {
-        String nameInput = null;
+        String nameInput;
         if (userNameText.getText().isEmpty()) {
-            // do nothing - nameInput stays null
+            nameInput = null;
         } else {
             nameInput = userNameText.getText();
         }
@@ -81,17 +81,13 @@ public class NewGuestPopUp extends JPanel {
 
     // EFFECTS: returns the text input into the ageText field
     public String getAgeTextInput() {
-        String ageInput = null;
+        String ageInput;
         if (ageText.getText().isEmpty()) {
-            // do nothing - ageInput stays null
+            ageInput = null;
         } else {
             ageInput = ageText.getText();
         }
         return ageInput;
-    }
-
-    public void setSuccessMessage(String s) {
-        success = new JLabel(s, SwingConstants.CENTER);
     }
 
     // MODIFIES: this
@@ -118,13 +114,14 @@ public class NewGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String name = getUserNameTextInput();
                 String age = getAgeTextInput();
-                if (name == null || name == "") {
+                if (name == null || name.equals("")) {
                     success.setText("Invalid Input for Name Field!");
-                } else if (age == null || age == "") {
+                } else if (age == null || age.equals("")) {
                     success.setText("Invalid Input for Age Field!");
                 } else {
                     action.putValue("Guest Name", name);
                     action.putValue("Age", age);
+                    addGuestInfoToEditor();
                     userNameText.setText("");
                     ageText.setText("");
                 }
@@ -143,5 +140,22 @@ public class NewGuestPopUp extends JPanel {
                 editor.setVisible(true);
             }
         });
+    }
+
+    public void addGuestInfoToEditor() {
+        JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
+        //int newWidth = WIDTH + 200;
+        //int newHeight = HEIGHT + 200;
+        //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
+        JLabel title = new JLabel("Last Guest Created:");
+        Font font = new Font("Arial", Font.BOLD,12);
+        title.setFont(font);
+        JLabel guestName = new JLabel("Name: " + getUserNameTextInput());
+        JLabel guestAge = new JLabel("Age: " + getAgeTextInput());
+        guestInfoPane.add(title);
+        guestInfoPane.add(guestName);
+        guestInfoPane.add(guestAge);
+        editor.add(guestInfoPane, BorderLayout.EAST);
+        //JLabel accountID = new JLabel("Account ID: " ) - add guest info her thats created when we create the guest
     }
 }

@@ -14,8 +14,8 @@ public class SkiAppGUI extends JFrame {
 
     private JLabel guests;
 
-    public static final int WIDTH = 900;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 400;
 
     private List<ApplicationButtons> buttons;
 

@@ -11,7 +11,7 @@ public class NewGuestPopUp extends JPanel {
     private JDialog creatingNewGuest = new JDialog();
     private JPanel mainPanel;
     //creates the labels
-    private JLabel success = new JLabel("", SwingConstants.CENTER);
+    private JLabel success;
     private JLabel name = new JLabel(guestName);
     private JLabel age = new JLabel(guestAge);
     //Strings for the labels
@@ -32,6 +32,7 @@ public class NewGuestPopUp extends JPanel {
 
         // lay out success message on  successPane
         JPanel successPane = new JPanel(new GridLayout(0, 1));
+        success = new JLabel("", SwingConstants.CENTER);
         success.setBounds(10, 10, 300, 25);
         successPane.add(success);
 
@@ -76,6 +77,10 @@ public class NewGuestPopUp extends JPanel {
         return ageInput;
     }
 
+    public void setSuccessMessage(String s) {
+        success = new JLabel(s, SwingConstants.CENTER);
+    }
+
     // MODIFIES: this
     // EFFECTS: initializes the graphics for the pop up window
     private void initializeGraphicsCreateNewGuest() {
@@ -113,6 +118,7 @@ public class NewGuestPopUp extends JPanel {
             }
         });
     }
+
 
 /*    //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box

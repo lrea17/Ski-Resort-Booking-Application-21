@@ -6,9 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewGuest extends ApplicationButtons {
+    private SkiAppGUI editor;
 
     public NewGuest(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
+        this.editor = editor;
     }
 
     // MODIFIES: this
@@ -16,6 +18,7 @@ public class NewGuest extends ApplicationButtons {
     @Override
     protected void addListener() {
         button.addActionListener(new NewGuestClickHandler());
+
     }
 
 
@@ -30,7 +33,8 @@ public class NewGuest extends ApplicationButtons {
     private class NewGuestClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            new NewGuestPopUp();
+            editor.setVisible(false);
+            new NewGuestPopUp(editor);
         }
     }
 

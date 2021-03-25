@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
+    private SkiAppGUI editor;
     private JDialog creatingNewGuest = new JDialog();
     private JPanel mainPanel;
     //creates the labels
@@ -26,8 +27,9 @@ public class NewGuestPopUp extends JPanel {
     private JButton mainMenuButton = new JButton("Main Menu");
 
     // EFFECTS: constructor for the new guest pop up window
-    public NewGuestPopUp() {
+    public NewGuestPopUp(SkiAppGUI editor) {
         // initializes graphics
+        this.editor = editor;
         initializeGraphicsCreateNewGuest();
 
         // lay out success message on  successPane
@@ -131,28 +133,6 @@ public class NewGuestPopUp extends JPanel {
     }
 
 
-/*    //MODIFIES: this
-    //EFFECTS: creates the buttons for the create new guest dialog box
-    private void createCreateGuestButton() {
-        createGuestButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = new String(getUserNameTextInput());
-                String age = new String(getAgeTextInput());
-                if (name != null && age != null) {
-                    action.putValue("Guest Name", name);
-                    action.putValue("Age", age);
-                    userNameText.setText("");
-                    ageText.setText("");
-                } else if (name.equals("")) {
-                    success.setText("Invalid Input for Name Field!");
-                } else if (age.equals("")) {
-                    success.setText("Invalid Input for Age Field!");
-                }
-            }
-        });
-    }*/
-
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane
     public void createMainMenuButton() {
@@ -160,6 +140,7 @@ public class NewGuestPopUp extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 creatingNewGuest.setVisible(false);
+                editor.setVisible(true);
             }
         });
     }

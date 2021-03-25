@@ -6,20 +6,18 @@ public abstract class ApplicationButtons {
 
     protected JButton button;
     protected SkiAppGUI editor;
-    private boolean active; //TODO not sure if i need active
 
     public ApplicationButtons(SkiAppGUI editor, JComponent parent) {
         this.editor = editor;
         createButton(parent);
         addToParent(parent);
-        //active = false;
         addListener();
     }
 
-    // EFFECTS: adds a listener for this tool
+    // EFFECTS: adds a listener for this button
     protected abstract void addListener();
 
-    // EFFECTS: creates button to activate tool
+    // EFFECTS: creates button and activates it
     protected abstract void createButton(JComponent parent);
 
     // MODIFIES: this

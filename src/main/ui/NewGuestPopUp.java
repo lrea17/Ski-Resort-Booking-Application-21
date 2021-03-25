@@ -25,6 +25,7 @@ public class NewGuestPopUp extends JPanel {
     private JButton createGuestButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
 
+    // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp() {
         // initializes graphics
         initializeGraphicsCreateNewGuest();
@@ -63,16 +64,20 @@ public class NewGuestPopUp extends JPanel {
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
     }
 
+    // EFFECTS: returns the text input into the userNameText field
     public String getUserNameTextInput() {
         String nameInput = userNameText.getText();
         return nameInput;
     }
 
+    // EFFECTS: returns the text input into the ageText field
     public String getAgeTextInput() {
         String ageInput = ageText.getText();
         return ageInput;
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes the graphics for the pop up window
     private void initializeGraphicsCreateNewGuest() {
         mainPanel = new JPanel();
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -86,8 +91,6 @@ public class NewGuestPopUp extends JPanel {
     //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box
     private void createCreateGuestButton() {
-        //Layout the buttons on buttonPane
-
         createGuestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

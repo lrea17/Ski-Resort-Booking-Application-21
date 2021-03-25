@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 public class CreateGuestAction extends AbstractAction {
     private String nameString;
     private String ageString;
-    private NewGuestPopUp newGuestPopUp;
 
 
     //TODO how do i make this so that it only "does something" if the guest name field
@@ -18,13 +17,12 @@ public class CreateGuestAction extends AbstractAction {
         //System.out.println(this.getValue("Guest Name"));
         //System.out.println(this.getValue("Age"));
         //System.out.println("this test works");
-        if (checkValueNameString() == "") {
-            newGuestPopUp.setSuccessMessage("Invalid Input for Name Field!");
+        if (checkValueNameString() == "no name") {
             System.out.println("name field invalid");
-        } else if (checkValueAgeString() == "") {
-            newGuestPopUp.setSuccessMessage("Invalid Input for Age Field!");
+        } else if (checkValueAgeString() == "no age") {
             System.out.println("age value invalid");
         } else {
+            //TODO here is where I put what i want it to do on the back end !!!
             System.out.println("everything worked right");
             System.out.println(checkValueNameString());
             System.out.println(checkValueAgeString());
@@ -33,7 +31,7 @@ public class CreateGuestAction extends AbstractAction {
 
     public String checkValueNameString() {
         if (this.getValue("Guest Name") == null) {
-            nameString = "...";
+            nameString = "no name";
         } else {
             nameString = this.getValue("Guest Name").toString();
         }
@@ -42,7 +40,7 @@ public class CreateGuestAction extends AbstractAction {
 
     public String checkValueAgeString() {
         if (this.getValue("Age") == null) {
-            ageString = "...";
+            ageString = "no age";
         } else {
             ageString = this.getValue("Age").toString();
         }

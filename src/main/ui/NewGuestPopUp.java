@@ -52,7 +52,7 @@ public class NewGuestPopUp extends JPanel {
         //create buttons
         JPanel buttonPane = new JPanel(new GridLayout(0, 1));
         createGuestButton.setText("Create Guest");
-        createCreateGuestButton();
+        createGuestButtonActionListener();
         buttonPane.add(createGuestButton);
         createMainMenuButton();
         buttonPane.add(mainMenuButton);
@@ -67,13 +67,24 @@ public class NewGuestPopUp extends JPanel {
 
     // EFFECTS: returns the text input into the userNameText field
     public String getUserNameTextInput() {
-        String nameInput = userNameText.getText();
+        String nameInput = null;
+        if (userNameText.getText().isEmpty()) {
+            // do nothing - nameInput stays null
+        } else {
+            nameInput = userNameText.getText();
+        }
         return nameInput;
     }
 
+
     // EFFECTS: returns the text input into the ageText field
     public String getAgeTextInput() {
-        String ageInput = ageText.getText();
+        String ageInput = null;
+        if (ageText.getText().isEmpty()) {
+            // do nothing - ageInput stays null
+        } else {
+            ageInput = ageText.getText();
+        }
         return ageInput;
     }
 
@@ -99,12 +110,12 @@ public class NewGuestPopUp extends JPanel {
     // TODO try to move this action performed into create guest action
     //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box
-    private void createCreateGuestButton() {
+    private void createGuestButtonActionListener() {
         createGuestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = new String(getUserNameTextInput());
-                String age = new String(getAgeTextInput());
+                String name = getUserNameTextInput();
+                String age = getAgeTextInput();
                 if (name == null || name == "") {
                     success.setText("Invalid Input for Name Field!");
                 } else if (age == null || age == "") {

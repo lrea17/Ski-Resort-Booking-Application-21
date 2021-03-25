@@ -88,6 +88,10 @@ public class NewGuestPopUp extends JPanel {
         creatingNewGuest.setTitle("Create New Guest");
     }
 
+
+    //TODO trying to find a way so that the action listener only works if it meet the criteria of having
+    // text filled into both boxes
+    // TODO try to move this action performed into create guest action
     //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box
     private void createCreateGuestButton() {
@@ -96,19 +100,41 @@ public class NewGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String name = new String(getUserNameTextInput());
                 String age = new String(getAgeTextInput());
-                if (name.equals("")) {
+                if (name == null || name == "") {
                     success.setText("Invalid Input for Name Field!");
-                } else if (age.equals("")) {
+                } else if (age == null || age == "") {
                     success.setText("Invalid Input for Age Field!");
                 } else {
                     action.putValue("Guest Name", name);
                     action.putValue("Age", age);
-                    name = "";
-                    age = "";
+                    userNameText.setText("");
+                    ageText.setText("");
                 }
             }
         });
     }
+
+/*    //MODIFIES: this
+    //EFFECTS: creates the buttons for the create new guest dialog box
+    private void createCreateGuestButton() {
+        createGuestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = new String(getUserNameTextInput());
+                String age = new String(getAgeTextInput());
+                if (name != null && age != null) {
+                    action.putValue("Guest Name", name);
+                    action.putValue("Age", age);
+                    userNameText.setText("");
+                    ageText.setText("");
+                } else if (name.equals("")) {
+                    success.setText("Invalid Input for Name Field!");
+                } else if (age.equals("")) {
+                    success.setText("Invalid Input for Age Field!");
+                }
+            }
+        });
+    }*/
 
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane

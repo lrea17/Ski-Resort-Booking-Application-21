@@ -1,4 +1,6 @@
-package ui;
+package ui.newguest;
+
+import ui.SkiAppGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +24,7 @@ public class NewGuestPopUp extends JPanel {
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
     // Buttons
-    private NewCreateGuestAction action = new NewCreateGuestAction();
+    private NewGuestAction action = new NewGuestAction();
     private JButton createGuestButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
 
@@ -33,7 +35,7 @@ public class NewGuestPopUp extends JPanel {
     public NewGuestPopUp(SkiAppGUI editor) {
         // initializes graphics
         this.editor = editor;
-        initializeGraphicsCreateNewGuest();
+        initializeGraphics();
 
         // lay out success message on  successPane
         JPanel successPane = new JPanel(new GridLayout(0, 1));
@@ -92,7 +94,7 @@ public class NewGuestPopUp extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: initializes the graphics for the pop up window
-    private void initializeGraphicsCreateNewGuest() {
+    private void initializeGraphics() {
         mainPanel = new JPanel();
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -156,6 +158,6 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(guestName);
         guestInfoPane.add(guestAge);
         editor.add(guestInfoPane, BorderLayout.EAST);
-        //JLabel accountID = new JLabel("Account ID: " ) - add guest info her thats created when we create the guest
+        //JLabel accountID = new JLabel("Account ID: " ) - add guest info here that's created when we create the guest
     }
 }

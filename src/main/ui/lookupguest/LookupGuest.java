@@ -1,4 +1,7 @@
-package ui;
+package ui.lookupguest;
+
+import ui.ApplicationButtons;
+import ui.SkiAppGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +30,7 @@ public class LookupGuest extends ApplicationButtons {
     private class LookupNewGuestClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            new LookUpGuestPopUp(editor);
         }
     }
 }

@@ -1,5 +1,10 @@
 package ui;
 
+import ui.loadfile.Load;
+import ui.lookupguest.LookupGuest;
+import ui.newguest.NewGuest;
+import ui.savefile.Save;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

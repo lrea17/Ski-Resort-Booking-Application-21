@@ -1,7 +1,9 @@
-package ui;
+package ui.newguest;
+
+import ui.ApplicationButtons;
+import ui.SkiAppGUI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

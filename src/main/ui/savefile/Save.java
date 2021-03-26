@@ -1,4 +1,7 @@
-package ui;
+package ui.savefile;
+
+import ui.ApplicationButtons;
+import ui.SkiAppGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

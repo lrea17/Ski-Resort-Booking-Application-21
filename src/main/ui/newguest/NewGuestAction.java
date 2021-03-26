@@ -1,9 +1,9 @@
-package ui;
+package ui.newguest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class NewCreateGuestAction extends AbstractAction {
+public class NewGuestAction extends AbstractAction {
     private String nameString;
     private String ageString;
 

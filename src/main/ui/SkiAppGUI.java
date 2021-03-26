@@ -35,31 +35,26 @@ public class SkiAppGUI extends JFrame {
         createButtons();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //guests = new JLabel("Number of guests: 0");
+        //guests = new JLabel("Number of guests: 0"); - don't think i need this
         this.pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
     }
 
-// TODO specifications
-    public void setMainMenuVisibility(Boolean b) {
-        setVisible(b);
-    }
-
     // MODIFIES: this
     // EFFECTS:  sets activeTool, currentDrawing to null, and instantiates drawings and tools with ArrayList
     //           this method is called by the DrawingEditor constructor
     private void initializeFields() {
-        //activeTool = null;
-        //currentDrawing = null;
-        buttons = new ArrayList<ApplicationButtons>();
+        buttons = new ArrayList();
     }
 
     // MODIFIES: this
     // EFFECTS: a helper method which declares and instantiates all buttons
     private void createButtons() {
         JPanel buttonArea = new JPanel();
+        //TODO set colour scheme
+        //buttonArea.setBackground(Color.GREEN);
         buttonArea.setLayout(new GridLayout(0, 1));
         buttonArea.setSize(new Dimension(2, 10));
         add(buttonArea, BorderLayout.CENTER);

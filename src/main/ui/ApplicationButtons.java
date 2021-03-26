@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 
 public abstract class ApplicationButtons {
 
@@ -26,6 +28,7 @@ public abstract class ApplicationButtons {
         button.setBorderPainted(true);
         button.setFocusPainted(true);
         button.setContentAreaFilled(true);
+
         return button;
     }
 

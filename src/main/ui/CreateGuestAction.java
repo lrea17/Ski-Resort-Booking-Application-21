@@ -9,10 +9,10 @@ public class CreateGuestAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (checkValueNameString() == "no name") {
+        if (checkValueNameString().equals("no name")) {
             // this is a test so i know its doing what its suppose to
             System.out.println("name field invalid");
-        } else if (checkValueAgeString() == "no age") {
+        } else if (checkValueAgeString().equals("no age")) {
             // this is a test so i know its doing what its suppose to
             System.out.println("age value invalid");
         } else {

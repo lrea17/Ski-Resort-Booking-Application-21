@@ -56,7 +56,7 @@ public class NewGuestPopUp extends JPanel {
         createGuestButton.setText("Create Guest");
         createGuestButtonActionListener();
         buttonPane.add(createGuestButton);
-        createMainMenuButton();
+        mainMenuButtonActionListener();
         buttonPane.add(mainMenuButton);
 
         //Put the panels in this mainPanel, labels on left, text fields on right, buttons on bottom
@@ -132,7 +132,7 @@ public class NewGuestPopUp extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane
-    public void createMainMenuButton() {
+    public void mainMenuButtonActionListener() {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

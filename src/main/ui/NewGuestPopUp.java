@@ -22,7 +22,7 @@ public class NewGuestPopUp extends JPanel {
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
     // Buttons
-    private CreateGuestAction action = new CreateGuestAction();
+    private NewCreateGuestAction action = new NewCreateGuestAction();
     private JButton createGuestButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
 

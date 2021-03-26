@@ -18,9 +18,7 @@ public class NewGuest extends ApplicationButtons {
     @Override
     protected void addListener() {
         button.addActionListener(new NewGuestClickHandler());
-
     }
-
 
     // EFFECTS: creates button and activates it
     @Override

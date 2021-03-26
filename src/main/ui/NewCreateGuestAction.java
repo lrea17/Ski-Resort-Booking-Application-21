@@ -3,7 +3,7 @@ package ui;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class CreateGuestAction extends AbstractAction {
+public class NewCreateGuestAction extends AbstractAction {
     private String nameString;
     private String ageString;
 

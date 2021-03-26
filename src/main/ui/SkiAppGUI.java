@@ -65,6 +65,9 @@ public class SkiAppGUI extends JFrame {
         ApplicationButtons cancelRes = new CancelReservation(this, buttonArea);
         buttons.add(cancelRes);
 
+        ApplicationButtons lookUpGuest = new LookUpGuest(this, buttonArea);
+        buttons.add(lookUpGuest);
+
         ApplicationButtons saveWork = new Save(this, buttonArea);
         buttons.add(saveWork);
 

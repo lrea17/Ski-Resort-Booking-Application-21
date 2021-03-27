@@ -45,9 +45,14 @@ public class SkiAppGUI extends JFrame {
         accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        init();
         initializeFields();
         initializeGraphics();
 
+    }
+
+    public Accounts getAccounts() {
+        return accounts;
     }
 
     // MODIFIES: this
@@ -65,6 +70,12 @@ public class SkiAppGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes accounts (list of guests)
+    private void init() {
+        input = new Scanner(System.in);
     }
 
     // MODIFIES: this

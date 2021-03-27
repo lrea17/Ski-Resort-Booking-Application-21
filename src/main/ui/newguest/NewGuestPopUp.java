@@ -1,12 +1,15 @@
 package ui.newguest;
 
+import ski.model.Guest;
+import ski.model.Pass;
 import ui.SkiAppGUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
@@ -125,18 +128,41 @@ public class NewGuestPopUp extends JPanel {
                 } else if (age == null || age.equals("")) {
                     success.setText("Invalid Input for Age Field!");
                     NewGuest.playSound(NewGuest.getErrorSound());
+                } else if (Integer.parseInt(age) < 0 || Integer.parseInt(age) > 150) {
+                    success.setText("Invalid Input for Age Field!");
                 } else {
+                    doNewGuest();
                     System.out.println(getUserNameTextInput());
                     System.out.println(getAgeTextInput());
                     //action.putValue("Guest Name", name);
                     //action.putValue("Age", age);
-                    addGuestInfoToEditor();
+                    //addGuestInfoToEditor(); - made new method!
                     userNameText.setText("");
                     ageText.setText("");
                 }
             }
         });
     }
+
+    // REQUIRES: guestName has a non-zero length and age is a
+    //           non-zero length between 0 - 15
+    // MODIFIES: this
+    // EFFECTS: conducts a creation of a new guests & books them a reservation
+    private void doNewGuest() {
+        String name = getUserNameTextInput();
+        int age = Integer.parseInt(getAgeTextInput());
+        Guest newGuest = new Guest(name, age);
+        newGuest.makeReservation();
+        int id = newGuest.getID();
+        String passType = newGuest.getPassType();
+        ArrayList<Pass> usedPasses = newGuest.getListOfExpiredPasses();
+        System.out.println(usedPasses);
+        editor.getAccounts().addGuest(newGuest);
+        addNewGuestInfoToEditor(name, id, age, passType, usedPasses);
+
+
+    }
+
 
 
     // MODIFIES: this
@@ -151,6 +177,30 @@ public class NewGuestPopUp extends JPanel {
                 NewGuest.playSound(NewGuest.getClickSound());
             }
         });
+    }
+
+    //TODO doing a test with this
+    public void addNewGuestInfoToEditor(String name, int accountId, int age, String passType, ArrayList<Pass> expiredPasses) {
+        editor.removePhotoPanel();
+        JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
+        //int newWidth = WIDTH + 200;
+        //int newHeight = HEIGHT + 200;
+        //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
+        JLabel title = new JLabel("Last Guest Created:");
+        Font font = new Font("Arial", Font.BOLD, 12);
+        title.setFont(font);
+        JLabel guestName = new JLabel("Name: " + name);
+        JLabel accountID = new JLabel("Account ID: " + accountId);
+        JLabel guestAge = new JLabel("Age: " + age);
+        JLabel pass = new JLabel("Pass Type: " + passType);
+        JLabel usedPasses = new JLabel("Used passes: " + expiredPasses);
+        guestInfoPane.add(title);
+        guestInfoPane.add(guestName);
+        guestInfoPane.add(accountID);
+        guestInfoPane.add(guestAge);
+        guestInfoPane.add(pass);
+        guestInfoPane.add(usedPasses);
+        editor.add(guestInfoPane, BorderLayout.EAST);
     }
 
     public void addGuestInfoToEditor() {

@@ -1,8 +1,5 @@
 package ski.model;
 
-import org.json.JSONObject;
-import persistence.Writable;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -74,6 +71,12 @@ public class Pass {
             assignedPassType = invalid;
         }
         return assignedPassType;
+    }
+
+    @Override
+    public String toString() {
+        return "Pass Number: " + this.getPassNum() + "\n Pass Type: " + this.getPassType()
+                + "\n Expired: " + this.isPassExpired();
     }
 
     // MODIFIES: this

@@ -79,6 +79,7 @@ public class Guest implements Writable {
         this.age = age;
     }
 
+
     // MODIFIES: this passType
     // EFFECTS: sets the passType that guest requires depending on guest age
     public String setPassType() {

@@ -180,7 +180,8 @@ public class NewGuestPopUp extends JPanel {
     }
 
     //TODO doing a test with this
-    public void addNewGuestInfoToEditor(String name, int accountId, int age, String passType, ArrayList<Pass> expiredPasses) {
+    public void addNewGuestInfoToEditor(String name, int accountId, int age,
+                                        String passType, ArrayList<Pass> expiredPasses) {
         editor.removePhotoPanel();
         JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
         //int newWidth = WIDTH + 200;
@@ -201,24 +202,6 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
         editor.add(guestInfoPane, BorderLayout.EAST);
-    }
-
-    public void addGuestInfoToEditor() {
-        editor.removePhotoPanel();
-        JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
-        //int newWidth = WIDTH + 200;
-        //int newHeight = HEIGHT + 200;
-        //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
-        JLabel title = new JLabel("Last Guest Created:");
-        Font font = new Font("Arial", Font.BOLD, 12);
-        title.setFont(font);
-        JLabel guestName = new JLabel("Name: " + getUserNameTextInput());
-        JLabel guestAge = new JLabel("Age: " + getAgeTextInput());
-        guestInfoPane.add(title);
-        guestInfoPane.add(guestName);
-        guestInfoPane.add(guestAge);
-        editor.add(guestInfoPane, BorderLayout.EAST);
-        //JLabel accountID = new JLabel("Account ID: " ) - add guest info here that's created when we create the guest
     }
 
 

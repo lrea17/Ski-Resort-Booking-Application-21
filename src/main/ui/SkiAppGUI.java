@@ -59,7 +59,7 @@ public class SkiAppGUI extends JFrame {
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new
-                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/whistlerPhoto1.jpeg"));
+                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/moountain2.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

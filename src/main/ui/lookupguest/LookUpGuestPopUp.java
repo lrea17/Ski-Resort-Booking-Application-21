@@ -2,18 +2,19 @@ package ui.lookupguest;
 
 import ski.model.Guest;
 import ui.SkiAppGUI;
-import ui.newguest.NewGuestAction;
+import ui.newguest.NewGuest;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import static java.lang.Integer.parseInt;
 import static ski.model.Accounts.lookupGuest;
 
 public class LookUpGuestPopUp extends JPanel {
-    private static final int WIDTH = 350;
+    private static final int WIDTH = 400;
     private static final int HEIGHT = 200;
     private SkiAppGUI editor;
     private JDialog lookupGuest = new JDialog();
@@ -56,6 +57,13 @@ public class LookUpGuestPopUp extends JPanel {
         mainMenuButtonActionListener();
         buttonPane.add(mainMenuButton);
 
+        //Put the panels in this mainPanel, labels on left, text fields on right, buttons on bottom
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        mainPanel.add(successPane, BorderLayout.NORTH);
+        mainPanel.add(labelPane, BorderLayout.CENTER);
+        mainPanel.add(textPane, BorderLayout.LINE_END);
+        mainPanel.add(buttonPane, BorderLayout.SOUTH);
+
     }
 
     // EFFECTS: returns the text input into the ageText field
@@ -75,19 +83,18 @@ public class LookUpGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String id = getIdTextInput();
                 try {
+                    // TODO here we try to look up our guest - i need to connect this to the back end no?
                     Guest currentGuest = lookupGuest(parseInt(id));
+                    if (currentGuest == null) {
+                        System.out.println("This guest does not exist in our system...");
+                    } else {
+                        //TODO here is where i need an if else case that check to see
+                        // that this exists in our list of guests!!
+                        action.putValue("Guest ID", id);
+                        idText.setText("");
+                    }
                 } catch (NumberFormatException exception) {
                     success.setText("Invalid input for guest ID!");
-                }
-                if (id == null || id.equals("")) {
-                    success.setText("Invalid input for guest ID!");
-                    //TODO here is where i need an if else case that check to see
-                    // that this exists in our list of guests!!
-                } else if () {
-                    success.setText("This guest does not exist in our system...");
-                } else {
-                    action.putValue("Guest ID", id);
-                    idText.setText("");
                 }
             }
         });
@@ -105,6 +112,7 @@ public class LookUpGuestPopUp extends JPanel {
         lookupGuest.setTitle("Lookup Guest");
     }
 
+
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane
     public void mainMenuButtonActionListener() {
@@ -113,7 +121,9 @@ public class LookUpGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 lookupGuest.setVisible(false);
                 editor.setVisible(true);
+                LookupGuest.playSound(LookupGuest.getClickSound());
             }
         });
     }
+
 }

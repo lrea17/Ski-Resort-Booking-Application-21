@@ -34,6 +34,7 @@ public class NewGuest extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             editor.setVisible(false);
+            NewGuest.playSound(getClickSound());
             new NewGuestPopUp(editor);
         }
     }

@@ -31,6 +31,8 @@ public class LookupGuest extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             new LookUpGuestPopUp(editor);
+            playSound(getClickSound());
+            editor.setVisible(false);
         }
     }
 }

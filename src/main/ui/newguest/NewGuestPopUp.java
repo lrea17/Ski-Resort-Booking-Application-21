@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
@@ -114,13 +115,18 @@ public class NewGuestPopUp extends JPanel {
         createGuestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                NewGuest.playSound(NewGuest.getClickSound());
                 String name = getUserNameTextInput();
                 String age = getAgeTextInput();
                 if (name == null || name.equals("")) {
                     success.setText("Invalid Input for Name Field!");
+                    NewGuest.playSound(NewGuest.getErrorSound());
                 } else if (age == null || age.equals("")) {
                     success.setText("Invalid Input for Age Field!");
+                    NewGuest.playSound(NewGuest.getErrorSound());
                 } else {
+                    System.out.println(getUserNameTextInput());
+                    System.out.println(getAgeTextInput());
                     action.putValue("Guest Name", name);
                     action.putValue("Age", age);
                     addGuestInfoToEditor();
@@ -135,11 +141,13 @@ public class NewGuestPopUp extends JPanel {
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane
     public void mainMenuButtonActionListener() {
+
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 creatingNewGuest.setVisible(false);
                 editor.setVisible(true);
+                NewGuest.playSound(NewGuest.getClickSound());
             }
         });
     }
@@ -150,7 +158,7 @@ public class NewGuestPopUp extends JPanel {
         //int newHeight = HEIGHT + 200;
         //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
         JLabel title = new JLabel("Last Guest Created:");
-        Font font = new Font("Arial", Font.BOLD,12);
+        Font font = new Font("Arial", Font.BOLD, 12);
         title.setFont(font);
         JLabel guestName = new JLabel("Name: " + getUserNameTextInput());
         JLabel guestAge = new JLabel("Age: " + getAgeTextInput());
@@ -160,4 +168,6 @@ public class NewGuestPopUp extends JPanel {
         editor.add(guestInfoPane, BorderLayout.EAST);
         //JLabel accountID = new JLabel("Account ID: " ) - add guest info here that's created when we create the guest
     }
+
+
 }

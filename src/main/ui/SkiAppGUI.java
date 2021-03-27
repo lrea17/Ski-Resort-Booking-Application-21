@@ -29,6 +29,7 @@ public class SkiAppGUI extends JFrame {
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private JPanel infoPanel =  new JPanel();
 
 
     private JLabel guests;
@@ -105,7 +106,15 @@ public class SkiAppGUI extends JFrame {
             e.printStackTrace();
         }
         photoPanel = new JLabel(new ImageIcon(myPicture));
-        add(photoPanel, BorderLayout.EAST);
+        infoPanel.add(photoPanel);
+        add(infoPanel, BorderLayout.EAST);
+    }
+
+    public void setPhotoPanel(JPanel panel) {
+        //infoPanel.remove(photoPanel);
+        infoPanel.removeAll();
+        infoPanel.add(panel);
+        infoPanel.setVisible(true);
     }
 
     public void removePhotoPanel() {

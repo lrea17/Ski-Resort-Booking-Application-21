@@ -35,6 +35,7 @@ public class CancelReservation extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             LookupGuest.playSound(LookupGuest.getClickSound());
+            //doCancelReservation();
         }
     }
 

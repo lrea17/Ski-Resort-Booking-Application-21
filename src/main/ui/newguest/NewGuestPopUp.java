@@ -181,13 +181,15 @@ public class NewGuestPopUp extends JPanel {
                 creatingNewGuest.setVisible(false);
                 editor.setVisible(true);
                 NewGuest.playSound(NewGuest.getClickSound());
+                guestInfoPane.setVisible(true);
+
             }
         });
     }
 
     //TODO this keeps adding panels to the main editor for each guest, we just want it to show the last
     public void showUpdatedGuestInfo() {
-        editor.removePhotoPanel();
+        //editor.removePhotoPanel();
         //int newWidth = WIDTH + 200;
         //int newHeight = HEIGHT + 200;
         //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
@@ -202,9 +204,9 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(usedPasses);
         //increaseDimensions(WIDTH, HEIGHT);
         //creatingNewGuest.add(guestInfoPane, BorderLayout.EAST);
-        editor.add(guestInfoPane, BorderLayout.EAST);
-        guestInfoPane.setVisible(true);
-
+        //editor.add(guestInfoPane, BorderLayout.EAST);
+        editor.setPhotoPanel(guestInfoPane);
+        //TODO rename the method above
 
     }
 

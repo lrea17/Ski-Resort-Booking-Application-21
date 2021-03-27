@@ -200,6 +200,8 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(newGuestAge);
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
+        //increaseDimensions(WIDTH, HEIGHT);
+        //creatingNewGuest.add(guestInfoPane, BorderLayout.EAST);
         editor.add(guestInfoPane, BorderLayout.EAST);
         guestInfoPane.setVisible(true);
 
@@ -219,7 +221,14 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
         guestInfoPane.setVisible(false);
-        editor.add(guestInfoPane, BorderLayout.EAST);
+
+        //editor.add(guestInfoPane, BorderLayout.EAST);
+    }
+
+    public void increaseDimensions(int width, int height) {
+        int w = width * 2;
+        int h = height * 2;
+        creatingNewGuest.setMinimumSize(new Dimension(w, h));
     }
 
     public void updateLabelsForMostRecentGuest(String name, int accountId, int age,

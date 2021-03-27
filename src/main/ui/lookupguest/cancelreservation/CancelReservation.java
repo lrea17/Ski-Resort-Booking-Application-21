@@ -1,5 +1,6 @@
 package ui.lookupguest.cancelreservation;
 
+import ski.model.Guest;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 import ui.lookupguest.LookupGuest;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 // cancel a reservation for the guest that has been looked up
 public class CancelReservation extends ApplicationButtons {
     private SkiAppGUI editor;
+    private Guest guest;
 
     public CancelReservation(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
@@ -35,4 +37,16 @@ public class CancelReservation extends ApplicationButtons {
             LookupGuest.playSound(LookupGuest.getClickSound());
         }
     }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: cancels and existing reservation for a guest
+    private void doCancelReservation() {
+        guest.cancelReservation();
+        System.out.println("Cancellation successful for " + guest.getName());
+    }
+
 }

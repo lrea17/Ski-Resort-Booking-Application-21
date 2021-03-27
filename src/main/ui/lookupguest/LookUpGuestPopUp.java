@@ -177,7 +177,6 @@ public class LookUpGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 lookupGuest.setVisible(false);
                 editor.setVisible(true);
-
                 LookupGuest.playSound(LookupGuest.getClickSound());
             }
         });

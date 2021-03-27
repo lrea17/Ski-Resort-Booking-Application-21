@@ -55,6 +55,22 @@ public class SkiAppGUI extends JFrame {
         return accounts;
     }
 
+    public void setAccounts(Accounts accounts) {
+        this.accounts = accounts;
+    }
+
+    public JsonReader getJsonReader() {
+        return jsonReader;
+    }
+
+    public JsonWriter getJsonWriter() {
+        return jsonWriter;
+    }
+
+    public String getJsonStore() {
+        return JSON_STORE;
+    }
+
     // MODIFIES: this
     // EFFECTS:  draws the JFrame window where this DrawingEditor will operate, and populates the tools to be used
     //           to manipulate this drawing
@@ -94,6 +110,10 @@ public class SkiAppGUI extends JFrame {
 
     public void removePhotoPanel() {
         remove(photoPanel);
+    }
+
+    public void photoPanelVisible() {
+        add(photoPanel);
     }
 
     // MODIFIES: this

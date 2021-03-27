@@ -25,8 +25,9 @@ public class NewGuestPopUp extends JPanel {
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
     // Buttons
+    //TODO maybe i dont need the action class
     private NewGuestAction action = new NewGuestAction();
-    private JButton createGuestButton = new JButton(action);
+    private JButton createGuestButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
 
 
@@ -127,8 +128,8 @@ public class NewGuestPopUp extends JPanel {
                 } else {
                     System.out.println(getUserNameTextInput());
                     System.out.println(getAgeTextInput());
-                    action.putValue("Guest Name", name);
-                    action.putValue("Age", age);
+                    //action.putValue("Guest Name", name);
+                    //action.putValue("Age", age);
                     addGuestInfoToEditor();
                     userNameText.setText("");
                     ageText.setText("");

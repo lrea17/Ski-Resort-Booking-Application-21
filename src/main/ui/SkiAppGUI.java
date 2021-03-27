@@ -72,8 +72,7 @@ public class SkiAppGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:  sets activeTool, currentDrawing to null, and instantiates drawings and tools with ArrayList
-    //           this method is called by the DrawingEditor constructor
+    // EFFECTS:  instantiates buttons with ArrayList
     private void initializeFields() {
         buttons = new ArrayList();
     }
@@ -90,9 +89,6 @@ public class SkiAppGUI extends JFrame {
 
         ApplicationButtons newGuest = new NewGuest(this, buttonArea);
         buttons.add(newGuest);
-
-        ApplicationButtons cancelRes = new CancelReservation(this, buttonArea);
-        buttons.add(cancelRes);
 
         ApplicationButtons lookUpGuest = new LookupGuest(this, buttonArea);
         buttons.add(lookUpGuest);

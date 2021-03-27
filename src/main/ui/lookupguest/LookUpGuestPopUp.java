@@ -2,16 +2,16 @@ package ui.lookupguest;
 
 import ski.model.Guest;
 import ui.ApplicationButtons;
-import ui.CancelReservation;
+import ui.lookupguest.cancelreservation.CancelReservation;
 import ui.SkiAppGUI;
-import ui.loadfile.Load;
-import ui.newguest.NewGuest;
-import ui.savefile.Save;
+import ui.lookupguest.daysskied.DaysSkied;
+import ui.lookupguest.makereservation.MakeReservation;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 import static ski.model.Accounts.lookupGuest;
@@ -35,6 +35,7 @@ public class LookUpGuestPopUp extends JPanel {
     //Create the text fields and set them up.
     private final JTextField idText = new JTextField(20);
     // Buttons
+    private List<ApplicationButtons> buttons;
     private LookupGuestAction action = new LookupGuestAction();
     private JButton lookupButton = new JButton(action);
     private JButton mainMenuButton = new JButton("Main Menu");
@@ -123,13 +124,13 @@ public class LookUpGuestPopUp extends JPanel {
         buttonArea.setLayout(new GridLayout(0, 1));
         add(buttonArea, BorderLayout.CENTER);
 
-        ApplicationButtons makeRes = new MakeReservation(this, buttonArea);
+        ApplicationButtons makeRes = new MakeReservation(this.editor, buttonArea);
         buttons.add(makeRes);
 
-        ApplicationButtons cancelRes = new CancelReservation(this, buttonArea);
+        ApplicationButtons cancelRes = new CancelReservation(this.editor, buttonArea);
         buttons.add(cancelRes);
 
-        ApplicationButtons daysSkied = new LookupGuest(this, buttonArea);
+        ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);
         buttons.add(daysSkied);
 
     }

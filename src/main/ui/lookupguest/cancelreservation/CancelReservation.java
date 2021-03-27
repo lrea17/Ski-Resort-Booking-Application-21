@@ -1,4 +1,7 @@
-package ui;
+package ui.lookupguest.cancelreservation;
+
+import ui.ApplicationButtons;
+import ui.SkiAppGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

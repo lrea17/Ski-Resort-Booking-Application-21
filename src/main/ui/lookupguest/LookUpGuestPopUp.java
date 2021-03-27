@@ -1,5 +1,6 @@
 package ui.lookupguest;
 
+import ski.model.Guest;
 import ui.SkiAppGUI;
 import ui.newguest.NewGuestAction;
 
@@ -7,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.lang.Integer.parseInt;
+import static ski.model.Accounts.lookupGuest;
 
 public class LookUpGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
@@ -54,24 +58,39 @@ public class LookUpGuestPopUp extends JPanel {
 
     }
 
+    // EFFECTS: returns the text input into the ageText field
+    public String getIdTextInput() {
+        String idInput;
+        if (idText.getText().isEmpty()) {
+            idInput = null;
+        } else {
+            idInput = idText.getText();
+        }
+        return idInput;
+    }
+
     private void lookupButtonActionListener() {
-        /*lookupButton.addActionListener(new ActionListener() {
+        lookupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = getIdTextInput();
-                if (name == null || name.equals("")) {
-                    success.setText("Invalid Input for Name Field!");
-                } else if (age == null || age.equals("")) {
-                    success.setText("Invalid Input for Age Field!");
+                try {
+                    Guest currentGuest = lookupGuest(parseInt(id));
+                } catch (NumberFormatException exception) {
+                    success.setText("Invalid input for guest ID!");
+                }
+                if (id == null || id.equals("")) {
+                    success.setText("Invalid input for guest ID!");
+                    //TODO here is where i need an if else case that check to see
+                    // that this exists in our list of guests!!
+                } else if () {
+                    success.setText("This guest does not exist in our system...");
                 } else {
-                    action.putValue("Guest Name", name);
-                    action.putValue("Age", age);
-                    addGuestInfoToEditor();
-                    userNameText.setText("");
-                    ageText.setText("");
+                    action.putValue("Guest ID", id);
+                    idText.setText("");
                 }
             }
-        })*/;
+        });
     }
 
     // MODIFIES: this

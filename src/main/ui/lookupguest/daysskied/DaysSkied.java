@@ -2,12 +2,14 @@ package ui.lookupguest.daysskied;
 
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
+import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DaysSkied extends ApplicationButtons implements ActionListener {
+// view days skied/passes for the guest that has been looked up
+public class DaysSkied extends ApplicationButtons {
     private SkiAppGUI editor;
 
     public DaysSkied(SkiAppGUI editor, JComponent parent) {
@@ -16,7 +18,7 @@ public class DaysSkied extends ApplicationButtons implements ActionListener {
 
     @Override
     protected void addListener() {
-
+        button.addActionListener(new DaysSkiedClickHandler());
     }
 
     @Override
@@ -26,9 +28,11 @@ public class DaysSkied extends ApplicationButtons implements ActionListener {
         addToParent(parent);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    private class DaysSkiedClickHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LookupGuest.playSound(LookupGuest.getClickSound());
+        }
     }
 }
 

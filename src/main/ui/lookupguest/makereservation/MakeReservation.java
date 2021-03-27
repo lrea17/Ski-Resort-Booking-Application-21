@@ -2,12 +2,14 @@ package ui.lookupguest.makereservation;
 
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
+import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MakeReservation extends ApplicationButtons implements ActionListener {
+// make a reservation for the guest that has been looked up
+public class MakeReservation extends ApplicationButtons {
     private SkiAppGUI editor;
 
     public MakeReservation(SkiAppGUI editor, JComponent parent) {
@@ -17,6 +19,7 @@ public class MakeReservation extends ApplicationButtons implements ActionListene
 
     @Override
     protected void addListener() {
+        button.addActionListener(new MakeResClickHandler());
 
     }
 
@@ -27,8 +30,10 @@ public class MakeReservation extends ApplicationButtons implements ActionListene
         addToParent(parent);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    private class MakeResClickHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LookupGuest.playSound(LookupGuest.getClickSound());
+        }
     }
 }

@@ -20,6 +20,8 @@ import java.util.List;
  */
 
 public class SkiAppGUI extends JFrame {
+    private static final String JSON_STORE = "./data/accounts.json";
+
 
     private JLabel guests;
     private JLabel photoPanel;

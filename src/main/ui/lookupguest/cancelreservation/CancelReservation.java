@@ -2,13 +2,14 @@ package ui.lookupguest.cancelreservation;
 
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
+import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// will extend application buttons
-public class CancelReservation extends ApplicationButtons implements ActionListener {
+// cancel a reservation for the guest that has been looked up
+public class CancelReservation extends ApplicationButtons {
     private SkiAppGUI editor;
 
     public CancelReservation(SkiAppGUI editor, JComponent parent) {
@@ -22,11 +23,6 @@ public class CancelReservation extends ApplicationButtons implements ActionListe
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
-    @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Cancel Existing Reservation");
         button = customizeButton(button);
@@ -36,6 +32,7 @@ public class CancelReservation extends ApplicationButtons implements ActionListe
     private class CancelResClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            LookupGuest.playSound(LookupGuest.getClickSound());
         }
     }
 }

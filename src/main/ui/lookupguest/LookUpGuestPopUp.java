@@ -91,6 +91,7 @@ public class LookUpGuestPopUp extends JPanel {
         lookupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                LookupGuest.playSound(LookupGuest.getClickSound());
                 //String id = getIdTextInput();
                 guestLookupSuccessfulPanel();
                 //TODO commented out for now - trying to get new pop up working
@@ -141,6 +142,8 @@ public class LookUpGuestPopUp extends JPanel {
 
         ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);
         buttons.add(daysSkied);
+
+        buttonArea.add(mainMenuButton);
 
         lookupGuest.setTitle("Guest Options");
         mainPanel.add(buttonArea);

@@ -7,18 +7,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Load extends ApplicationButtons implements ActionListener {
+public class Load extends ApplicationButtons {
     public Load(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
     }
 
     @Override
     protected void addListener() {
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        button.addActionListener(new LoadClickHandler());
 
     }
 
@@ -27,5 +23,12 @@ public class Load extends ApplicationButtons implements ActionListener {
         button = new JButton("Load Work from File");
         button = customizeButton(button);
         addToParent(parent);
+    }
+
+    private class LoadClickHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Load.playSound(getClickSound());
+        }
     }
 }

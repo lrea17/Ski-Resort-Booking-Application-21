@@ -2,8 +2,8 @@ package ui.lookupguest;
 
 import ski.model.Guest;
 import ui.ApplicationButtons;
-import ui.lookupguest.cancelreservation.CancelReservation;
 import ui.SkiAppGUI;
+import ui.lookupguest.cancelreservation.CancelReservation;
 import ui.lookupguest.daysskied.DaysSkied;
 import ui.lookupguest.makereservation.MakeReservation;
 
@@ -29,7 +29,7 @@ public class LookUpGuestPopUp extends JPanel {
     private JPanel textPane;
     private JPanel buttonPane;
     //creates the labels
-    private JLabel success;
+    private static JLabel success;
     private JLabel id = new JLabel(guestID);
     //Strings for the labels
     private static String guestID = "Guest ID: ";
@@ -92,32 +92,32 @@ public class LookUpGuestPopUp extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LookupGuest.playSound(LookupGuest.getClickSound());
-                //String id = getIdTextInput();
-                guestLookupSuccessfulPanel();
-                //TODO commented out for now - trying to get new pop up working
-                /*try {
-                    // TODO here we try to look up our guest - i need to connect this to the back end no?
+                String id = getIdTextInput();
+                try {
                     Guest currentGuest = lookupGuest(parseInt(id));
                     if (currentGuest == null) {
-                        System.out.println("This guest does not exist in our system...");
+                        success.setText("This guest does not exist in our system...");
                     } else {
-                        //TODO here is where i need an if else case that check to see
-                        // that this exists in our list of guests!!
-                        action.putValue("Guest ID", id);
+                        guestLookupSuccessfulPanel(currentGuest);
+                        //action.putValue("Guest ID", id); - not sure i need this
                         idText.setText("");
                     }
                 } catch (NumberFormatException exception) {
                     success.setText("Invalid input for guest ID!");
-                }*/
+                }
             }
         });
+    }
+
+    public void sendGuest(Guest guest, MakeReservation makeRes) {
+        makeRes.setGuest(guest);
     }
 
     //MODIFIES: this
     //EFFECTS: makes mainpanel hidden and removes all original lookupGuest panes from the mainPanel
     public void removeAllPanes() {
         mainPanel.setVisible(false);
-        mainPanel.remove(successPane);
+        //mainPanel.remove(successPane);
         mainPanel.remove(labelPane);
         mainPanel.remove(textPane);
         mainPanel.remove(buttonPane);
@@ -125,16 +125,19 @@ public class LookUpGuestPopUp extends JPanel {
 
     //MODIFIES: this
     //EFFECTS: makes mainPanel visible with new buttons for after a guest has been looked up by id
-    public void guestLookupSuccessfulPanel() {
+    public void guestLookupSuccessfulPanel(Guest guest) {
         removeAllPanes();
         mainPanel.setVisible(true);
         JPanel buttonArea = new JPanel();
         buttons = new ArrayList<>();
 
+        success.setText(guest.getName() + "'s Account");
+
         buttonArea.setLayout(new GridLayout(0, 1));
         add(buttonArea, BorderLayout.CENTER);
 
         ApplicationButtons makeRes = new MakeReservation(this.editor, buttonArea);
+        sendGuest(guest, (MakeReservation) makeRes);
         buttons.add(makeRes);
 
         ApplicationButtons cancelRes = new CancelReservation(this.editor, buttonArea);
@@ -147,8 +150,6 @@ public class LookUpGuestPopUp extends JPanel {
 
         lookupGuest.setTitle("Guest Options");
         mainPanel.add(buttonArea);
-
-
     }
 
     // MODIFIES: this
@@ -163,6 +164,10 @@ public class LookUpGuestPopUp extends JPanel {
         lookupGuest.setTitle("Lookup Guest");
     }
 
+    public static void setSuccessMessage(String message) {
+        success.setText(message);
+    }
+
 
     // MODIFIES: this
     // EFFECTS: creates main menu button and adds button to button pane
@@ -172,6 +177,7 @@ public class LookUpGuestPopUp extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 lookupGuest.setVisible(false);
                 editor.setVisible(true);
+
                 LookupGuest.playSound(LookupGuest.getClickSound());
             }
         });

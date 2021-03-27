@@ -9,21 +9,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
     private SkiAppGUI editor;
     private JDialog creatingNewGuest = new JDialog();
+    //panels
     private JPanel mainPanel;
+    private JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
     //creates the labels
     private JLabel success;
     private JLabel name = new JLabel(guestName);
     private JLabel age = new JLabel(guestAge);
-    //Strings for the labels
+    //Strings for the labels on pop up
     private static String guestName = "Name: ";
     private static String guestAge = "Age: ";
+    // labels for editor panel
+    private JLabel newGuestName = new JLabel("Name: ");
+    private JLabel accountID = new JLabel("Account ID: ");
+    private JLabel newGuestAge = new JLabel("Age: ");
+    private JLabel pass = new JLabel("Pass Type: ");
+    private JLabel usedPasses = new JLabel("Used passes: ");
+
     //Create the text fields and set them up.
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
@@ -158,11 +166,9 @@ public class NewGuestPopUp extends JPanel {
         ArrayList<Pass> usedPasses = newGuest.getListOfExpiredPasses();
         System.out.println(usedPasses);
         editor.getAccounts().addGuest(newGuest);
-        addNewGuestInfoToEditor(name, id, age, passType, usedPasses);
-
-
+        updateLabelsForMostRecentGuest(name, id, age, passType, usedPasses);
+        showUpdatedGuestInfo();
     }
-
 
 
     // MODIFIES: this
@@ -179,29 +185,50 @@ public class NewGuestPopUp extends JPanel {
         });
     }
 
-    //TODO doing a test with this
-    public void addNewGuestInfoToEditor(String name, int accountId, int age,
-                                        String passType, ArrayList<Pass> expiredPasses) {
+    //TODO this keeps adding panels to the main editor for each guest, we just want it to show the last
+    public void showUpdatedGuestInfo() {
         editor.removePhotoPanel();
-        JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
         //int newWidth = WIDTH + 200;
         //int newHeight = HEIGHT + 200;
         //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
         title.setFont(font);
-        JLabel guestName = new JLabel("Name: " + name);
-        JLabel accountID = new JLabel("Account ID: " + accountId);
-        JLabel guestAge = new JLabel("Age: " + age);
-        JLabel pass = new JLabel("Pass Type: " + passType);
-        JLabel usedPasses = new JLabel("Used passes: " + expiredPasses);
         guestInfoPane.add(title);
-        guestInfoPane.add(guestName);
+        guestInfoPane.add(newGuestName);
         guestInfoPane.add(accountID);
-        guestInfoPane.add(guestAge);
+        guestInfoPane.add(newGuestAge);
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
         editor.add(guestInfoPane, BorderLayout.EAST);
+        guestInfoPane.setVisible(true);
+
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a panel that can display the account info of the last guest added
+    public void createRecentGuestInfoPane() {
+        JLabel title = new JLabel("Last Guest Created:");
+        Font font = new Font("Arial", Font.BOLD, 12);
+        title.setFont(font);
+        guestInfoPane.add(title);
+        guestInfoPane.add(newGuestName);
+        guestInfoPane.add(accountID);
+        guestInfoPane.add(newGuestAge);
+        guestInfoPane.add(pass);
+        guestInfoPane.add(usedPasses);
+        guestInfoPane.setVisible(false);
+        editor.add(guestInfoPane, BorderLayout.EAST);
+    }
+
+    public void updateLabelsForMostRecentGuest(String name, int accountId, int age,
+                                               String passType, ArrayList<Pass> expiredPasses) {
+        newGuestName.setText("Name: " + name);
+        accountID.setText("Account ID: " + accountId);
+        newGuestAge.setText("Age: " + age);
+        pass.setText("Pass Type: " + passType);
+        usedPasses.setText("Used passes: " + expiredPasses);
     }
 
 

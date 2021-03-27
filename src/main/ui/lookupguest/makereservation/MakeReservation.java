@@ -22,7 +22,9 @@ public class MakeReservation extends ApplicationButtons implements ActionListene
 
     @Override
     protected void createButton(JComponent parent) {
-
+        button = new JButton("Make Reservation");
+        button = customizeButton(button);
+        addToParent(parent);
     }
 
     @Override

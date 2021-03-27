@@ -21,7 +21,9 @@ public class DaysSkied extends ApplicationButtons implements ActionListener {
 
     @Override
     protected void createButton(JComponent parent) {
-
+        button = new JButton("View Used Passes");
+        button = customizeButton(button);
+        addToParent(parent);
     }
 
     @Override

@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -90,8 +91,10 @@ public class LookUpGuestPopUp extends JPanel {
         lookupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String id = getIdTextInput();
-                try {
+                //String id = getIdTextInput();
+                guestLookupSuccessfulPanel();
+                //TODO commented out for now - trying to get new pop up working
+                /*try {
                     // TODO here we try to look up our guest - i need to connect this to the back end no?
                     Guest currentGuest = lookupGuest(parseInt(id));
                     if (currentGuest == null) {
@@ -104,23 +107,29 @@ public class LookUpGuestPopUp extends JPanel {
                     }
                 } catch (NumberFormatException exception) {
                     success.setText("Invalid input for guest ID!");
-                }
+                }*/
             }
         });
     }
 
     //MODIFIES: this
-    //EFFECTS: removes all original panes from the mainPanel
+    //EFFECTS: makes mainpanel hidden and removes all original lookupGuest panes from the mainPanel
     public void removeAllPanes() {
+        mainPanel.setVisible(false);
         mainPanel.remove(successPane);
         mainPanel.remove(labelPane);
         mainPanel.remove(textPane);
         mainPanel.remove(buttonPane);
     }
 
+    //MODIFIES: this
+    //EFFECTS: makes mainPanel visible with new buttons for after a guest has been looked up by id
     public void guestLookupSuccessfulPanel() {
         removeAllPanes();
+        mainPanel.setVisible(true);
         JPanel buttonArea = new JPanel();
+        buttons = new ArrayList<>();
+
         buttonArea.setLayout(new GridLayout(0, 1));
         add(buttonArea, BorderLayout.CENTER);
 
@@ -132,6 +141,9 @@ public class LookUpGuestPopUp extends JPanel {
 
         ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);
         buttons.add(daysSkied);
+
+        mainPanel.add(buttonArea);
+
 
     }
 

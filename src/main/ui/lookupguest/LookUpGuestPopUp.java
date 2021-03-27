@@ -142,6 +142,7 @@ public class LookUpGuestPopUp extends JPanel {
         ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);
         buttons.add(daysSkied);
 
+        lookupGuest.setTitle("Guest Options");
         mainPanel.add(buttonArea);
 
 

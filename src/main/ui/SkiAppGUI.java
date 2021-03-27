@@ -1,5 +1,8 @@
 package ui;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+import ski.model.Accounts;
 import ui.loadfile.Load;
 import ui.lookupguest.LookupGuest;
 import ui.newguest.NewGuest;
@@ -13,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * Represents the main window in which the space invaders
@@ -21,6 +25,10 @@ import java.util.List;
 
 public class SkiAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/accounts.json";
+    private Scanner input;
+    private Accounts accounts;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     private JLabel guests;
@@ -33,6 +41,10 @@ public class SkiAppGUI extends JFrame {
 
     public SkiAppGUI() {
         super("Ski Application");
+        input = new Scanner(System.in);
+        accounts = new Accounts("Snowy Mountain");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         initializeFields();
         initializeGraphics();
 

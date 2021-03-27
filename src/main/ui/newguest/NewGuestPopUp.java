@@ -153,6 +153,7 @@ public class NewGuestPopUp extends JPanel {
     }
 
     public void addGuestInfoToEditor() {
+        editor.removePhotoPanel();
         JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
         //int newWidth = WIDTH + 200;
         //int newHeight = HEIGHT + 200;

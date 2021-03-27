@@ -5,8 +5,12 @@ import ui.lookupguest.LookupGuest;
 import ui.newguest.NewGuest;
 import ui.savefile.Save;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +22,7 @@ import java.util.List;
 public class SkiAppGUI extends JFrame {
 
     private JLabel guests;
+    private JLabel photoPanel;
 
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
@@ -35,9 +40,10 @@ public class SkiAppGUI extends JFrame {
     // EFFECTS:  draws the JFrame window where this DrawingEditor will operate, and populates the tools to be used
     //           to manipulate this drawing
     private void initializeGraphics() {
-        setLayout(new FlowLayout());
+        setLayout(new GridLayout(0, 2)); //TODO changed this to grid layout - mebe insert mountain photo
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         createButtons();
+        createPhoto();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //guests = new JLabel("Number of guests: 0"); - don't think i need this
@@ -45,6 +51,24 @@ public class SkiAppGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a panel for the mountain photo and adds to main frame
+    private void createPhoto() {
+        BufferedImage myPicture = null;
+        try {
+            myPicture = ImageIO.read(new
+                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/whistlerPhoto1.jpeg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        photoPanel = new JLabel(new ImageIcon(myPicture));
+        add(photoPanel, BorderLayout.EAST);
+    }
+
+    public void removePhotoPanel() {
+        remove(photoPanel);
     }
 
     // MODIFIES: this

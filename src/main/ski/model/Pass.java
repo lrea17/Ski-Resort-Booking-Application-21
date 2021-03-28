@@ -73,6 +73,8 @@ public class Pass {
         return assignedPassType;
     }
 
+    // MODIFIES: this
+    // EFFECTS: overrides the toString method to produe the pass number, type and boolean isExpired
     @Override
     public String toString() {
         return "Pass Number: " + this.getPassNum() + "\n Pass Type: " + this.getPassType()

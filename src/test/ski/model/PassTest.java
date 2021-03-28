@@ -112,4 +112,11 @@ public class PassTest {
         assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(0).getPassType());
         assertEquals("youth", guestTestYouth.getListOfExpiredPasses().get(1).getPassType());
     }
+
+    @Test
+    void testToString(){
+        assertEquals("Pass Number: " + passTest.getPassNum() + "\n Pass Type: " + passTest.getPassType()
+                + "\n Expired: " + passTest.isPassExpired(), passTest.toString());
+
+    }
 }

@@ -117,6 +117,5 @@ public class PassTest {
     void testToString(){
         assertEquals("Pass Number: " + passTest.getPassNum() + "\n Pass Type: " + passTest.getPassType()
                 + "\n Expired: " + passTest.isPassExpired(), passTest.toString());
-
     }
 }

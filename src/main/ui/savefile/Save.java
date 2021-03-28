@@ -10,9 +10,13 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 public class Save extends ApplicationButtons {
+    private JComponent parent;
+
     public Save(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
+        this.parent = parent;
     }
+
 
     @Override
     protected void addListener() {
@@ -43,8 +47,10 @@ public class Save extends ApplicationButtons {
             writer.write(editor.getAccounts());
             writer.close();
             System.out.println("Saved " + editor.getAccounts().getName() + " to " + jsonStore);
+            JOptionPane.showMessageDialog(parent, "Accounts successfully loaded from file!");
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + jsonStore);
+            playSound(getErrorSound());
+            JOptionPane.showMessageDialog(parent, "Unable to write to file: " + jsonStore);
         }
     }
 

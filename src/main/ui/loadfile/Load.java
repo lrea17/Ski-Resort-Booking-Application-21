@@ -1,7 +1,6 @@
 package ui.loadfile;
 
 import persistence.JsonReader;
-import ski.model.Accounts;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 
@@ -11,8 +10,13 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Load extends ApplicationButtons {
+    private JComponent parent;
+    private final int xaxis = 450;
+    private final int yaxis = 250;
+
     public Load(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
+        this.parent = parent;
     }
 
     @Override
@@ -42,9 +46,10 @@ public class Load extends ApplicationButtons {
         JsonReader reader = editor.getJsonReader();
         try {
             editor.setAccounts(reader.read());
-            System.out.println("Loaded " + editor.getAccounts().getName() + " from " + editor.getJsonStore());
+            JOptionPane.showMessageDialog(parent, "Accounts successfully loaded from file!");
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + editor.getJsonStore());
+            JOptionPane.showMessageDialog(parent, "Unable to read from file: " + editor.getJsonStore());
+            playSound(getErrorSound());
         }
     }
 }

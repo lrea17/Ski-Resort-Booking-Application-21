@@ -37,8 +37,8 @@ public class LookUpGuestPopUp extends JPanel {
     private final JTextField idText = new JTextField(20);
     // Buttons
     private List<ApplicationButtons> buttons;
-    private LookupGuestAction action = new LookupGuestAction();
-    private JButton lookupButton = new JButton(action);
+    //private LookupGuestAction action = new LookupGuestAction();
+    private JButton lookupButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
 
     public LookUpGuestPopUp(SkiAppGUI editor) {

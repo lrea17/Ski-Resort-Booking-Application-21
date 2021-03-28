@@ -1,6 +1,7 @@
 package ui.lookupguest.usedpasses;
 
 import ski.model.Guest;
+import ski.model.Pass;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 import ui.lookupguest.LookUpGuestPopUp;
@@ -10,13 +11,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 // view used passes for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
     private SkiAppGUI editor;
     private Guest guest;
     private JPanel usedPassesPane = new JPanel(new GridLayout(0, 1));
-    private JLabel usedPasses = new JLabel("Used passes: ");
+    private JDialog usedPassesDialog = new JDialog();
 
     public UsedPasses(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
@@ -38,7 +40,7 @@ public class UsedPasses extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             LookupGuest.playSound(LookupGuest.getClickSound());
-            getUsedPasses();
+            usedPassesPane.removeAll();
             showUsedPasses();
         }
     }
@@ -47,30 +49,41 @@ public class UsedPasses extends ApplicationButtons {
         this.guest = guest;
     }
 
+    public void usePassesDialogBox() {
+        usedPassesDialog.setMinimumSize(new Dimension(200, 200));
+        usedPassesDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        usedPassesDialog.setVisible(true);
+        usedPassesDialog.setLayout(new BorderLayout());
+        usedPassesDialog.setTitle(guest.getName() + "'s Used Passes: ");
+    }
+
     //TODO add name of guest in
     public void showUsedPasses() {
-        JDialog usedPassesPopUp = new JDialog();
-        usedPassesPopUp.setMinimumSize(new Dimension(200,200));
-        usedPassesPopUp.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        usedPassesPopUp.setVisible(true);
-        usedPassesPopUp.setLayout(new BorderLayout());
-        usedPassesPopUp.setTitle(guest.getName() + "'s Used Passes: ");
-
+        usePassesDialogBox();
         //TODO I dont think i need this it makes double title int he box
-        //JLabel title = new JLabel(guest.getName() + "'s Used Passes: ");
-        //Font font = new Font("Arial", Font.BOLD, 12);
-        //title.setFont(font);
-        //usedPassesPane.add(title);
+
+        // adds label within box
+        JLabel usedPassesTitle = new JLabel("Used passes: ");
+        Font font = new Font("Arial", Font.BOLD, 12);
+        usedPassesTitle.setFont(font);
+        usedPassesPane.add(usedPassesTitle, BorderLayout.BEFORE_FIRST_LINE);
 
         usedPassesPane.setBackground(Color.WHITE);
 
-        usedPassesPane.add(usedPasses);
-        usedPasses.setText("Used passes: " + guest.getListOfExpiredPasses());
+        //usedPasses.setText("Used passes: ");
+        JList listOfExpiredPass = new JList(guest.getListOfExpiredPasses().toArray());
+        usedPassesPane.add(listOfExpiredPass);
         usedPassesPane.setVisible(true);
 
-        usedPassesPopUp.add(usedPassesPane);
+        usedPassesDialog.add(usedPassesPane);
         //editor.setSidePanel(usedPassesPane);
     }
+
+    public JList newLineListItems() {
+        JList listOfExpiredPass = new JList(guest.getListOfExpiredPasses().toArray());
+        return listOfExpiredPass;
+    }
+
 
     private void getUsedPasses() {
         if (guest.getListOfExpiredPasses() == null) {
@@ -81,6 +94,7 @@ public class UsedPasses extends ApplicationButtons {
         }
 
     }
+
 
 }
 

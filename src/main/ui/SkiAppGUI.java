@@ -88,7 +88,7 @@ public class SkiAppGUI extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: creates a panel for the mountain photo and adds to main frame
-    private void createPhoto() {
+    public void createPhoto() {
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new

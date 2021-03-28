@@ -1,38 +1,14 @@
 {
-    "listOfGuests": [
-        {
+    "listOfGuests": [{
+        "passType": "adult",
+        "name": "Lindsay",
+        "listOfExpiredPasses": [{
             "passType": "adult",
-            "name": "lindsay",
-            "listOfExpiredPasses": [{
-                "passExpired": true,
-                "passType": "adult",
-                "passNum": 99347
-            }],
-            "id": 56318,
-            "age": 28
-        },
-        {
-            "passType": "senior",
-            "name": "bob",
-            "listOfExpiredPasses": [{
-                "passExpired": true,
-                "passType": "senior",
-                "passNum": 75986
-            }],
-            "id": 53822,
-            "age": 123
-        },
-        {
-            "passType": "adult",
-            "name": "jan",
-            "listOfExpiredPasses": [{
-                "passExpired": true,
-                "passType": "adult",
-                "passNum": 94725
-            }],
-            "id": 90211,
-            "age": 63
-        }
-    ],
+            "passExpired": true,
+            "passNum": 83959
+        }],
+        "id": 76470,
+        "age": 28
+    }],
     "name": "Snowy Mountain"
 }

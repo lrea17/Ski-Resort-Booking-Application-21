@@ -36,8 +36,6 @@ public class NewGuestPopUp extends JPanel {
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
     // Buttons
-    //TODO maybe i dont need the action class
-    private NewGuestAction action = new NewGuestAction();
     private JButton createGuestButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
 
@@ -117,10 +115,6 @@ public class NewGuestPopUp extends JPanel {
         creatingNewGuest.setTitle("Create New Guest");
     }
 
-
-    //TODO trying to find a way so that the action listener only works if it meet the criteria of having
-    // text filled into both boxes
-    // TODO try to move this action performed into create guest action
     //MODIFIES: this
     //EFFECTS: creates the buttons for the create new guest dialog box
     private void createGuestButtonActionListener() {

@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /*
  * Represents the main window in which the space invaders
@@ -28,7 +27,7 @@ public class SkiAppGUI extends JFrame {
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private JPanel infoPanel =  new JPanel();
+    private JPanel infoPanel = new JPanel();
 
     private JLabel photoPanel;
 
@@ -76,6 +75,8 @@ public class SkiAppGUI extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         createButtons();
         createPhoto();
+        //TODO 1
+        setUpInfoPanel();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //guests = new JLabel("Number of guests: 0"); - don't think i need this
@@ -105,10 +106,17 @@ public class SkiAppGUI extends JFrame {
         infoPanel.add(photoPanel);
         add(infoPanel, BorderLayout.EAST);
     }
+//TODO 2
+    public void setUpInfoPanel() {
+        infoPanel.setLayout(new OverlayLayout(infoPanel));
+    }
 
-    public void setPhotoPanel(JPanel panel) {
+    public void setSidePanel(JPanel panel) {
         //infoPanel.remove(photoPanel);
-        infoPanel.removeAll();
+        //TODO 3
+        panel.setAlignmentX(0.8f);
+        panel.setAlignmentY(0.8f);
+        infoPanel.add(panel);
         infoPanel.add(panel);
         infoPanel.setVisible(true);
     }

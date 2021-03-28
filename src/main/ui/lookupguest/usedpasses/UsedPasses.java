@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// view days skied/passes for the guest that has been looked up
+// view used passes for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
     private SkiAppGUI editor;
     private Guest guest;

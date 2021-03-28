@@ -17,6 +17,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 import static ski.model.Accounts.lookupGuest;
 
+//creates a pop up window with buttons after lookup guest is clicked from main GUI
 public class LookUpGuestPopUp extends JPanel {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 200;

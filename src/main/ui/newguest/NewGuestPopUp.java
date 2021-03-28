@@ -39,9 +39,6 @@ public class NewGuestPopUp extends JPanel {
     private JButton createGuestButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
 
-
-    //TODO THIS IS AT ITS MAX CHECKSTYLE LINES!!
-
     // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp(SkiAppGUI editor) {
         // initializes graphics
@@ -143,8 +140,6 @@ public class NewGuestPopUp extends JPanel {
         });
     }
 
-    // REQUIRES: guestName has a non-zero length and age is a
-    //           non-zero length between 0 - 15
     // MODIFIES: this
     // EFFECTS: conducts a creation of a new guests & books them a reservation
     private void doNewGuest() {
@@ -173,30 +168,27 @@ public class NewGuestPopUp extends JPanel {
                 editor.setVisible(true);
                 NewGuest.playSound(NewGuest.getClickSound());
                 guestInfoPane.setVisible(true);
-
+                // TODO want to have it so the photo stays unless we've updates the guest info
+                showUpdatedGuestInfo();
             }
         });
     }
 
     //TODO this keeps adding panels to the main editor for each guest, we just want it to show the last
     public void showUpdatedGuestInfo() {
-        //editor.removePhotoPanel();
-        //int newWidth = WIDTH + 200;
-        //int newHeight = HEIGHT + 200;
-        //mainPanel.setMinimumSize(new Dimension(newWidth,newHeight));
+
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
         title.setFont(font);
+        guestInfoPane.setBackground(Color.WHITE);
         guestInfoPane.add(title);
         guestInfoPane.add(newGuestName);
         guestInfoPane.add(accountID);
         guestInfoPane.add(newGuestAge);
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
-        //increaseDimensions(WIDTH, HEIGHT);
-        //creatingNewGuest.add(guestInfoPane, BorderLayout.EAST);
-        //editor.add(guestInfoPane, BorderLayout.EAST);
-        editor.setPhotoPanel(guestInfoPane);
+
+        editor.setSidePanel(guestInfoPane);
         //TODO rename the method above
 
     }
@@ -214,14 +206,6 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
         guestInfoPane.setVisible(false);
-
-        //editor.add(guestInfoPane, BorderLayout.EAST);
-    }
-
-    public void increaseDimensions(int width, int height) {
-        int w = width * 2;
-        int h = height * 2;
-        creatingNewGuest.setMinimumSize(new Dimension(w, h));
     }
 
     public void updateLabelsForMostRecentGuest(String name, int accountId, int age,

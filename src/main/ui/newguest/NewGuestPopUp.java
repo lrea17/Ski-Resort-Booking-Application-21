@@ -38,6 +38,9 @@ public class NewGuestPopUp extends JPanel {
     // Buttons
     private JButton createGuestButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
+    // location for window to pop up at
+    private final int xaxis = 450;
+    private final int yaxis = 250;
 
     // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp(SkiAppGUI editor) {
@@ -106,6 +109,7 @@ public class NewGuestPopUp extends JPanel {
         mainPanel = new JPanel();
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        creatingNewGuest.setLocation(xaxis,yaxis);
         creatingNewGuest.setVisible(true);
         creatingNewGuest.add(mainPanel);
         mainPanel.setLayout(new BorderLayout());

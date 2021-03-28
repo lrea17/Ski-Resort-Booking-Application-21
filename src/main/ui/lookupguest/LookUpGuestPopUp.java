@@ -135,6 +135,7 @@ public class LookUpGuestPopUp extends JPanel {
     //EFFECTS: makes mainPanel visible with new buttons for after a guest has been looked up by id
     public void guestLookupSuccessfulPanel(Guest guest) {
         removeAllPanes();
+
         mainPanel.setVisible(true);
         JPanel buttonArea = new JPanel();
         buttons = new ArrayList<>();
@@ -166,7 +167,7 @@ public class LookUpGuestPopUp extends JPanel {
     // EFFECTS: initializes the graphics for the pop up window
     private void initializeGraphics() {
         mainPanel = new JPanel();
-        lookupGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        lookupGuest.setMinimumSize(new Dimension(WIDTH, (HEIGHT)));
         lookupGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         lookupGuest.setVisible(true);
         lookupGuest.add(mainPanel);

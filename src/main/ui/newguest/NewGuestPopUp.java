@@ -140,6 +140,7 @@ public class NewGuestPopUp extends JPanel {
                     success.setText("Invalid Input for Age Field!");
                 } else {
                     doNewGuest();
+                    //TODO don't need these lines - they were for me to see print - can delete
                     System.out.println(getUserNameTextInput());
                     System.out.println(getAgeTextInput());
                     //action.putValue("Guest Name", name);

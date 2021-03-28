@@ -46,7 +46,6 @@ public class CancelReservation extends ApplicationButtons {
         this.guest = guest;
     }
 
-
     // MODIFIES: this
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {

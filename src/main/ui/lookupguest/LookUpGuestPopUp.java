@@ -4,8 +4,8 @@ import ski.model.Guest;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 import ui.lookupguest.cancelreservation.CancelReservation;
-import ui.lookupguest.daysskied.DaysSkied;
 import ui.lookupguest.makereservation.MakeReservation;
+import ui.lookupguest.usedpasses.UsedPasses;
 
 import javax.swing.*;
 import java.awt.*;
@@ -114,6 +114,8 @@ public class LookUpGuestPopUp extends JPanel {
             ((MakeReservation) button).setGuest(guest);
         } else if (button instanceof CancelReservation) {
             ((CancelReservation) button).setGuest(guest);
+        } else if (button instanceof UsedPasses) {
+            ((UsedPasses) button).setGuest(guest);
         }
     }
 
@@ -141,15 +143,16 @@ public class LookUpGuestPopUp extends JPanel {
         add(buttonArea, BorderLayout.CENTER);
 
         ApplicationButtons makeRes = new MakeReservation(this.editor, buttonArea);
-        sendGuest(guest, (MakeReservation) makeRes);
+        sendGuest(guest, makeRes);
         buttons.add(makeRes);
 
         ApplicationButtons cancelRes = new CancelReservation(this.editor, buttonArea);
-        sendGuest(guest, (CancelReservation) cancelRes);
+        sendGuest(guest, cancelRes);
         buttons.add(cancelRes);
 
-        ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);
-        buttons.add(daysSkied);
+        ApplicationButtons usedPasses = new UsedPasses(this.editor, buttonArea);
+        sendGuest(guest, usedPasses);
+        buttons.add(usedPasses);
 
         buttonArea.add(mainMenuButton);
 

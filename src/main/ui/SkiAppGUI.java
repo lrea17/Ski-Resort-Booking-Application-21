@@ -27,7 +27,7 @@ public class SkiAppGUI extends JFrame {
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    //private JLayeredPane infoPanel = new JLayeredPane();
+    private JLayeredPane infoPanel2 = new JLayeredPane();
     private JPanel infoPanel = new JPanel();
 
     private JLabel photoPanel;
@@ -76,9 +76,8 @@ public class SkiAppGUI extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         createButtons();
         createPhoto();
-        //TODO 1
         //setUpInfoPanel();
-        //addNewDrawing();
+        //TODO 1
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //guests = new JLabel("Number of guests: 0"); - don't think i need this
         this.pack();
@@ -98,24 +97,34 @@ public class SkiAppGUI extends JFrame {
             e.printStackTrace();
         }
         photoPanel = new JLabel(new ImageIcon(myPicture));
+
         infoPanel.add(photoPanel);
         add(infoPanel, BorderLayout.EAST);
+
+        //photoPanel.setBounds(new Rectangle(new Point(0,0), photoPanel.getPreferredSize()));
+        //photoPanel.setVisible(true);
         //photoPanel.setComponentOrientation();
     }
 
     //TODO 2
     public void setUpInfoPanel() {
-       // infoPanel.setLayout(new JLayeredPane(infoPanel));
+        infoPanel2.add(photoPanel, JLayeredPane.PALETTE_LAYER);
+        //infoPanel2.setBounds(0,0, photoPanel.getWidth(), photoPanel.getHeight());
+        this.add(infoPanel2, BorderLayout.EAST);
+        infoPanel2.setVisible(true);
     }
 
     public void setSidePanel(JPanel panel) {
-        //infoPanel.moveToBack(photoPanel);
         infoPanel.removeAll();
+
+        infoPanel.add(panel);
+        infoPanel.setVisible(true);
+
         //TODO 3
         //panel.setAlignmentX(0.5f);
         //panel.setAlignmentY(0.5f);
-        infoPanel.add(panel);
-        infoPanel.setVisible(true);
+        //infoPanel2.add(panel, JLayeredPane.POPUP_LAYER);
+        //infoPanel2.moveToBack(photoPanel);
     }
 
     public void removePhotoPanel() {

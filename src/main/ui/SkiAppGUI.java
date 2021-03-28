@@ -31,8 +31,6 @@ public class SkiAppGUI extends JFrame {
     private JsonReader jsonReader;
     private JPanel infoPanel =  new JPanel();
 
-
-    private JLabel guests;
     private JLabel photoPanel;
 
     public static final int WIDTH = 600;

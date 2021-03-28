@@ -3,11 +3,14 @@ package ui.lookupguest.cancelreservation;
 import ski.model.Guest;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
+import ui.lookupguest.LookUpGuestPopUp;
 import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static ski.model.Accounts.lookupGuest;
 
 // cancel a reservation for the guest that has been looked up
 public class CancelReservation extends ApplicationButtons {
@@ -35,7 +38,7 @@ public class CancelReservation extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             LookupGuest.playSound(LookupGuest.getClickSound());
-            //doCancelReservation();
+            doCancelReservation();
         }
     }
 
@@ -43,11 +46,17 @@ public class CancelReservation extends ApplicationButtons {
         this.guest = guest;
     }
 
+
     // MODIFIES: this
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {
-        guest.cancelReservation();
-        System.out.println("Cancellation successful for " + guest.getName());
+        if (guest.getListOfExpiredPasses().size() == 0) {
+            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " does not have any previous reservations.");
+        } else {
+            guest.cancelReservation();
+            LookUpGuestPopUp.setSuccessMessage("Cancellation successful for " + guest.getName());
+        }
     }
+
 
 }

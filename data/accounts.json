@@ -1,21 +1,4 @@
 {
-    "listOfGuests": [{
-        "passType": "youth",
-        "name": "george",
-        "listOfExpiredPasses": [
-            {
-                "passType": "youth",
-                "passExpired": true,
-                "passNum": 12722
-            },
-            {
-                "passType": "youth",
-                "passExpired": true,
-                "passNum": 62989
-            }
-        ],
-        "id": 36894,
-        "age": 14
-    }],
+    "listOfGuests": [],
     "name": "Snowy Mountain"
 }

@@ -145,6 +145,7 @@ public class NewGuestPopUp extends JPanel {
                     //action.putValue("Guest Name", name);
                     //action.putValue("Age", age);
                     //addGuestInfoToEditor(); - made new method!
+                    success.setText("");
                     userNameText.setText("");
                     ageText.setText("");
                 }

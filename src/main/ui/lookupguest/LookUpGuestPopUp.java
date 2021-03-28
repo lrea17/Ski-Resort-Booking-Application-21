@@ -109,8 +109,12 @@ public class LookUpGuestPopUp extends JPanel {
         });
     }
 
-    public void sendGuest(Guest guest, MakeReservation makeRes) {
-        makeRes.setGuest(guest);
+    public void sendGuest(Guest guest, ApplicationButtons button) {
+        if (button instanceof MakeReservation) {
+            ((MakeReservation) button).setGuest(guest);
+        } else if (button instanceof CancelReservation) {
+            ((CancelReservation) button).setGuest(guest);
+        }
     }
 
     //MODIFIES: this
@@ -141,6 +145,7 @@ public class LookUpGuestPopUp extends JPanel {
         buttons.add(makeRes);
 
         ApplicationButtons cancelRes = new CancelReservation(this.editor, buttonArea);
+        sendGuest(guest, (CancelReservation) cancelRes);
         buttons.add(cancelRes);
 
         ApplicationButtons daysSkied = new DaysSkied(this.editor, buttonArea);

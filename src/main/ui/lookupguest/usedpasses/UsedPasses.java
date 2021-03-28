@@ -11,7 +11,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 // view used passes for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
@@ -21,6 +23,7 @@ public class UsedPasses extends ApplicationButtons {
     private JDialog usedPassesDialog = new JDialog();
     private JScrollPane scrollPane = new JScrollPane();
     private JList listOfExpiredPass;
+    private Color lightBlue = new Color(203, 247, 235);
 
     public UsedPasses(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
@@ -65,22 +68,16 @@ public class UsedPasses extends ApplicationButtons {
         //TODO I dont think i need this it makes double title int he box
 
         // adds label within box
-        JLabel usedPassesTitle = new JLabel("Used passes: ");
-        Font font = new Font("Arial", Font.BOLD, 12);
-        usedPassesTitle.setFont(font);
-        usedPassesPane.add(usedPassesTitle, BorderLayout.BEFORE_FIRST_LINE);
-        usedPassesPane.setBackground(Color.WHITE);
 
-        //usedPasses.setText("Used passes: ");
+        Font font = new Font("Arial", Font.BOLD, 12);
+        usedPassesPane.setBackground(Color.BLUE);
 
         setScrollPaneSetUp();
 
-        //usedPassesPane.add(listOfExpiredPass);
-        usedPassesPane.add(scrollPane);
+        usedPassesPane.add(scrollPane, BorderLayout.CENTER);
         scrollPane.setVisible(true);
         usedPassesPane.setVisible(true);
         usedPassesDialog.add(usedPassesPane);
-        //editor.setSidePanel(usedPassesPane);
     }
 
     public void newLineListItems() {
@@ -90,7 +87,6 @@ public class UsedPasses extends ApplicationButtons {
 
     public void setScrollPaneSetUp() {
         newLineListItems();
-
 
         listOfExpiredPass.setModel(new AbstractListModel() {
 

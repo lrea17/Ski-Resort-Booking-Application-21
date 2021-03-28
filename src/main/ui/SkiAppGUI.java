@@ -21,7 +21,6 @@ import java.util.List;
  * Represents the main window in which the space invaders
  * game is played
  */
-
 public class SkiAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/accounts.json";
     private Accounts accounts;
@@ -34,6 +33,8 @@ public class SkiAppGUI extends JFrame {
     private final int yaxis = 250;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
+    private Color color = new Color(178, 217, 255);
+
 
     private List<ApplicationButtons> buttons;
 
@@ -42,7 +43,6 @@ public class SkiAppGUI extends JFrame {
         accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        //init();
         initializeFields();
         initializeGraphics();
 
@@ -165,6 +165,7 @@ public class SkiAppGUI extends JFrame {
         buttons.add(loadWork);
     }
 
+    //EFFECTS: creates a pop up window to verify an action is complete/incomplete
     public void statusOfSaveJOptionPane(String messageText, String title) {
         ImageIcon icon = null;
         BufferedImage myPicture = null;
@@ -180,6 +181,7 @@ public class SkiAppGUI extends JFrame {
         panel.add(label);
         JPanel textPanel = new JPanel(new BorderLayout());
         textPanel.add(new JLabel(messageText));
+        textPanel.setBackground(color);
         JPanel panel2 = new JPanel(new GridLayout(0,2));
         panel2.add(textPanel, BorderLayout.WEST);
         panel2.add(panel, BorderLayout.EAST);

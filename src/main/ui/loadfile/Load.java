@@ -46,7 +46,7 @@ public class Load extends ApplicationButtons {
         JsonReader reader = editor.getJsonReader();
         try {
             editor.setAccounts(reader.read());
-            editor.statusOfSaveJOptionPane("Accounts successfully loaded from file!",
+            editor.statusOfSaveJOptionPane("Accounts loaded successfully!",
                     "Success Loading Message");
         } catch (IOException e) {
             editor.statusOfSaveJOptionPane("Unable to read from file: " + editor.getJsonStore(),

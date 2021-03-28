@@ -23,7 +23,6 @@ public class UsedPasses extends ApplicationButtons {
     private JDialog usedPassesDialog = new JDialog();
     private JScrollPane scrollPane = new JScrollPane();
     private JList listOfExpiredPass;
-    private Color lightBlue = new Color(203, 247, 235);
     private final int xaxis = 450;
     private final int yaxis = 250;
 

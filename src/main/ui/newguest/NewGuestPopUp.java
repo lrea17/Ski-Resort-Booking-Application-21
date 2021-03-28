@@ -176,7 +176,6 @@ public class NewGuestPopUp extends JPanel {
 
     //TODO this keeps adding panels to the main editor for each guest, we just want it to show the last
     public void showUpdatedGuestInfo() {
-
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
         title.setFont(font);

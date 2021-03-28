@@ -27,6 +27,7 @@ public class SkiAppGUI extends JFrame {
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    //private JLayeredPane infoPanel = new JLayeredPane();
     private JPanel infoPanel = new JPanel();
 
     private JLabel photoPanel;
@@ -76,7 +77,7 @@ public class SkiAppGUI extends JFrame {
         createButtons();
         createPhoto();
         //TODO 1
-        setUpInfoPanel();
+        //setUpInfoPanel();
         //addNewDrawing();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //guests = new JLabel("Number of guests: 0"); - don't think i need this
@@ -85,12 +86,6 @@ public class SkiAppGUI extends JFrame {
         setVisible(true);
 
     }
-
-/*    // MODIFIES: this
-    // EFFECTS: initializes accounts (list of guests)
-    private void init() {
-        input = new Scanner(System.in);
-    }*/
 
     // MODIFIES: this
     // EFFECTS: creates a panel for the mountain photo and adds to main frame
@@ -105,18 +100,20 @@ public class SkiAppGUI extends JFrame {
         photoPanel = new JLabel(new ImageIcon(myPicture));
         infoPanel.add(photoPanel);
         add(infoPanel, BorderLayout.EAST);
+        //photoPanel.setComponentOrientation();
     }
-//TODO 2
+
+    //TODO 2
     public void setUpInfoPanel() {
-        infoPanel.setLayout(new OverlayLayout(infoPanel));
+       // infoPanel.setLayout(new JLayeredPane(infoPanel));
     }
 
     public void setSidePanel(JPanel panel) {
-        //infoPanel.remove(photoPanel);
+        //infoPanel.moveToBack(photoPanel);
+        infoPanel.removeAll();
         //TODO 3
-        panel.setAlignmentX(0.8f);
-        panel.setAlignmentY(0.8f);
-        infoPanel.add(panel);
+        //panel.setAlignmentX(0.5f);
+        //panel.setAlignmentY(0.5f);
         infoPanel.add(panel);
         infoPanel.setVisible(true);
     }

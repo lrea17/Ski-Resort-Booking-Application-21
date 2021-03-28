@@ -1,14 +1,4 @@
 {
-    "listOfGuests": [{
-        "passType": "adult",
-        "name": "Lindsay",
-        "listOfExpiredPasses": [{
-            "passExpired": true,
-            "passType": "adult",
-            "passNum": 83959
-        }],
-        "id": 76470,
-        "age": 28
-    }],
+    "listOfGuests": [],
     "name": "Snowy Mountain"
 }

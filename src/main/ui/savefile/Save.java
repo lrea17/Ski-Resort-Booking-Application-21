@@ -4,10 +4,17 @@ import persistence.JsonWriter;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Save extends ApplicationButtons {
     private JComponent parent;
@@ -47,11 +54,16 @@ public class Save extends ApplicationButtons {
             writer.write(editor.getAccounts());
             writer.close();
             System.out.println("Saved " + editor.getAccounts().getName() + " to " + jsonStore);
-            JOptionPane.showMessageDialog(parent, "Accounts successfully loaded from file!");
+            editor.statusOfSaveJOptionPane("Accounts saved successfully!", "Success Saving Message");
         } catch (FileNotFoundException e) {
             playSound(getErrorSound());
+            editor.statusOfSaveJOptionPane("Unable to write to file: " + jsonStore, "Error Saving Message");
             JOptionPane.showMessageDialog(parent, "Unable to write to file: " + jsonStore);
         }
     }
+
+
+
+
 
 }

@@ -38,7 +38,7 @@ public class SkiAppGUI extends JFrame {
     private List<ApplicationButtons> buttons;
 
     public SkiAppGUI() {
-        super("Ski Application");
+        super("Ski Mountain Booking System");
         accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -163,6 +163,27 @@ public class SkiAppGUI extends JFrame {
 
         ApplicationButtons loadWork = new Load(this, buttonArea);
         buttons.add(loadWork);
+    }
+
+    public void statusOfSaveJOptionPane(String messageText, String title) {
+        ImageIcon icon = null;
+        BufferedImage myPicture = null;
+        try {
+            myPicture = ImageIO.read(new
+                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/data/images/snowyMountainLogo2.0.jpg"));
+            icon = new ImageIcon(myPicture);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JLabel label = new JLabel(icon);
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(label);
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.add(new JLabel(messageText));
+        JPanel panel2 = new JPanel(new GridLayout(0,2));
+        panel2.add(textPanel, BorderLayout.WEST);
+        panel2.add(panel, BorderLayout.EAST);
+        JOptionPane.showMessageDialog(null, panel2, title, JOptionPane.DEFAULT_OPTION);
     }
 
 

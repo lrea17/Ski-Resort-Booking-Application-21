@@ -25,7 +25,6 @@ import java.util.Scanner;
 
 public class SkiAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/accounts.json";
-    private Scanner input;
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -40,11 +39,10 @@ public class SkiAppGUI extends JFrame {
 
     public SkiAppGUI() {
         super("Ski Application");
-        input = new Scanner(System.in);
         accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        init();
+        //init();
         initializeFields();
         initializeGraphics();
 
@@ -87,11 +85,11 @@ public class SkiAppGUI extends JFrame {
 
     }
 
-    // MODIFIES: this
+/*    // MODIFIES: this
     // EFFECTS: initializes accounts (list of guests)
     private void init() {
         input = new Scanner(System.in);
-    }
+    }*/
 
     // MODIFIES: this
     // EFFECTS: creates a panel for the mountain photo and adds to main frame
@@ -99,7 +97,7 @@ public class SkiAppGUI extends JFrame {
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new
-                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/moountain2.jpg"));
+                    File("/Users/lindsayrea/IdeaProjects/project_d5y0z/data/images/gondola.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

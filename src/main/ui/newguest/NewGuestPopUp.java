@@ -138,6 +138,7 @@ public class NewGuestPopUp extends JPanel {
                     NewGuest.playSound(NewGuest.getErrorSound());
                 } else if (Integer.parseInt(age) < 0 || Integer.parseInt(age) > 150) {
                     success.setText("Invalid Input for Age Field!");
+                    NewGuest.playSound(NewGuest.getErrorSound());
                 } else {
                     doNewGuest();
                     success.setText("");

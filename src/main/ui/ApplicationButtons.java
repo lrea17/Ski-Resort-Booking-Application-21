@@ -10,8 +10,8 @@ public abstract class ApplicationButtons {
 
     protected JButton button;
     protected SkiAppGUI editor;
-    private static String  click = "/Users/lindsayrea/IdeaProjects/project_d5y0z/sounds/regular-click.wav";
-    private static String error = "/Users/lindsayrea/IdeaProjects/project_d5y0z/sounds/error-button.wav";
+    private static String  click = "/Users/lindsayrea/IdeaProjects/project_d5y0z/data/sounds/regular-click.wav";
+    private static String error = "/Users/lindsayrea/IdeaProjects/project_d5y0z/data/sounds/error-button.wav";
 
     public ApplicationButtons(SkiAppGUI editor, JComponent parent) {
         this.editor = editor;
@@ -42,20 +42,6 @@ public abstract class ApplicationButtons {
         parent.add(button);
     }
 
-    public static void playClickSound() {
-        String soundName = click;
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
-
-        } catch (Exception ex) {
-            System.out.println("Error with playing sound.");
-            ex.printStackTrace();
-        }
-    }
 
     public static void playSound(String soundName) {
 

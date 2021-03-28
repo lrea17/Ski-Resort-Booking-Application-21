@@ -46,6 +46,7 @@ public class UsedPasses extends ApplicationButtons {
     private void getUsedPasses() {
         if (guest.getListOfExpiredPasses() == null) {
             LookUpGuestPopUp.setSuccessMessage(guest.getName() + " has no used passes");
+            LookupGuest.playSound(getErrorSound());
         } else {
             System.out.println(guest.getListOfExpiredPasses());
         }

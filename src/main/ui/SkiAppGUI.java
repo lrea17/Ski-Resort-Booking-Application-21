@@ -29,9 +29,9 @@ public class SkiAppGUI extends JFrame {
     private JsonReader jsonReader;
     private JLayeredPane infoPanel2 = new JLayeredPane();
     private JPanel infoPanel = new JPanel();
-
     private JLabel photoPanel;
-
+    private final int xaxis = 450;
+    private final int yaxis = 250;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
 
@@ -74,6 +74,7 @@ public class SkiAppGUI extends JFrame {
     private void initializeGraphics() {
         setLayout(new GridLayout(0, 2)); //TODO changed this to grid layout - mebe insert mountain photo
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        setLocation(xaxis,yaxis);
         createButtons();
         createPhoto();
         //setUpInfoPanel();

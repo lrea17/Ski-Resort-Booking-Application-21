@@ -40,6 +40,9 @@ public class LookUpGuestPopUp extends JPanel {
     private List<ApplicationButtons> buttons;
     private JButton lookupButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
+    // dimensions for jDialog screen location
+    private final int xaxis = 450;
+    private final int yaxis = 250;
 
     public LookUpGuestPopUp(SkiAppGUI editor) {
         this.editor = editor;
@@ -167,6 +170,7 @@ public class LookUpGuestPopUp extends JPanel {
         lookupGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         lookupGuest.setVisible(true);
         lookupGuest.add(mainPanel);
+        lookupGuest.setLocation(xaxis, yaxis);
         mainPanel.setLayout(new BorderLayout());
         lookupGuest.setTitle("Lookup Guest");
     }

@@ -3,8 +3,8 @@
         "passType": "adult",
         "name": "Lindsay",
         "listOfExpiredPasses": [{
-            "passType": "adult",
             "passExpired": true,
+            "passType": "adult",
             "passNum": 83959
         }],
         "id": 76470,

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 // view used passes for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
+    private static final int WIDTH = 400;
+    private static final int HEIGHT = 200;
     private SkiAppGUI editor;
     private Guest guest;
     private JPanel usedPassesPane = new JPanel(new GridLayout(0, 1));
@@ -22,6 +24,9 @@ public class UsedPasses extends ApplicationButtons {
     private JScrollPane scrollPane = new JScrollPane();
     private JList listOfExpiredPass;
     private Color lightBlue = new Color(203, 247, 235);
+    private final int xaxis = 450;
+    private final int yaxis = 250;
+
 
     public UsedPasses(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
@@ -45,7 +50,6 @@ public class UsedPasses extends ApplicationButtons {
             LookupGuest.playSound(LookupGuest.getClickSound());
             usedPassesPane.removeAll();
             getUsedPasses();
-            //showUsedPasses();
         }
     }
 
@@ -54,8 +58,9 @@ public class UsedPasses extends ApplicationButtons {
     }
 
     public void createUsedPassesDialogBox() {
-        usedPassesDialog.setMinimumSize(new Dimension(200, 200));
+        usedPassesDialog.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         usedPassesDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        usedPassesDialog.setLocation(xaxis, yaxis);
         usedPassesDialog.setVisible(true);
         usedPassesDialog.setLayout(new BorderLayout());
         usedPassesDialog.setTitle(guest.getName() + "'s Used Passes: ");

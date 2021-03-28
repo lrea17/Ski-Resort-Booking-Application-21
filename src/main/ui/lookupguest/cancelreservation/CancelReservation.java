@@ -50,7 +50,8 @@ public class CancelReservation extends ApplicationButtons {
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {
         if (guest.getListOfExpiredPasses().size() == 0) {
-            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " does not have any previous reservations.");
+            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " does not have any previous reservations!");
+            LookupGuest.playSound(LookupGuest.getErrorSound());
         } else {
             guest.cancelReservation();
             LookUpGuestPopUp.setSuccessMessage("Cancellation successful for " + guest.getName());

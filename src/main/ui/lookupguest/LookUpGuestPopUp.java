@@ -99,7 +99,6 @@ public class LookUpGuestPopUp extends JPanel {
                         success.setText("This guest does not exist in our system...");
                     } else {
                         guestLookupSuccessfulPanel(currentGuest);
-                        //action.putValue("Guest ID", id); - not sure i need this
                         idText.setText("");
                     }
                 } catch (NumberFormatException exception) {
@@ -120,7 +119,7 @@ public class LookUpGuestPopUp extends JPanel {
     }
 
     //MODIFIES: this
-    //EFFECTS: makes mainpanel hidden and removes all original lookupGuest panes from the mainPanel
+    //EFFECTS: makes mainPanel hidden and removes all original lookupGuest panes from the mainPanel
     public void removeAllPanes() {
         mainPanel.setVisible(false);
         //mainPanel.remove(successPane);

@@ -11,9 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 // view used passes for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
@@ -46,7 +44,8 @@ public class UsedPasses extends ApplicationButtons {
         public void actionPerformed(ActionEvent e) {
             LookupGuest.playSound(LookupGuest.getClickSound());
             usedPassesPane.removeAll();
-            showUsedPasses();
+            getUsedPasses();
+            //showUsedPasses();
         }
     }
 
@@ -54,7 +53,7 @@ public class UsedPasses extends ApplicationButtons {
         this.guest = guest;
     }
 
-    public void usePassesDialogBox() {
+    public void createUsedPassesDialogBox() {
         usedPassesDialog.setMinimumSize(new Dimension(200, 200));
         usedPassesDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         usedPassesDialog.setVisible(true);
@@ -62,18 +61,9 @@ public class UsedPasses extends ApplicationButtons {
         usedPassesDialog.setTitle(guest.getName() + "'s Used Passes: ");
     }
 
-    //TODO add name of guest in
     public void showUsedPasses() {
-        usePassesDialogBox();
-        //TODO I dont think i need this it makes double title int he box
-
-        // adds label within box
-
-        Font font = new Font("Arial", Font.BOLD, 12);
-        usedPassesPane.setBackground(Color.BLUE);
-
+        createUsedPassesDialogBox();
         setScrollPaneSetUp();
-
         usedPassesPane.add(scrollPane, BorderLayout.CENTER);
         scrollPane.setVisible(true);
         usedPassesPane.setVisible(true);
@@ -83,7 +73,6 @@ public class UsedPasses extends ApplicationButtons {
     public void newLineListItems() {
         listOfExpiredPass = new JList(guest.getListOfExpiredPasses().toArray());
     }
-
 
     public void setScrollPaneSetUp() {
         newLineListItems();
@@ -109,13 +98,12 @@ public class UsedPasses extends ApplicationButtons {
 
 
     private void getUsedPasses() {
-        if (guest.getListOfExpiredPasses() == null) {
-            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " has no used passes");
-            LookupGuest.playSound(getErrorSound());
+        if (guest.getListOfExpiredPasses().isEmpty()) {
+            LookupGuest.playSound(LookupGuest.getErrorSound());
+            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " has no used passes!");
         } else {
-            System.out.println(guest.getListOfExpiredPasses());
+            showUsedPasses();
         }
-
     }
 
 

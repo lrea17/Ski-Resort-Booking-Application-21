@@ -10,10 +10,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static ski.model.Accounts.lookupGuest;
-import static ui.lookupguest.LookUpGuestPopUp.*;
-
-// make a reservation for the guest that has been looked up
+// makes a reservation for the guest that has been looked up
 public class MakeReservation extends ApplicationButtons {
     private SkiAppGUI editor;
     private Guest guest;
@@ -23,12 +20,15 @@ public class MakeReservation extends ApplicationButtons {
         this.editor = editor;
     }
 
+    // MODIFIES: this
+    // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {
         button.addActionListener(new MakeResClickHandler());
 
     }
 
+    // EFFECTS: creates a make reservation button and activates it
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Make Reservation");
@@ -36,10 +36,14 @@ public class MakeReservation extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets this guests to the input guest
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
+    // MODIFIES: LookUpGuestPopUp
+    // EFFECTS: click handler for cancel reservation button
     private class MakeResClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -49,19 +53,4 @@ public class MakeReservation extends ApplicationButtons {
 
         }
     }
-
-    /*// MODIFIES: this
-    // EFFECTS: books a reservation for an existing guest
-    private void doNewReservationExistingGuest() {
-        System.out.println("Please enter the guests account ID:");
-        int guestId = input.nextInt();
-        Guest currentGuest = lookupGuest(guestId);
-        if (currentGuest == null) {
-            System.out.println("This guest does not exist in our system...");
-        } else {
-            currentGuest.makeReservation();
-            System.out.println("\nA reservation has been made for "
-                    + currentGuest.getName() + ". They may hit the slopes!");
-        }
-    }*/
 }

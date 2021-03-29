@@ -22,11 +22,14 @@ public class CancelReservation extends ApplicationButtons {
         this.editor = editor;
     }
 
+    // MODIFIES: this
+    // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {
         button.addActionListener(new CancelResClickHandler());
     }
 
+    // EFFECTS: creates a cancel reservation button and activates it
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Cancel Existing Reservation");
@@ -34,6 +37,7 @@ public class CancelReservation extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // EFFECTS: click handler for cancel reservation button
     private class CancelResClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -42,11 +46,13 @@ public class CancelReservation extends ApplicationButtons {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets this guests to the input guest
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
-    // MODIFIES: this
+    // MODIFIES: LookUpGuestPopUp
     // EFFECTS: cancels and existing reservation for a guest
     private void doCancelReservation() {
         if (guest.getListOfExpiredPasses().size() == 0) {
@@ -57,6 +63,4 @@ public class CancelReservation extends ApplicationButtons {
             LookUpGuestPopUp.setSuccessMessage("Cancellation successful for " + guest.getName());
         }
     }
-
-
 }

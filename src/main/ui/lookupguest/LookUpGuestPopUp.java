@@ -76,7 +76,7 @@ public class LookUpGuestPopUp extends JPanel {
         mainPanel.add(textPane, BorderLayout.LINE_END);
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
 
-        setAllPanesColor(editor.color);
+        setAllPanesColor(editor.getColor());
     }
 
     // MODIFIES: this
@@ -155,7 +155,7 @@ public class LookUpGuestPopUp extends JPanel {
 
         mainPanel.setVisible(true);
         JPanel buttonArea = new JPanel();
-        buttonArea.setBackground(editor.color);
+        buttonArea.setBackground(editor.getColor());
         buttons = new ArrayList<>();
 
         success.setText(guest.getName() + "'s Account");
@@ -178,7 +178,7 @@ public class LookUpGuestPopUp extends JPanel {
         buttonArea.add(mainMenuButton);
 
         lookupGuest.setTitle("Guest Options");
-        mainPanel.setBackground(editor.color);
+        mainPanel.setBackground(editor.getColor());
         mainPanel.add(buttonArea);
     }
 

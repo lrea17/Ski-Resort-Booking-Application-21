@@ -23,14 +23,13 @@ public class SkiAppGUI extends JFrame {
     private Accounts accounts;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private JLayeredPane infoPanel2 = new JLayeredPane();
     private JPanel infoPanel = new JPanel();
     private JLabel photoPanel;
     private final int xaxis = 450;
     private final int yaxis = 250;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
-    public Color color = new Color(178, 217, 255);
+    private Color color = new Color(178, 217, 255);
     private List<ApplicationButtons> buttons;
 
     public SkiAppGUI() {
@@ -64,13 +63,17 @@ public class SkiAppGUI extends JFrame {
         return JSON_STORE;
     }
 
+    public Color getColor() {
+        return this.color;
+    }
+
     // MODIFIES: this
     // EFFECTS: draws the JFrame window where this DrawingEditor will operate, and populates the tools
     //          to be used to manipulate this drawing
     private void initializeGraphics() {
         setLayout(new GridLayout(0, 2));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setLocation(xaxis,yaxis);
+        setLocation(xaxis, yaxis);
         createButtons();
         createPhoto();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,6 +85,7 @@ public class SkiAppGUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: creates a panel for the mountain photo and adds to main frame
     public void createPhoto() {
+        infoPanel.removeAll();
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new
@@ -149,7 +153,7 @@ public class SkiAppGUI extends JFrame {
         JPanel textPanel = new JPanel(new BorderLayout());
         textPanel.add(new JLabel(messageText));
         textPanel.setBackground(color);
-        JPanel panel2 = new JPanel(new GridLayout(0,2));
+        JPanel panel2 = new JPanel(new GridLayout(0, 2));
         panel2.add(textPanel, BorderLayout.WEST);
         panel2.add(panel, BorderLayout.EAST);
         JOptionPane.showMessageDialog(null, panel2, title, JOptionPane.DEFAULT_OPTION);

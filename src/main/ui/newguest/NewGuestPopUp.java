@@ -79,7 +79,7 @@ public class NewGuestPopUp extends JPanel {
         mainPanel.add(textPane, BorderLayout.LINE_END);
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
 
-        setAllPanesColor(editor.color);
+        setAllPanesColor(editor.getColor());
     }
 
     // EFFECTS: returns the text input into the userNameText field

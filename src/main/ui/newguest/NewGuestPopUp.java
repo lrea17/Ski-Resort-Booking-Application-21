@@ -18,6 +18,8 @@ public class NewGuestPopUp extends JPanel {
     //panels
     private JPanel mainPanel;
     private JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
+    private JPanel successPane = new JPanel(new GridLayout(0, 1));
+
     //creates the labels
     private JLabel success;
     private JLabel name = new JLabel(guestName);
@@ -41,6 +43,8 @@ public class NewGuestPopUp extends JPanel {
     // location for window to pop up at
     private final int xaxis = 450;
     private final int yaxis = 250;
+    private String nameString;
+    private int ageString;
 
     // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp(SkiAppGUI editor) {
@@ -49,9 +53,9 @@ public class NewGuestPopUp extends JPanel {
         initializeGraphics();
 
         // lay out success message on  successPane
-        JPanel successPane = new JPanel(new GridLayout(0, 1));
         success = new JLabel("", SwingConstants.CENTER);
         success.setBounds(10, 10, 300, 25);
+        success.setForeground(Color.RED);
         successPane.add(success);
 
         //Lay out the field labels in a labelPane.
@@ -109,7 +113,7 @@ public class NewGuestPopUp extends JPanel {
         mainPanel = new JPanel();
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         creatingNewGuest.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        creatingNewGuest.setLocation(xaxis,yaxis);
+        creatingNewGuest.setLocation(xaxis, yaxis);
         creatingNewGuest.setVisible(true);
         creatingNewGuest.add(mainPanel);
         mainPanel.setLayout(new BorderLayout());
@@ -131,17 +135,23 @@ public class NewGuestPopUp extends JPanel {
                 } else if (age == null || age.equals("")) {
                     success.setText("Invalid Input for Age Field!");
                     NewGuest.playSound(NewGuest.getErrorSound());
-                } else if (Integer.parseInt(age) < 0 || Integer.parseInt(age) > 150) {
+                } else if (checkAgeInputIsInteger() < 0 || checkAgeInputIsInteger() > 150) {
                     success.setText("Invalid Input for Age Field!");
                     NewGuest.playSound(NewGuest.getErrorSound());
                 } else {
                     doNewGuest();
-                    success.setText("");
-                    userNameText.setText("");
-                    ageText.setText("");
+                    resetInputs();
                 }
             }
         });
+    }
+
+
+    private void resetInputs() {
+        success.setForeground(Color.BLACK);
+        success.setText("Account created for: " + getUserNameTextInput());
+        userNameText.setText("");
+        ageText.setText("");
     }
 
     // MODIFIES: this
@@ -154,7 +164,6 @@ public class NewGuestPopUp extends JPanel {
         int id = newGuest.getID();
         String passType = newGuest.getPassType();
         ArrayList<Pass> usedPasses = newGuest.getListOfExpiredPasses();
-        System.out.println(usedPasses);
         editor.getAccounts().addGuest(newGuest);
         updateLabelsForMostRecentGuest(name, id, age, passType, usedPasses);
         showUpdatedGuestInfo();
@@ -162,7 +171,7 @@ public class NewGuestPopUp extends JPanel {
 
 
     // MODIFIES: this
-    // EFFECTS: creates main menu button and adds button to button pane
+    // EFFECTS: creates main menu button and adds button to button pane of creatingNewGuest
     public void mainMenuButtonActionListener() {
 
         mainMenuButton.addActionListener(new ActionListener() {
@@ -172,13 +181,24 @@ public class NewGuestPopUp extends JPanel {
                 editor.setVisible(true);
                 NewGuest.playSound(NewGuest.getClickSound());
                 guestInfoPane.setVisible(true);
-                // TODO want to have it so the photo stays unless we've updates the guest info
-                showUpdatedGuestInfo();
+                //showUpdatedGuestInfo();
             }
         });
     }
 
-    //TODO this keeps adding panels to the main editor for each guest, we just want it to show the last
+
+    //EFFECTS: checks to make sure that the age input is an integer
+    public int checkAgeInputIsInteger() {
+        try {
+            ageString = Integer.parseInt(getAgeTextInput());
+        } catch (NumberFormatException e) {
+            ageString = -1;
+        }
+        return ageString;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a panel that displays the account info of the last guest added
     public void showUpdatedGuestInfo() {
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
@@ -192,7 +212,6 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(usedPasses);
 
         editor.setSidePanel(guestInfoPane);
-        //TODO rename the method above
 
     }
 
@@ -211,6 +230,8 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.setVisible(false);
     }
 
+    //EFFECTS: adds the updated information from the most recent guest added to the labels
+    //         on the guest info pane
     public void updateLabelsForMostRecentGuest(String name, int accountId, int age,
                                                String passType, ArrayList<Pass> expiredPasses) {
         newGuestName.setText("Name: " + name);

@@ -38,6 +38,8 @@ public class Load extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             Load.playSound(getClickSound());
+            editor.setSidePanel(editor.createPhotoPanel());
+            editor.setVisible(true);
             loadAccountsFromFile();
         }
     }

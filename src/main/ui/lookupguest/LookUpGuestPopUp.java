@@ -210,6 +210,7 @@ public class LookUpGuestPopUp extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lookupGuest.setVisible(false);
+                editor.setSidePanel(editor.createPhotoPanel());
                 editor.setVisible(true);
                 LookupGuest.playSound(LookupGuest.getClickSound());
             }

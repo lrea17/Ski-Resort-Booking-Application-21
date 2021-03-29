@@ -41,6 +41,7 @@ public class Save extends ApplicationButtons {
         public void actionPerformed(ActionEvent e) {
             Save.playSound(getClickSound());
             editor.setSidePanel(editor.createPhotoPanel());
+            editor.setVisible(true);
             saveChangesToFile();
         }
     }

@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-// view used passes for the guest that has been looked up
+// view used passes/previous reservations for the guest that has been looked up
 public class UsedPasses extends ApplicationButtons {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 200;
@@ -31,11 +31,14 @@ public class UsedPasses extends ApplicationButtons {
         super(editor, parent);
     }
 
+    // MODIFIES: this
+    // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {
         button.addActionListener(new UsedPassesClickHandler());
     }
 
+    // EFFECTS: creates a view used passes button and activates it
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("View Used Passes");
@@ -43,6 +46,14 @@ public class UsedPasses extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets this guests to the input guest
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+    // MODIFIES: LookUpGuestPopUp
+    // EFFECTS: click handler for cancel reservation button
     private class UsedPassesClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -52,10 +63,8 @@ public class UsedPasses extends ApplicationButtons {
         }
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
 
+    // EFFECTS: creates the graphics for the used passes dialog box
     public void createUsedPassesDialogBox() {
         usedPassesDialog.setMinimumSize(new Dimension(WIDTH, HEIGHT));
         usedPassesDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -65,6 +74,8 @@ public class UsedPasses extends ApplicationButtons {
         usedPassesDialog.setTitle(guest.getName() + "'s Used Passes: ");
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates dialog box with scroll pane of guests used passes
     public void showUsedPasses() {
         createUsedPassesDialogBox();
         setScrollPaneSetUp();
@@ -74,10 +85,14 @@ public class UsedPasses extends ApplicationButtons {
         usedPassesDialog.add(usedPassesPane);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets list of expiredPass to be a Jlist
     public void newLineListItems() {
         listOfExpiredPass = new JList(guest.getListOfExpiredPasses().toArray());
     }
 
+
+    // EFFECTS: creates scroll pane of used passes and adds it to used Passes pane
     public void setScrollPaneSetUp() {
         newLineListItems();
 
@@ -101,6 +116,9 @@ public class UsedPasses extends ApplicationButtons {
     }
 
 
+    // MODIFIES: this, LookUpGuestPopUp
+    // EFFECTS: checks to see if the guest has any used passes, if empty it updates the success message
+    //          on the LookUpGuestPopUp and plays failure sound, else opens dialog scroll box of passes
     private void getUsedPasses() {
         if (guest.getListOfExpiredPasses().isEmpty()) {
             LookupGuest.playSound(LookupGuest.getErrorSound());

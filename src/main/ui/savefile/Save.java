@@ -4,18 +4,12 @@ import persistence.JsonWriter;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
+// enables user to save to file
 public class Save extends ApplicationButtons {
     private JComponent parent;
 
@@ -25,11 +19,15 @@ public class Save extends ApplicationButtons {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {
         button.addActionListener(new SaveClickHandler());
     }
 
+
+    // EFFECTS: creates save button and activates it
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Save Work to File");
@@ -37,6 +35,7 @@ public class Save extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // EFFECTS: click handler for save button
     private class SaveClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -45,7 +44,7 @@ public class Save extends ApplicationButtons {
         }
     }
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the accounts to file
     private void saveChangesToFile() {
         JsonWriter writer = editor.getJsonWriter();
         String jsonStore = editor.getJsonStore();

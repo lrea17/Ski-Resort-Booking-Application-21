@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// enables user to create new guest
 public class NewGuest extends ApplicationButtons {
     private SkiAppGUI editor;
 
@@ -30,6 +31,9 @@ public class NewGuest extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // MODIFIES: this, SkiAppGUI
+    // EFFECTS: click handler for Create New Guest button, hides editor,
+    //          opens pop up for new guest
     private class NewGuestClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

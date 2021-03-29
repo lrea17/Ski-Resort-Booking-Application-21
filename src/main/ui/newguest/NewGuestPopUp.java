@@ -10,16 +10,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// creates pop up window when new guest button is clicked on editor
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
+    private final int xaxis = 450;
+    private final int yaxis = 250;
+    private int ageString;
     private SkiAppGUI editor;
     private JDialog creatingNewGuest = new JDialog();
     //panels
     private JPanel mainPanel;
     private JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
     private JPanel successPane = new JPanel(new GridLayout(0, 1));
-
     //creates the labels
     private JLabel success;
     private JLabel name = new JLabel(guestName);
@@ -33,20 +36,13 @@ public class NewGuestPopUp extends JPanel {
     private JLabel newGuestAge = new JLabel("Age: ");
     private JLabel pass = new JLabel("Pass Type: ");
     private JLabel usedPasses = new JLabel("Used passes: ");
-
-    //Create the text fields and set them up.
+    //creates text fields
     private final JTextField userNameText = new JTextField(20);
     private JTextField ageText = new JTextField(20);
-    // Buttons
+    // creates buttons
     private JButton createGuestButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
-    // location for window to pop up at
-    private final int xaxis = 450;
-    private final int yaxis = 250;
-    private String nameString;
-    private int ageString;
 
-    // EFFECTS: constructor for the new guest pop up window
     public NewGuestPopUp(SkiAppGUI editor) {
         // initializes graphics
         this.editor = editor;
@@ -108,7 +104,7 @@ public class NewGuestPopUp extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the graphics for the pop up window
+    // EFFECTS: initializes the graphics for the creatingNewGuest dialog box
     private void initializeGraphics() {
         mainPanel = new JPanel();
         creatingNewGuest.setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -121,7 +117,9 @@ public class NewGuestPopUp extends JPanel {
     }
 
     //MODIFIES: this
-    //EFFECTS: creates the buttons for the create new guest dialog box
+    //EFFECTS: action listener for create guest button, checks that text field inputs are
+    //         valid, if so creates guest and resets fields, else gives error message and
+    //         plays error sound
     private void createGuestButtonActionListener() {
         createGuestButton.addActionListener(new ActionListener() {
             @Override
@@ -147,6 +145,8 @@ public class NewGuestPopUp extends JPanel {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: resets text inputs and success message on dialog box
     private void resetInputs() {
         success.setForeground(Color.BLACK);
         success.setText("Account created for: " + getUserNameTextInput());
@@ -155,7 +155,8 @@ public class NewGuestPopUp extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a creation of a new guests & books them a reservation
+    // EFFECTS: creates new guests, adds pass to guest account
+    //          (a pass being added is the same as having a reservation),
     private void doNewGuest() {
         String name = getUserNameTextInput();
         int age = Integer.parseInt(getAgeTextInput());
@@ -171,7 +172,7 @@ public class NewGuestPopUp extends JPanel {
 
 
     // MODIFIES: this
-    // EFFECTS: creates main menu button and adds button to button pane of creatingNewGuest
+    // EFFECTS: creates main menu button
     public void mainMenuButtonActionListener() {
 
         mainMenuButton.addActionListener(new ActionListener() {
@@ -181,7 +182,6 @@ public class NewGuestPopUp extends JPanel {
                 editor.setVisible(true);
                 NewGuest.playSound(NewGuest.getClickSound());
                 guestInfoPane.setVisible(true);
-                //showUpdatedGuestInfo();
             }
         });
     }
@@ -198,7 +198,8 @@ public class NewGuestPopUp extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates a panel that displays the account info of the last guest added
+    // EFFECTS: creates a panel that displays the account info of the last guest added,
+    //          adds this panel to the editor on main menu
     public void showUpdatedGuestInfo() {
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
@@ -210,7 +211,6 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.add(newGuestAge);
         guestInfoPane.add(pass);
         guestInfoPane.add(usedPasses);
-
         editor.setSidePanel(guestInfoPane);
 
     }
@@ -230,8 +230,9 @@ public class NewGuestPopUp extends JPanel {
         guestInfoPane.setVisible(false);
     }
 
-    //EFFECTS: adds the updated information from the most recent guest added to the labels
-    //         on the guest info pane
+    // MODIFIES: this
+    // EFFECTS: adds the updated information from the most recent guest added to the labels
+    //          on the guest info pane
     public void updateLabelsForMostRecentGuest(String name, int accountId, int age,
                                                String passType, ArrayList<Pass> expiredPasses) {
         newGuestName.setText("Name: " + name);

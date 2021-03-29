@@ -9,22 +9,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+// enables user to load from file
 public class Load extends ApplicationButtons {
     private JComponent parent;
-    private final int xaxis = 450;
-    private final int yaxis = 250;
 
     public Load(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.parent = parent;
     }
 
+
+    // MODIFIES: this
+    // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {
         button.addActionListener(new LoadClickHandler());
 
     }
 
+    // EFFECTS: creates a load button and activates it
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Load Work from File");
@@ -32,6 +35,7 @@ public class Load extends ApplicationButtons {
         addToParent(parent);
     }
 
+    // EFFECTS: click handler for load button
     private class LoadClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -41,7 +45,7 @@ public class Load extends ApplicationButtons {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads accounts from file
     private void loadAccountsFromFile() {
         JsonReader reader = editor.getJsonReader();
         try {

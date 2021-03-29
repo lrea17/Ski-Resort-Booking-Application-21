@@ -27,7 +27,7 @@ public abstract class ApplicationButtons {
     protected abstract void createButton(JComponent parent);
 
     // MODIFIES: this
-    // EFFECTS:  customizes the button used for this tool
+    // EFFECTS:  customizes the button used for this action
     protected JButton customizeButton(JButton button) {
         button.setBorderPainted(true);
         button.setFocusPainted(true);

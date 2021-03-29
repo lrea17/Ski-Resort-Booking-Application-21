@@ -43,6 +43,8 @@ public abstract class ApplicationButtons {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: enables buttons to play sound when clicked
     public static void playSound(String soundName) {
 
         try {
@@ -58,10 +60,12 @@ public abstract class ApplicationButtons {
         }
     }
 
+    // EFFECTS: gets click sound
     public static String getClickSound() {
         return click;
     }
 
+    // EFFECTS: gets error sound
     public static String getErrorSound() {
         return error;
     }

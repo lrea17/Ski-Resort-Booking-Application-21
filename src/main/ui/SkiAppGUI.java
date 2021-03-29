@@ -17,10 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Represents the main window in which the space invaders
- * game is played
- */
+//Represents the main window in which the user interacts with the ski reservation system
 public class SkiAppGUI extends JFrame {
     private static final String JSON_STORE = "./data/accounts.json";
     private Accounts accounts;
@@ -34,8 +31,6 @@ public class SkiAppGUI extends JFrame {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
     private Color color = new Color(178, 217, 255);
-
-
     private List<ApplicationButtons> buttons;
 
     public SkiAppGUI() {
@@ -48,6 +43,7 @@ public class SkiAppGUI extends JFrame {
 
     }
 
+    // getters & setters
     public Accounts getAccounts() {
         return accounts;
     }
@@ -69,22 +65,18 @@ public class SkiAppGUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:  draws the JFrame window where this DrawingEditor will operate, and populates the tools to be used
-    //           to manipulate this drawing
+    // EFFECTS: draws the JFrame window where this DrawingEditor will operate, and populates the tools
+    //          to be used to manipulate this drawing
     private void initializeGraphics() {
-        setLayout(new GridLayout(0, 2)); //TODO changed this to grid layout - mebe insert mountain photo
+        setLayout(new GridLayout(0, 2));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setLocation(xaxis,yaxis);
         createButtons();
         createPhoto();
-        //setUpInfoPanel();
-        //TODO 1
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //guests = new JLabel("Number of guests: 0"); - don't think i need this
         this.pack();
         setLocationRelativeTo(null);
         setVisible(true);
-
     }
 
     // MODIFIES: this
@@ -95,45 +87,21 @@ public class SkiAppGUI extends JFrame {
             myPicture = ImageIO.read(new
                     File("/Users/lindsayrea/IdeaProjects/project_d5y0z/data/images/gondola.jpg"));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("image not found");
         }
         photoPanel = new JLabel(new ImageIcon(myPicture));
-
         infoPanel.add(photoPanel);
+        infoPanel.setBackground(color);
         add(infoPanel, BorderLayout.EAST);
-
-        //photoPanel.setBounds(new Rectangle(new Point(0,0), photoPanel.getPreferredSize()));
-        //photoPanel.setVisible(true);
-        //photoPanel.setComponentOrientation();
     }
 
-    //TODO 2
-    public void setUpInfoPanel() {
-        infoPanel2.add(photoPanel, JLayeredPane.PALETTE_LAYER);
-        //infoPanel2.setBounds(0,0, photoPanel.getWidth(), photoPanel.getHeight());
-        this.add(infoPanel2, BorderLayout.EAST);
-        infoPanel2.setVisible(true);
-    }
 
+    // MODIFIES: this
+    // EFFECTS: clears the info panel of all panels then adds the input panel
     public void setSidePanel(JPanel panel) {
         infoPanel.removeAll();
-
         infoPanel.add(panel);
         infoPanel.setVisible(true);
-
-        //TODO 3
-        //panel.setAlignmentX(0.5f);
-        //panel.setAlignmentY(0.5f);
-        //infoPanel2.add(panel, JLayeredPane.POPUP_LAYER);
-        //infoPanel2.moveToBack(photoPanel);
-    }
-
-    public void removePhotoPanel() {
-        remove(photoPanel);
-    }
-
-    public void photoPanelVisible() {
-        add(photoPanel);
     }
 
     // MODIFIES: this
@@ -146,8 +114,7 @@ public class SkiAppGUI extends JFrame {
     // EFFECTS: a helper method which declares and instantiates all buttons
     private void createButtons() {
         JPanel buttonArea = new JPanel();
-        //TODO set colour scheme
-        //buttonArea.setBackground(Color.GREEN);
+        buttonArea.setBackground(color);
         buttonArea.setLayout(new GridLayout(0, 1));
         buttonArea.setSize(new Dimension(2, 10));
         add(buttonArea, BorderLayout.CENTER);

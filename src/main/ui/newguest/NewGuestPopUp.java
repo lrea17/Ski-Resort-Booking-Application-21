@@ -230,21 +230,6 @@ public class NewGuestPopUp extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: creates a panel that can display the account info of the last guest added
-    public void createRecentGuestInfoPane() {
-        JLabel title = new JLabel("Last Guest Created:");
-        Font font = new Font("Arial", Font.BOLD, 12);
-        title.setFont(font);
-        guestInfoPane.add(title);
-        guestInfoPane.add(newGuestName);
-        guestInfoPane.add(accountID);
-        guestInfoPane.add(newGuestAge);
-        guestInfoPane.add(pass);
-        guestInfoPane.add(usedPasses);
-        guestInfoPane.setVisible(false);
-    }
-
-    // MODIFIES: this
     // EFFECTS: adds the updated information from the most recent guest added to the labels
     //          on the guest info pane
     public void updateLabelsForMostRecentGuest(String name, int accountId, int age,

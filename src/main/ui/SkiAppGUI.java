@@ -93,6 +93,8 @@ public class SkiAppGUI extends JFrame {
         infoPanel.setVisible(true);
     }
 
+
+    // EFFECTS: creates a JPanel with a photo on it
     public JPanel createPhotoPanel() {
         BufferedImage myPicture = null;
         try {

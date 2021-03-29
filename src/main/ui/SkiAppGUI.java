@@ -30,7 +30,7 @@ public class SkiAppGUI extends JFrame {
     private final int yaxis = 250;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
-    private Color color = new Color(178, 217, 255);
+    public Color color = new Color(178, 217, 255);
     private List<ApplicationButtons> buttons;
 
     public SkiAppGUI() {

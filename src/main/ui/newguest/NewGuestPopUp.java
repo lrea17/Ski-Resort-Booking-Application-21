@@ -23,6 +23,9 @@ public class NewGuestPopUp extends JPanel {
     private JPanel mainPanel;
     private JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
     private JPanel successPane = new JPanel(new GridLayout(0, 1));
+    private JPanel labelPane = new JPanel(new GridLayout(0, 1));
+    private JPanel buttonPane = new JPanel(new GridLayout(0, 1));
+    private JPanel textPane = new JPanel(new GridLayout(0, 1));
     //creates the labels
     private JLabel success;
     private JLabel name = new JLabel(guestName);
@@ -55,17 +58,14 @@ public class NewGuestPopUp extends JPanel {
         successPane.add(success);
 
         //Lay out the field labels in a labelPane.
-        JPanel labelPane = new JPanel(new GridLayout(0, 1));
         labelPane.add(name);
         labelPane.add(age);
 
         //Layout the text fields in a mainPanel.
-        JPanel textPane = new JPanel(new GridLayout(0, 1));
         textPane.add(userNameText);
         textPane.add(ageText);
 
         //create buttons
-        JPanel buttonPane = new JPanel(new GridLayout(0, 1));
         createGuestButton.setText("Create Guest");
         createGuestButtonActionListener();
         buttonPane.add(createGuestButton);
@@ -78,6 +78,8 @@ public class NewGuestPopUp extends JPanel {
         mainPanel.add(labelPane, BorderLayout.CENTER);
         mainPanel.add(textPane, BorderLayout.LINE_END);
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
+
+        setAllPanesColor(editor.color);
     }
 
     // EFFECTS: returns the text input into the userNameText field
@@ -114,6 +116,16 @@ public class NewGuestPopUp extends JPanel {
         creatingNewGuest.add(mainPanel);
         mainPanel.setLayout(new BorderLayout());
         creatingNewGuest.setTitle("Create New Guest");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the background color of all the panels to match
+    public void setAllPanesColor(Color color) {
+        mainPanel.setBackground(color);
+        buttonPane.setBackground(color);
+        textPane.setBackground(color);
+        labelPane.setBackground(color);
+        successPane.setBackground(color);
     }
 
     //MODIFIES: this

@@ -76,6 +76,17 @@ public class LookUpGuestPopUp extends JPanel {
         mainPanel.add(textPane, BorderLayout.LINE_END);
         mainPanel.add(buttonPane, BorderLayout.SOUTH);
 
+        setAllPanesColor(editor.color);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the background color of all the panels to match
+    public void setAllPanesColor(Color color) {
+        mainPanel.setBackground(color);
+        buttonPane.setBackground(color);
+        textPane.setBackground(color);
+        labelPane.setBackground(color);
+        successPane.setBackground(color);
     }
 
     // EFFECTS: returns the text input into the ageText field
@@ -144,6 +155,7 @@ public class LookUpGuestPopUp extends JPanel {
 
         mainPanel.setVisible(true);
         JPanel buttonArea = new JPanel();
+        buttonArea.setBackground(editor.color);
         buttons = new ArrayList<>();
 
         success.setText(guest.getName() + "'s Account");
@@ -166,6 +178,7 @@ public class LookUpGuestPopUp extends JPanel {
         buttonArea.add(mainMenuButton);
 
         lookupGuest.setTitle("Guest Options");
+        mainPanel.setBackground(editor.color);
         mainPanel.add(buttonArea);
     }
 

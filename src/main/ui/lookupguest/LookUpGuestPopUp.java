@@ -212,7 +212,6 @@ public class LookUpGuestPopUp extends JPanel {
                 lookupGuest.setVisible(false);
                 editor.setVisible(true);
                 LookupGuest.playSound(LookupGuest.getClickSound());
-                editor.createPhoto();
             }
         });
     }

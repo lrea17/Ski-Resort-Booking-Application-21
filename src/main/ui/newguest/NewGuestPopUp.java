@@ -21,7 +21,7 @@ public class NewGuestPopUp extends JPanel {
     private JDialog creatingNewGuest = new JDialog();
     //panels
     private JPanel mainPanel;
-    private JPanel guestInfoPane = new JPanel(new GridLayout(0, 1));
+    private JPanel guestInfoPane;
     private JPanel successPane = new JPanel(new GridLayout(0, 1));
     private JPanel labelPane = new JPanel(new GridLayout(0, 1));
     private JPanel buttonPane = new JPanel(new GridLayout(0, 1));
@@ -214,6 +214,7 @@ public class NewGuestPopUp extends JPanel {
     // EFFECTS: creates a panel that displays the account info of the last guest added,
     //          adds this panel to the editor on main menu
     public void showUpdatedGuestInfo() {
+        guestInfoPane = new JPanel(new GridLayout(0, 1));
         JLabel title = new JLabel("Last Guest Created:");
         Font font = new Font("Arial", Font.BOLD, 12);
         title.setFont(font);

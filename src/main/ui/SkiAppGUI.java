@@ -24,7 +24,8 @@ public class SkiAppGUI extends JFrame {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JPanel infoPanel = new JPanel();
-    private JLabel photoPanel;
+    private JPanel photoPanel = new JPanel(new GridLayout(0, 1));
+    private JLabel photoLabel;
     private final int xaxis = 450;
     private final int yaxis = 250;
     public static final int WIDTH = 600;
@@ -86,6 +87,13 @@ public class SkiAppGUI extends JFrame {
     // EFFECTS: creates a panel for the mountain photo and adds to main frame
     public void createPhoto() {
         infoPanel.removeAll();
+        infoPanel.add(createPhotoPanel());
+        infoPanel.setBackground(color);
+        add(infoPanel, BorderLayout.EAST);
+        infoPanel.setVisible(true);
+    }
+
+    public JPanel createPhotoPanel() {
         BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new
@@ -93,10 +101,9 @@ public class SkiAppGUI extends JFrame {
         } catch (IOException e) {
             System.out.println("image not found");
         }
-        photoPanel = new JLabel(new ImageIcon(myPicture));
-        infoPanel.add(photoPanel);
-        infoPanel.setBackground(color);
-        add(infoPanel, BorderLayout.EAST);
+        photoLabel = new JLabel(new ImageIcon(myPicture));
+        photoPanel.add(photoLabel);
+        return photoPanel;
     }
 
 

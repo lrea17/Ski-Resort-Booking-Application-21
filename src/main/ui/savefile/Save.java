@@ -40,6 +40,7 @@ public class Save extends ApplicationButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             Save.playSound(getClickSound());
+            editor.setSidePanel(editor.createPhotoPanel());
             saveChangesToFile();
         }
     }

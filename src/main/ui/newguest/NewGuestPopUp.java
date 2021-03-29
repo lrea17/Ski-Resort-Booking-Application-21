@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-// creates pop up window when new guest button is clicked on editor
+// creates dialog window when new guest button is clicked on editor
 public class NewGuestPopUp extends JPanel {
     private static final int WIDTH = 350;
     private static final int HEIGHT = 200;
@@ -171,8 +171,9 @@ public class NewGuestPopUp extends JPanel {
     }
 
 
-    // MODIFIES: this
-    // EFFECTS: creates main menu button
+    // MODIFIES: this, SkiAppGUI
+    // EFFECTS: creates click handler for main menu button and adds button to button pane,
+    //          sets main editor visible with new guest info panel and closes new guest dialog box
     public void mainMenuButtonActionListener() {
 
         mainMenuButton.addActionListener(new ActionListener() {
@@ -187,7 +188,7 @@ public class NewGuestPopUp extends JPanel {
     }
 
 
-    //EFFECTS: checks to make sure that the age input is an integer
+    // EFFECTS: checks to make sure that the age input is an integer
     public int checkAgeInputIsInteger() {
         try {
             ageString = Integer.parseInt(getAgeTextInput());

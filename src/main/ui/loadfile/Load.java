@@ -18,8 +18,6 @@ public class Load extends ApplicationButtons {
         this.parent = parent;
     }
 
-
-    // MODIFIES: this
     // EFFECTS:  associate button with new ClickHandler
     @Override
     protected void addListener() {

@@ -17,10 +17,13 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 import static ski.model.Accounts.lookupGuest;
 
-//creates a pop up window with buttons after lookup guest is clicked from main GUI
+//creates a dialog window with buttons after lookup guest is clicked on editor
 public class LookUpGuestPopUp extends JPanel {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 200;
+    // dimensions for jDialog screen location
+    private final int xaxis = 450;
+    private final int yaxis = 250;
     private SkiAppGUI editor;
     private JDialog lookupGuest = new JDialog();
     // panels
@@ -32,17 +35,13 @@ public class LookUpGuestPopUp extends JPanel {
     //creates the labels
     private static JLabel success;
     private JLabel id = new JLabel(guestID);
-    //Strings for the labels
     private static String guestID = "Guest ID: ";
     //Create the text fields and set them up.
     private final JTextField idText = new JTextField(20);
-    // Buttons
+    // creates buttons
     private List<ApplicationButtons> buttons;
     private JButton lookupButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
-    // dimensions for jDialog screen location
-    private final int xaxis = 450;
-    private final int yaxis = 250;
 
     public LookUpGuestPopUp(SkiAppGUI editor) {
         this.editor = editor;
@@ -90,6 +89,10 @@ public class LookUpGuestPopUp extends JPanel {
         return idInput;
     }
 
+    //MODIFIES: this
+    //EFFECTS: action listener for lookup guest button, checks that the input is valid,
+    //         checks guest exists in accounts, if successful opens guest accounts page,
+    //         else plays error sound and displays message
     private void lookupButtonActionListener() {
         lookupButton.addActionListener(new ActionListener() {
             @Override
@@ -111,6 +114,9 @@ public class LookUpGuestPopUp extends JPanel {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: takes the guest looked up and makes their information available for the
+    //          buttons on the guest account page
     public void sendGuest(Guest guest, ApplicationButtons button) {
         if (button instanceof MakeReservation) {
             ((MakeReservation) button).setGuest(guest);
@@ -125,14 +131,14 @@ public class LookUpGuestPopUp extends JPanel {
     //EFFECTS: makes mainPanel hidden and removes all original lookupGuest panes from the mainPanel
     public void removeAllPanes() {
         mainPanel.setVisible(false);
-        //mainPanel.remove(successPane);
         mainPanel.remove(labelPane);
         mainPanel.remove(textPane);
         mainPanel.remove(buttonPane);
     }
 
     //MODIFIES: this
-    //EFFECTS: makes mainPanel visible with new buttons for after a guest has been looked up by id
+    //EFFECTS: makes mainPanel visible with new buttons for after a guest has been successfully
+    //         looked up by id
     public void guestLookupSuccessfulPanel(Guest guest) {
         removeAllPanes();
 
@@ -164,7 +170,7 @@ public class LookUpGuestPopUp extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the graphics for the pop up window
+    // EFFECTS: initializes the graphics for the look up guest dialog window
     private void initializeGraphics() {
         mainPanel = new JPanel();
         lookupGuest.setMinimumSize(new Dimension(WIDTH, (HEIGHT)));
@@ -176,13 +182,16 @@ public class LookUpGuestPopUp extends JPanel {
         lookupGuest.setTitle("Lookup Guest");
     }
 
+    // MODIFIES:this
+    // EFFECTS: sets the success message that appears in main{anel
     public static void setSuccessMessage(String message) {
         success.setText(message);
     }
 
 
-    // MODIFIES: this
-    // EFFECTS: creates main menu button and adds button to button pane
+    // MODIFIES: this, SkiAppGUI
+    // EFFECTS: creates click handler for main menu button and adds button to button pane,
+    //          sets main editor visible and closes lookupGuest dialog box
     public void mainMenuButtonActionListener() {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override

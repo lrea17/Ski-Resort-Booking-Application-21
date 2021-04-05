@@ -17,7 +17,6 @@ public class PassTest {
     private Guest guestTestAdult;
     private Guest guestTestAlmostSenior;
     private Guest guestTestSenior;
-    private Guest guestTestInvalid;
 
     @BeforeEach
     void setup() {
@@ -29,7 +28,6 @@ public class PassTest {
             guestTestAdult = new Guest("Rupert", 19);
             guestTestAlmostSenior = new Guest("Lindsay", 64);
             guestTestSenior = new Guest("Ken", 65);
-            guestTestInvalid = new Guest("Invalid", -10);
             passTest = new Pass(guestTestAdult.getAge());
             passTestExpired = new Pass(12345, "adult", true);
         } catch (AgeOutOfBounds e) {

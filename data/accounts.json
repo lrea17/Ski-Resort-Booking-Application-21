@@ -1,7 +1,7 @@
 {
     "listOfGuests": [
         {
-            "passType": "adult",
+            "passType": "child",
             "name": "Lindsay",
             "listOfExpiredPasses": [{
                 "passType": "adult",
@@ -12,7 +12,7 @@
             "age": 28
         },
         {
-            "passType": "youth",
+            "passType": "child",
             "name": "bob",
             "listOfExpiredPasses": [{
                 "passType": "youth",
@@ -21,6 +21,29 @@
             }],
             "id": 55854,
             "age": 15
+        },
+        {
+            "passType": "adult",
+            "name": "lindsay",
+            "listOfExpiredPasses": [
+                {
+                    "passType": "adult",
+                    "passExpired": true,
+                    "passNum": 98766
+                },
+                {
+                    "passType": "adult",
+                    "passExpired": true,
+                    "passNum": 96619
+                },
+                {
+                    "passType": "adult",
+                    "passExpired": true,
+                    "passNum": 74719
+                }
+            ],
+            "id": 23769,
+            "age": 28
         }
     ],
     "name": "Snowy Mountain"

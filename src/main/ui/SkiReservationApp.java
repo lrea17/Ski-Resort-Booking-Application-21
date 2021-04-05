@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.AgeOutOfBounds;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ski.model.Accounts;
@@ -103,7 +104,12 @@ public class SkiReservationApp {
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
         if (guestAge > 0 && guestAge < 150) {
-            Guest newGuest = new Guest(guestName, guestAge);
+            Guest newGuest = null;
+            try {
+                newGuest = new Guest(guestName, guestAge);
+            } catch (AgeOutOfBounds ageOutOfBounds) {
+                System.out.println("Guest age invalid input");
+            }
             accounts.addGuest(newGuest);
             System.out.println("New account created for: " + guestName);
             System.out.println("account ID: " + newGuest.getID());

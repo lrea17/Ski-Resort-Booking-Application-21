@@ -1,5 +1,6 @@
 package ski.model;
 
+import exceptions.AgeOutOfBounds;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,19 +10,31 @@ public class PassTest {
 
     private Pass passTest;
     private Pass passTestExpired;
-    private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
-    private final Guest guestTestChildFive = new Guest("George", 5);
-    private final Guest guestTestYouth = new Guest("Anna", 6);
-    private final Guest guestTestAlmostAdult = new Guest("Blair", 18);
-    private final Guest guestTestAdult = new Guest("Rupert", 19);
-    private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
-    private final Guest guestTestSenior = new Guest("Ken", 65);
-    private final Guest guestTestInvalid = new Guest("Invalid", -10);
+    private Guest guestTestChildUnderFive;
+    private Guest guestTestChildFive;
+    private Guest guestTestYouth;
+    private Guest guestTestAlmostAdult;
+    private Guest guestTestAdult;
+    private Guest guestTestAlmostSenior;
+    private Guest guestTestSenior;
+    private Guest guestTestInvalid;
 
     @BeforeEach
     void setup() {
-        passTest = new Pass(guestTestAdult.getAge());
-        passTestExpired = new Pass(12345, "adult", true);
+        try {
+            guestTestChildUnderFive = new Guest("Beth", 4);
+            guestTestChildFive = new Guest("George", 5);
+            guestTestYouth = new Guest("Anna", 6);
+            guestTestAlmostAdult = new Guest("Blair", 18);
+            guestTestAdult = new Guest("Rupert", 19);
+            guestTestAlmostSenior = new Guest("Lindsay", 64);
+            guestTestSenior = new Guest("Ken", 65);
+            guestTestInvalid = new Guest("Invalid", -10);
+            passTest = new Pass(guestTestAdult.getAge());
+            passTestExpired = new Pass(12345, "adult", true);
+        } catch (AgeOutOfBounds e) {
+            fail("Not expecting age out of bounds exception");
+        }
     }
 
     @Test

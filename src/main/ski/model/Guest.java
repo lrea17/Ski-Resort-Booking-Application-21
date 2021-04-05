@@ -25,11 +25,11 @@ public class Guest implements Writable {
     public Guest(String guestName, int guestAge) throws AgeOutOfBounds {
         this.id = randomIdGenerator();
         this.name = guestName;
-        this.passType = setPassType();
         if (guestAge < 0 || guestAge > 150) {
             new AgeOutOfBounds();
         } else {
             this.age = guestAge;
+            this.passType = setPassType();
         }
     }
 

@@ -1,5 +1,6 @@
 package ski.model;
 
+import exceptions.AgeOutOfBounds;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,18 +8,51 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
     private Guest guestTest;
-    private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
-    private final Guest guestTestChildFive = new Guest("George", 5);
-    private final Guest guestTestYouth = new Guest("Anna", 6);
-    private final Guest guestTestAlmostAdult = new Guest("Blair", 18);
-    private final Guest guestTestAdult = new Guest("Rupert", 19);
-    private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
-    private final Guest guestTestSenior = new Guest("Ken", 65);
+    private Guest guestTestChildUnderFive;
+    private Guest guestTestChildFive;
+    private Guest guestTestYouth;
+    private Guest guestTestAlmostAdult;
+    private Guest guestTestAdult;
+    private Guest guestTestAlmostSenior;
+    private Guest guestTestSenior;
+    private Guest tooYoung;
+    private Guest tooOld;
 
 
     @BeforeEach
     void setup() {
-        guestTest = new Guest("Lindsay", 28);
+        try {
+            guestTest = new Guest("Lindsay", 28);
+            guestTestChildUnderFive = new Guest("Beth", 4);
+            guestTestChildFive = new Guest("George", 5);
+            guestTestYouth = new Guest("Anna", 6);
+            guestTestAlmostAdult = new Guest("Blair", 18);
+            guestTestAdult = new Guest("Rupert", 19);
+            guestTestAlmostSenior = new Guest("Lindsay", 64);
+            guestTestSenior = new Guest("Ken", 65);
+        } catch (AgeOutOfBounds e) {
+            fail("Age input is invalid");
+        }
+    }
+
+    @Test
+    void testGuestAgeTooYoung(){
+        try {
+            Guest tooYoung = new Guest("Baby", 0);
+            fail("expected age out of bounds exception");
+        } catch (AgeOutOfBounds e){
+            // expected age out of bounds exception here
+        }
+    }
+
+    @Test
+    void testGuestAgeTooOld(){
+        try {
+            Guest tooOld = new Guest("Baby", 150);
+            fail("expected age out of bounds exception");
+        } catch (AgeOutOfBounds e){
+            // expected age out of bounds exception here
+        }
     }
 
 
@@ -32,8 +66,13 @@ class GuestTest {
     }
 
     @Test
-    void testSetAge(){
-        Guest newGuest = new Guest("Bob", 22);
+    void testSetAge() {
+        Guest newGuest = null;
+        try {
+            newGuest = new Guest("Bob", 22);
+        } catch (AgeOutOfBounds ageOutOfBounds) {
+            ageOutOfBounds.printStackTrace();
+        }
         newGuest.setAge(4);
         assertEquals(4, newGuest.getAge());
         newGuest.setPassType();
@@ -44,7 +83,7 @@ class GuestTest {
         assertEquals("youth", newGuest.setPassType());
         assertEquals("youth", newGuest.getPassType());
         newGuest.setAge(19);
-        assertEquals("adult" ,newGuest.setPassType());
+        assertEquals("adult", newGuest.setPassType());
         assertEquals("adult", newGuest.getPassType());
         newGuest.setAge(64);
         assertEquals("adult", newGuest.setPassType());
@@ -101,17 +140,17 @@ class GuestTest {
     }
 
     @Test
-    void testValidAccountNumberInList(){
+    void testValidAccountNumberInList() {
         assertFalse(guestTest.validNumber(guestTest.getID()));
     }
 
     @Test
-    void testValidAccountNumberLessThanZero(){
+    void testValidAccountNumberLessThanZero() {
         assertFalse(guestTest.validNumber(-2));
     }
 
     @Test
-    void testValidAccountNumberTooBig(){
+    void testValidAccountNumberTooBig() {
         assertFalse(guestTest.validNumber(100000));
         assertTrue(guestTest.validNumber(99999));
     }
@@ -147,7 +186,7 @@ class GuestTest {
     }
 
     @Test
-    void testLoadExpiredPass(){
+    void testLoadExpiredPass() {
         Pass p = new Pass(guestTest.getAge());
         assertFalse(guestTest.getListOfExpiredPasses().contains(p));
         guestTest.loadExpiredPasses(p);

@@ -22,17 +22,8 @@ public class Guest implements Writable {
     //          positive integer not assigned to any other account; age is set
     //          to guestAge; passType is dependent on age of guest; instantiates a new list
     //          of expired passes to track guest ski history
-    public Guest(String guestName, int guestAge) {
+    public Guest(String guestName, int guestAge) throws AgeOutOfBounds {
         this.id = randomIdGenerator();
-        this.name = guestName;
-        this.age = guestAge;
-        this.passType = setPassType();
-    }
-
-    // EFFECTS: constructs a guest with the inputs guestName, guestAge, and id
-    //          this is used for save/load to JSON
-    public Guest(String guestName, int guestAge, int id) throws AgeOutOfBounds {
-        this.id = id;
         this.name = guestName;
         this.passType = setPassType();
         if (guestAge < 0 || guestAge > 150) {
@@ -40,8 +31,15 @@ public class Guest implements Writable {
         } else {
             this.age = guestAge;
         }
+    }
 
-
+    // EFFECTS: constructs a guest with the inputs guestName, guestAge, and id
+    //          this is used for save/load to JSON
+    public Guest(String guestName, int guestAge, int id) {
+        this.id = id;
+        this.name = guestName;
+        this.passType = setPassType();
+        this.age = guestAge;
     }
 
     // getters

@@ -39,7 +39,7 @@ class GuestTest {
     void testGuestAgeTooYoung(){
         try {
             Guest tooYoung = new Guest("Baby", -1);
-            //fail("expected age out of bounds exception");
+            fail("expected age out of bounds exception");
         } catch (AgeOutOfBounds e){
             // expected age out of bounds exception here
         }
@@ -49,7 +49,7 @@ class GuestTest {
     void testGuestAgeTooOld(){
         try {
             Guest tooOld = new Guest("Baby", 151);
-            //fail("expected age out of bounds exception");
+            fail("expected age out of bounds exception");
         } catch (AgeOutOfBounds e){
             // expected age out of bounds exception here
         }

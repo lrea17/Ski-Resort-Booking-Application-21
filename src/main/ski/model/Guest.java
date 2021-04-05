@@ -17,7 +17,6 @@ public class Guest implements Writable {
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses = new ArrayList<>(); // list of passes guest has used
 
-    // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
     // EFFECTS: name of guest is set to guestName; guest id is a unique random
     //          positive integer not assigned to any other account; age is set
     //          to guestAge; passType is dependent on age of guest; instantiates a new list
@@ -26,7 +25,7 @@ public class Guest implements Writable {
         this.id = randomIdGenerator();
         this.name = guestName;
         if (guestAge < 0 || guestAge > 150) {
-            new AgeOutOfBounds();
+            throw new AgeOutOfBounds();
         } else {
             this.age = guestAge;
             this.passType = setPassType();

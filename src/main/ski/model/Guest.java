@@ -1,5 +1,6 @@
 package ski.model;
 
+import exceptions.AgeOutOfBounds;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -30,11 +31,16 @@ public class Guest implements Writable {
 
     // EFFECTS: constructs a guest with the inputs guestName, guestAge, and id
     //          this is used for save/load to JSON
-    public Guest(String guestName, int guestAge, int id) {
+    public Guest(String guestName, int guestAge, int id) throws AgeOutOfBounds {
         this.id = id;
         this.name = guestName;
-        this.age = guestAge;
         this.passType = setPassType();
+        if (guestAge < 0 || guestAge > 150) {
+            new AgeOutOfBounds();
+        } else {
+            this.age = guestAge;
+        }
+
 
     }
 

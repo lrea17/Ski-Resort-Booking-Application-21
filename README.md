@@ -61,6 +61,12 @@ Phase 2:
 - As a user, when I start the application, I want to be given the option to load my most recent changes from file.
 - As a user, when I select the quit option from the application menu, I want to be reminded to save my changes to 
   file and have the option to do so or not.
+  
+Phase 4: Task 2:
+- I elected to make my Guest class in the ski.model package robust. The constructor (Guest(String, Int)) for the guest 
+  class throws an exception AgeOutOfBounds when the inputted age is < 0 or > 150. In the Guest test class I added two
+  tests, testAgeTooYoung and testAgeTooOld which ensures the exception is thrown.  I updated methods and tests
+  elsewhere in the project to ensure the exception is caught if thrown. 
 
 
 

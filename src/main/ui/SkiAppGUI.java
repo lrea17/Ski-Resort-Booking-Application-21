@@ -33,6 +33,7 @@ public class SkiAppGUI extends JFrame {
     private Color color = new Color(178, 217, 255);
     private List<ApplicationButtons> buttons;
 
+    // constructs an instance of the ski app GUI
     public SkiAppGUI() {
         super("Ski Mountain Booking System");
         accounts = new Accounts("Snowy Mountain");

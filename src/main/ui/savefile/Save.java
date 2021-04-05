@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 public class Save extends ApplicationButtons {
     private JComponent parent;
 
+    //EFFECTS: creates a save button for the main menu with the ability to save work to file
     public Save(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.parent = parent;

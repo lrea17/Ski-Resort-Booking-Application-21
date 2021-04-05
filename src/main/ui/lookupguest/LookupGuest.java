@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class LookupGuest extends ApplicationButtons {
     private SkiAppGUI editor;
 
+    //EFFECTS: creates the button for lookup guest attached to the main menu
     public LookupGuest(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.editor = editor;

@@ -26,7 +26,8 @@ public class UsedPasses extends ApplicationButtons {
     private final int xaxis = 450;
     private final int yaxis = 250;
 
-
+    //EFFECTS: creates used passes button on the lookup guest pop up. When clicked
+    //         it opens a pop up displaying a list of the guests used passes
     public UsedPasses(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
     }

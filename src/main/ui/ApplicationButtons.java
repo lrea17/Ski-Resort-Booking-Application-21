@@ -13,6 +13,8 @@ public abstract class ApplicationButtons {
     private static String  click = "/Users/lindsayrea/IdeaProjects/project_d5y0z/data/sounds/regular-click.wav";
     private static String error = "/Users/lindsayrea/IdeaProjects/project_d5y0z/data/sounds/error-button.wav";
 
+    //EFFECTS: creates an abstract class for any buttons in the GUI.  This requires
+    //         all buttons to have the same features
     public ApplicationButtons(SkiAppGUI editor, JComponent parent) {
         this.editor = editor;
         createButton(parent);

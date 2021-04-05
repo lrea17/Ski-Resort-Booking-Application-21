@@ -15,6 +15,9 @@ public class MakeReservation extends ApplicationButtons {
     private SkiAppGUI editor;
     private Guest guest;
 
+    //EFFECTS: creates make reservation button on the lookup guest pop up. When clicked
+    //         it makes a "reservation" for the guest by adding a pass to their list of
+    //         used passes
     public MakeReservation(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.editor = editor;

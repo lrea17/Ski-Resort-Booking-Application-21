@@ -17,6 +17,9 @@ public class CancelReservation extends ApplicationButtons {
     private SkiAppGUI editor;
     private Guest guest;
 
+    //EFFECTS: creates cancel reservation button on the lookup guest pop up. When clicked
+    //         it removes the most recently used pass from the guests list of used passes,
+    //         this is effectively canceling a "reservation"
     public CancelReservation(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.editor = editor;

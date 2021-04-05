@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Load extends ApplicationButtons {
     private JComponent parent;
 
+    //EFFECTS: creates a load button for the main menu with the ability to load work from file
     public Load(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
         this.parent = parent;

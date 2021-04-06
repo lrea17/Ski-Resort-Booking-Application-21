@@ -74,5 +74,20 @@ Phase 4: Task 2:
   ApplicationButtons and override the methods mentioned above.  Each button is unique and performs a different action
   so each subclass overrides those methods differently.  
 
+Phase 4: Task 3:
+
+If I had more time I would definitely do some refactoring to improve this project! These are the changes I would make:
+
+- add a "Reservation" class to the ski model - this would make booking a "reservation" separate from adding a pass to 
+  the guests account.  Right now, a booking/canceling a "reservation" is tied to adding/removing passes from a guest 
+  profile/
+  
+- You can't really see it in my UML, but I somewhat reuse the MainMenu button on a few different panels within the GUI.
+  I would like to have somehow added the main menu button as maybe a method within the ApplicationButtons class so that 
+  methods implementing ApplicationButtons could override that method and there would be less repetitive code/
+  
+- I don't know if its possible, but it would be nice to have fewer classes in the UI package, it seems like there's a
+  lot going on in there and maybe some repetition with code.  Maybe by trying to remove any duplication a little better.
+
 
 

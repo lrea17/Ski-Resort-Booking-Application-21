@@ -3,7 +3,7 @@ package ui.lookupguest.makereservation;
 import ski.model.Guest;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
-import ui.lookupguest.LookUpGuestPopUp;
+import ui.lookupguest.LookupGuestPopUp;
 import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 
 // makes a reservation for the guest that has been looked up
 public class MakeReservation extends ApplicationButtons {
-    private SkiAppGUI editor;
     private Guest guest;
 
     //EFFECTS: creates make reservation button on the lookup guest pop up. When clicked
@@ -20,7 +19,6 @@ public class MakeReservation extends ApplicationButtons {
     //         used passes
     public MakeReservation(SkiAppGUI editor, JComponent parent) {
         super(editor, parent);
-        this.editor = editor;
     }
 
     // MODIFIES: this
@@ -52,7 +50,7 @@ public class MakeReservation extends ApplicationButtons {
         public void actionPerformed(ActionEvent e) {
             LookupGuest.playSound(LookupGuest.getClickSound());
             guest.makeReservation();
-            LookUpGuestPopUp.setSuccessMessage("Reservation booked for " + guest.getName());
+            LookupGuestPopUp.setSuccessMessage("Reservation booked for " + guest.getName());
 
         }
     }

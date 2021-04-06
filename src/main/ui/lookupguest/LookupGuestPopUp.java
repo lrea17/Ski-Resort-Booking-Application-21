@@ -18,7 +18,7 @@ import static java.lang.Integer.parseInt;
 import static ski.model.Accounts.lookupGuest;
 
 //creates a dialog window with buttons after lookup guest is clicked on editor
-public class LookUpGuestPopUp extends JPanel {
+public class LookupGuestPopUp extends JPanel {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 200;
     // dimensions for jDialog screen location
@@ -43,7 +43,7 @@ public class LookUpGuestPopUp extends JPanel {
     private JButton lookupButton = new JButton();
     private JButton mainMenuButton = new JButton("Main Menu");
 
-    public LookUpGuestPopUp(SkiAppGUI editor) {
+    public LookupGuestPopUp(SkiAppGUI editor) {
         this.editor = editor;
         initializeGraphics();
 

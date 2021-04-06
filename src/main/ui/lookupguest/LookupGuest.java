@@ -38,7 +38,7 @@ public class LookupGuest extends ApplicationButtons {
     private class LookupNewGuestClickHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            new LookUpGuestPopUp(editor);
+            new LookupGuestPopUp(editor);
             playSound(getClickSound());
             editor.setVisible(false);
         }

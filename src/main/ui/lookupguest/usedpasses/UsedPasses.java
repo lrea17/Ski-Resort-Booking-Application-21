@@ -4,7 +4,7 @@ import ski.model.Guest;
 import ski.model.Pass;
 import ui.ApplicationButtons;
 import ui.SkiAppGUI;
-import ui.lookupguest.LookUpGuestPopUp;
+import ui.lookupguest.LookupGuestPopUp;
 import ui.lookupguest.LookupGuest;
 
 import javax.swing.*;
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class UsedPasses extends ApplicationButtons {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 200;
-    private SkiAppGUI editor;
     private Guest guest;
     private JPanel usedPassesPane = new JPanel(new GridLayout(0, 1));
     private JDialog usedPassesDialog = new JDialog();
@@ -123,7 +122,7 @@ public class UsedPasses extends ApplicationButtons {
     private void getUsedPasses() {
         if (guest.getListOfExpiredPasses().isEmpty()) {
             LookupGuest.playSound(LookupGuest.getErrorSound());
-            LookUpGuestPopUp.setSuccessMessage(guest.getName() + " has no used passes!");
+            LookupGuestPopUp.setSuccessMessage(guest.getName() + " has no used passes!");
         } else {
             showUsedPasses();
         }

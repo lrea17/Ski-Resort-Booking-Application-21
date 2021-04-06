@@ -66,7 +66,13 @@ Phase 4: Task 2:
 - I elected to make my Guest class in the ski.model package robust. The constructor (Guest(String, Int)) for the guest 
   class throws an exception AgeOutOfBounds when the inputted age is < 0 or > 150. In the Guest test class I added two
   tests, testAgeTooYoung and testAgeTooOld which ensures the exception is thrown.  I updated methods and tests
-  elsewhere in the project to ensure the exception is caught if thrown. 
+  elsewhere in the project to ensure the exception is caught if thrown.
+    
+- I realized after I had already made the guest class robust that I have a pre-existing type hierarchy.
+  ApplicationButtons is an abstract class and all my "buttons" in my GUI extend this class to implement/override the
+  methods addListener() and createButtons(). For example, Save, NewGuest, Load and LookupGuest all extend
+  ApplicationButtons and override the methods mentioned above.  Each button is unique and performs a different action
+  so each subclass overrides those methods differently.  
 
 
 

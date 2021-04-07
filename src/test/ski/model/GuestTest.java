@@ -195,14 +195,17 @@ class GuestTest {
 
     @Test
     void testSetPassType(){
-        assertEquals("adult", guestTest.setPassType());
-        assertEquals("child", guestTestChildUnderFive.setPassType());
-        assertEquals("child", guestTestChildFive.setPassType());
-        assertEquals("youth", guestTestYouth.setPassType());
-        assertEquals("youth", guestTestAlmostAdult.setPassType());
-        assertEquals("adult", guestTestAdult.setPassType());
-        assertEquals("adult", guestTestAlmostSenior.setPassType());
-        assertEquals("senior", guestTestSenior.setPassType());
+            assertEquals("adult", guestTest.setPassType());
+            assertEquals("child", guestTestChildUnderFive.setPassType());
+            assertEquals("child", guestTestChildFive.setPassType());
+            assertEquals("youth", guestTestYouth.setPassType());
+            assertEquals("youth", guestTestAlmostAdult.setPassType());
+            assertEquals("adult", guestTestAdult.setPassType());
+            assertEquals("adult", guestTestAlmostSenior.setPassType());
+            assertEquals("senior", guestTestSenior.setPassType());
+            assertNull(tooYoung.setPassType());
+            assertEquals("senior", tooOld.setPassType());
+
     }
 
 }

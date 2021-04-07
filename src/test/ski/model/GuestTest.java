@@ -67,31 +67,31 @@ class GuestTest {
 
     @Test
     void testSetAge() {
-        Guest newGuest = null;
         try {
+            Guest newGuest = null;
             newGuest = new Guest("Bob", 22);
+            newGuest.setAge(4);
+            assertEquals(4, newGuest.getAge());
+            newGuest.setPassType();
+            assertEquals("child", newGuest.setPassType());
+            newGuest.setAge(5);
+            assertEquals("child", newGuest.setPassType());
+            newGuest.setAge(18);
+            assertEquals("youth", newGuest.setPassType());
+            assertEquals("youth", newGuest.getPassType());
+            newGuest.setAge(19);
+            assertEquals("adult", newGuest.setPassType());
+            assertEquals("adult", newGuest.getPassType());
+            newGuest.setAge(64);
+            assertEquals("adult", newGuest.setPassType());
+            assertEquals("adult", newGuest.getPassType());
+            newGuest.setAge(65);
+            assertEquals(65, newGuest.getAge());
+            assertEquals("senior", newGuest.setPassType());
+            assertEquals("senior", newGuest.getPassType());
         } catch (AgeOutOfBounds ageOutOfBounds) {
             fail("Not expecting age out of bounds exception here");
         }
-        newGuest.setAge(4);
-        assertEquals(4, newGuest.getAge());
-        newGuest.setPassType();
-        assertEquals("child", newGuest.setPassType());
-        newGuest.setAge(5);
-        assertEquals("child", newGuest.setPassType());
-        newGuest.setAge(18);
-        assertEquals("youth", newGuest.setPassType());
-        assertEquals("youth", newGuest.getPassType());
-        newGuest.setAge(19);
-        assertEquals("adult", newGuest.setPassType());
-        assertEquals("adult", newGuest.getPassType());
-        newGuest.setAge(64);
-        assertEquals("adult", newGuest.setPassType());
-        assertEquals("adult", newGuest.getPassType());
-        newGuest.setAge(65);
-        assertEquals(65, newGuest.getAge());
-        assertEquals("senior", newGuest.setPassType());
-        assertEquals("senior", newGuest.getPassType());
     }
 
     @Test

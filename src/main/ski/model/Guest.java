@@ -1,6 +1,5 @@
 package ski.model;
 
-import exceptions.AgeOutOfBounds;
 import org.json.JSONObject;
 import persistence.Writable;
 

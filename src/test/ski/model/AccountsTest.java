@@ -1,6 +1,5 @@
 package ski.model;
 
-import exceptions.AgeOutOfBounds;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

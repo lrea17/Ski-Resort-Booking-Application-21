@@ -1,6 +1,5 @@
 package ui;
 
-import exceptions.AgeOutOfBounds;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ski.model.Accounts;

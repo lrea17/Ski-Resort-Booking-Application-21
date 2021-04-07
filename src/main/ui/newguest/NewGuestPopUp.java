@@ -1,6 +1,5 @@
 package ui.newguest;
 
-import exceptions.AgeOutOfBounds;
 import ski.model.Guest;
 import ski.model.Pass;
 import ui.SkiAppGUI;

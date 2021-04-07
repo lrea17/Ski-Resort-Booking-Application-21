@@ -1,7 +1,5 @@
 package persistence;
 
-import exceptions.AgeOutOfBounds;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ski.model.Accounts;
 import ski.model.Guest;

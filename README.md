@@ -64,7 +64,7 @@ Phase 2:
   
 Phase 4: Task 2:
 
-- I realized that I have a pre-existing type hierarchy. ApplicationButtons is an abstract class and all my "buttons" in
+- I have a pre-existing type hierarchy; ApplicationButtons is an abstract class and all my "buttons" in
   my GUI extend this class to implement/override the methods addListener() and createButtons(). For example, Save,
   NewGuest, Load and LookupGuest all extend ApplicationButtons and override the methods mentioned above.  Each button
   is unique and performs a different action so each subclass overrides those methods differently.  

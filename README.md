@@ -83,6 +83,9 @@ If I had more time I would definitely do some refactoring to improve this projec
   
 - I don't know if its possible, but it would be nice to have fewer classes in the UI package, it seems like there's a
   lot going on in there and maybe some repetition with code.  Maybe by trying to remove any duplication a little better.
+  
+- I would make my classes in the model package robust. I tried to fix up the Guest class for phase 4 but it caused for
+  some code coverage issues that did not appear before so I decided to leave the code as is.
 
 
 

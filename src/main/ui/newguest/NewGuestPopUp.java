@@ -171,20 +171,16 @@ public class NewGuestPopUp extends JPanel {
     // EFFECTS: creates new guests, adds pass to guest account
     //          (a pass being added is the same as having a reservation),
     private void doNewGuest() {
-        try {
-            String name = getUserNameTextInput();
-            int age = Integer.parseInt(getAgeTextInput());
-            Guest newGuest = new Guest(name, age);
-            newGuest.makeReservation();
-            int id = newGuest.getID();
-            String passType = newGuest.getPassType();
-            ArrayList<Pass> usedPasses = newGuest.getListOfExpiredPasses();
-            editor.getAccounts().addGuest(newGuest);
-            updateLabelsForMostRecentGuest(name, id, age, passType, usedPasses);
-            showUpdatedGuestInfo();
-        } catch (AgeOutOfBounds e) {
-            System.out.println("Guest age input invalid ");
-        }
+        String name = getUserNameTextInput();
+        int age = Integer.parseInt(getAgeTextInput());
+        Guest newGuest = new Guest(name, age);
+        newGuest.makeReservation();
+        int id = newGuest.getID();
+        String passType = newGuest.getPassType();
+        ArrayList<Pass> usedPasses = newGuest.getListOfExpiredPasses();
+        editor.getAccounts().addGuest(newGuest);
+        updateLabelsForMostRecentGuest(name, id, age, passType, usedPasses);
+        showUpdatedGuestInfo();
     }
 
 

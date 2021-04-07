@@ -104,12 +104,7 @@ public class SkiReservationApp {
         System.out.println("Please enter the guests age");
         int guestAge = input.nextInt();
         if (guestAge > 0 && guestAge < 150) {
-            Guest newGuest = null;
-            try {
-                newGuest = new Guest(guestName, guestAge);
-            } catch (AgeOutOfBounds ageOutOfBounds) {
-                System.out.println("Guest age invalid input");
-            }
+            Guest newGuest = new Guest(guestName, guestAge);
             accounts.addGuest(newGuest);
             System.out.println("New account created for: " + guestName);
             System.out.println("account ID: " + newGuest.getID());

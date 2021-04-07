@@ -8,51 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GuestTest {
     private Guest guestTest;
-    private Guest guestTestChildUnderFive;
-    private Guest guestTestChildFive;
-    private Guest guestTestYouth;
-    private Guest guestTestAlmostAdult;
-    private Guest guestTestAdult;
-    private Guest guestTestAlmostSenior;
-    private Guest guestTestSenior;
-    private Guest tooYoung;
-    private Guest tooOld;
+    private final Guest guestTestChildUnderFive = new Guest("Beth", 4);
+    private final Guest guestTestChildFive = new Guest("George", 5);
+    private final Guest guestTestYouth = new Guest("Anna", 6);
+    private final Guest guestTestAlmostAdult = new Guest("Blair", 18);
+    private final Guest guestTestAdult = new Guest("Rupert", 19);
+    private final Guest guestTestAlmostSenior = new Guest("Lindsay", 64);
+    private final Guest guestTestSenior = new Guest("Ken", 65);
 
 
     @BeforeEach
     void setup() {
-        try {
-            guestTest = new Guest("Lindsay", 28);
-            guestTestChildUnderFive = new Guest("Beth", 4);
-            guestTestChildFive = new Guest("George", 5);
-            guestTestYouth = new Guest("Anna", 6);
-            guestTestAlmostAdult = new Guest("Blair", 18);
-            guestTestAdult = new Guest("Rupert", 19);
-            guestTestAlmostSenior = new Guest("Lindsay", 64);
-            guestTestSenior = new Guest("Ken", 65);
-        } catch (AgeOutOfBounds e) {
-            fail("Not expecting age out of bounds exception here");
-        }
-    }
-
-    @Test
-    void testGuestAgeTooYoung(){
-        try {
-            Guest tooYoung = new Guest("Baby", -1);
-            fail("expected age out of bounds exception");
-        } catch (AgeOutOfBounds e){
-            // expected age out of bounds exception here
-        }
-    }
-
-    @Test
-    void testGuestAgeTooOld(){
-        try {
-            Guest tooOld = new Guest("Baby", 151);
-            fail("expected age out of bounds exception");
-        } catch (AgeOutOfBounds e){
-            // expected age out of bounds exception here
-        }
+        guestTest = new Guest("Lindsay", 28);
     }
 
 
@@ -66,32 +33,27 @@ class GuestTest {
     }
 
     @Test
-    void testSetAge() {
-        try {
-            Guest newGuest = null;
-            newGuest = new Guest("Bob", 22);
-            newGuest.setAge(4);
-            assertEquals(4, newGuest.getAge());
-            newGuest.setPassType();
-            assertEquals("child", newGuest.setPassType());
-            newGuest.setAge(5);
-            assertEquals("child", newGuest.setPassType());
-            newGuest.setAge(18);
-            assertEquals("youth", newGuest.setPassType());
-            assertEquals("youth", newGuest.getPassType());
-            newGuest.setAge(19);
-            assertEquals("adult", newGuest.setPassType());
-            assertEquals("adult", newGuest.getPassType());
-            newGuest.setAge(64);
-            assertEquals("adult", newGuest.setPassType());
-            assertEquals("adult", newGuest.getPassType());
-            newGuest.setAge(65);
-            assertEquals(65, newGuest.getAge());
-            assertEquals("senior", newGuest.setPassType());
-            assertEquals("senior", newGuest.getPassType());
-        } catch (AgeOutOfBounds ageOutOfBounds) {
-            fail("Not expecting age out of bounds exception here");
-        }
+    void testSetAge(){
+        Guest newGuest = new Guest("Bob", 22);
+        newGuest.setAge(4);
+        assertEquals(4, newGuest.getAge());
+        newGuest.setPassType();
+        assertEquals("child", newGuest.setPassType());
+        newGuest.setAge(5);
+        assertEquals("child", newGuest.setPassType());
+        newGuest.setAge(18);
+        assertEquals("youth", newGuest.setPassType());
+        assertEquals("youth", newGuest.getPassType());
+        newGuest.setAge(19);
+        assertEquals("adult" ,newGuest.setPassType());
+        assertEquals("adult", newGuest.getPassType());
+        newGuest.setAge(64);
+        assertEquals("adult", newGuest.setPassType());
+        assertEquals("adult", newGuest.getPassType());
+        newGuest.setAge(65);
+        assertEquals(65, newGuest.getAge());
+        assertEquals("senior", newGuest.setPassType());
+        assertEquals("senior", newGuest.getPassType());
     }
 
     @Test
@@ -140,17 +102,17 @@ class GuestTest {
     }
 
     @Test
-    void testValidAccountNumberInList() {
+    void testValidAccountNumberInList(){
         assertFalse(guestTest.validNumber(guestTest.getID()));
     }
 
     @Test
-    void testValidAccountNumberLessThanZero() {
+    void testValidAccountNumberLessThanZero(){
         assertFalse(guestTest.validNumber(-2));
     }
 
     @Test
-    void testValidAccountNumberTooBig() {
+    void testValidAccountNumberTooBig(){
         assertFalse(guestTest.validNumber(100000));
         assertTrue(guestTest.validNumber(99999));
     }
@@ -186,26 +148,11 @@ class GuestTest {
     }
 
     @Test
-    void testLoadExpiredPass() {
+    void testLoadExpiredPass(){
         Pass p = new Pass(guestTest.getAge());
         assertFalse(guestTest.getListOfExpiredPasses().contains(p));
         guestTest.loadExpiredPasses(p);
         assertTrue(guestTest.getListOfExpiredPasses().contains(p));
-    }
-
-    @Test
-    void testSetPassType(){
-            assertEquals("adult", guestTest.setPassType());
-            assertEquals("child", guestTestChildUnderFive.setPassType());
-            assertEquals("child", guestTestChildFive.setPassType());
-            assertEquals("youth", guestTestYouth.setPassType());
-            assertEquals("youth", guestTestAlmostAdult.setPassType());
-            assertEquals("adult", guestTestAdult.setPassType());
-            assertEquals("adult", guestTestAlmostSenior.setPassType());
-            assertEquals("senior", guestTestSenior.setPassType());
-            assertNull(tooYoung.setPassType());
-            assertEquals("senior", tooOld.setPassType());
-
     }
 
 }

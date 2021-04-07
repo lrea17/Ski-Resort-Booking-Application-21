@@ -17,19 +17,16 @@ public class Guest implements Writable {
     Random randomNumber = new Random();    // randomID generator variable
     ArrayList<Pass> listOfExpiredPasses = new ArrayList<>(); // list of passes guest has used
 
+    // REQUIRES: guestName has a non-zero length, age is a non-zero length between 0 - 150
     // EFFECTS: name of guest is set to guestName; guest id is a unique random
     //          positive integer not assigned to any other account; age is set
     //          to guestAge; passType is dependent on age of guest; instantiates a new list
     //          of expired passes to track guest ski history
-    public Guest(String guestName, int guestAge) throws AgeOutOfBounds {
+    public Guest(String guestName, int guestAge) {
         this.id = randomIdGenerator();
         this.name = guestName;
-        if (guestAge < 0 || guestAge > 150) {
-            throw new AgeOutOfBounds();
-        } else {
-            this.age = guestAge;
-            this.passType = setPassType();
-        }
+        this.age = guestAge;
+        this.passType = setPassType();
     }
 
     // EFFECTS: constructs a guest with the inputs guestName, guestAge, and id
@@ -37,8 +34,9 @@ public class Guest implements Writable {
     public Guest(String guestName, int guestAge, int id) {
         this.id = id;
         this.name = guestName;
-        this.passType = setPassType();
         this.age = guestAge;
+        this.passType = setPassType();
+
     }
 
     // getters
@@ -172,5 +170,4 @@ public class Guest implements Writable {
         listOfExpiredPasses.add(p);
     }
 }
-
 

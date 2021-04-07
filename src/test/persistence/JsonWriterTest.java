@@ -19,20 +19,10 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 
 public class JsonWriterTest extends JsonTest {
-    private Pass passA = new Pass(39542, "adult", true);
-    private Pass passB = new Pass(86, "senior", true);
-    private Guest guestA;
-    private Guest guestB;
-
-    @BeforeEach
-    void testSetUp(){
-        try {
-            guestA = new Guest("A", 28);
-            guestB = new Guest("B", 65);
-        } catch (AgeOutOfBounds e) {
-            fail("Not expecting age out of bounds exception");
-        }
-    }
+    Pass passA = new Pass(39542, "adult", true);
+    Guest guestA = new Guest("A", 28);
+    Pass passB = new Pass(86, "senior", true);
+    Guest guestB = new Guest("B", 65);
 
     @Test
     void testWriterInvalidFile() {

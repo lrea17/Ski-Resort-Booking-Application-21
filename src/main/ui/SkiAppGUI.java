@@ -35,7 +35,7 @@ public class SkiAppGUI extends JFrame {
 
     // constructs an instance of the ski app GUI
     public SkiAppGUI() {
-        super("Ski Mountain Booking System");
+        super("Booking System for Ski Mountain");
         accounts = new Accounts("Snowy Mountain");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
